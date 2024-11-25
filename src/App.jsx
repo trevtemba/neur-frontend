@@ -1,9 +1,9 @@
-import LoginSignup from "./Components/LoginSignup/LoginSignup";
+import AuthForm from "./Components/AuthForm/AuthForm";
 
 const App = () => {
   return (
     <div>
-      <LoginSignup/>
+      <AuthForm/>
     </div>
   );
 }

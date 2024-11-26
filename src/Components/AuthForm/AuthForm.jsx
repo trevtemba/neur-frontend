@@ -74,7 +74,7 @@ const AuthForm = () => {
         const { confirmPassword, ...dataToSend} = values;
         console.log("Data being sent:", dataToSend);
         try {
-            const response = await fetch("http://localhost:8080/users/signup", {
+            const response = await fetch("http://localhost:8080/users/register", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",
@@ -82,6 +82,7 @@ const AuthForm = () => {
                 body: JSON.stringify(dataToSend),
             });
 
+            console.log("got response");
             if (response.ok) {
                 const result = await response.json();
                 console.log("Success", result);
@@ -95,8 +96,6 @@ const AuthForm = () => {
             alert("Form submission failed!");
         }
     };
-
-    console.log(values);
     
     return (
         <div className="auth">

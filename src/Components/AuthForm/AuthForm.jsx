@@ -28,28 +28,39 @@ const AuthForm = () => {
             name:"username",
             type:"text",
             placeholder:"Username",
-            label: <img src={user_icon}/>
+            errorMsg: "Usernames can be 3 to 20 characters long",
+            pattern: "^[A-za-z0-9]{3,16}$",
+            label: <img src={user_icon}/>,
+            required: true,
         },
         {
             id:2,
             name:"email",
-            type:"text",
+            type:"email",
             placeholder:"Email",
-            label:<img src={email_icon}/>
+            errorMsg: "Must be a valid email address",
+            label:<img src={email_icon}/>,
+            required: true,
         },
         {
             id:3,
             name:"password",
             type:"password",
             placeholder:"Password",
-            label:<img src={password_icon}/>
+            errorMsg: "Password must include at least 1: letter, number, and special character",
+            pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
+            label:<img src={password_icon}/>,
+            required: true,
         },
         {
             id:4,
             name:"confirmPassword",
             type:"password",
             placeholder:"Confirm Password",
-            label:<img src={passConfirm_icon}/>
+            errorMsg: "Passwords don't match",
+            pattern: values.password,
+            label:<img src={passConfirm_icon}/>,
+            required: true,
         },
     ];
 

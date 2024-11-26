@@ -1,13 +1,13 @@
 .formInput {
     display: flex;
-    flex-direction: row;
-    margin-right: 30px;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .authIcon {
-    margin-right: 10px;
     display: flex;
     align-items: center;
+    margin-left: 5px;
 }
 .authEntry {
     padding: 10px;
@@ -15,10 +15,33 @@
     border-color: transparent;
     border-radius: 10px;
     height: 30px;
-    width: 275px;
+    width: 350px;
+    color: white;
+    transition: background-color 0.2s ease-in;
+}
+
+.authEntry:hover {
+    background-color: rgb(13, 13, 13);
 }
 
 .authEntry::placeholder {
+    font-size: 15px;
     color: rgb(57, 57, 57)
 }
 
+.errorMsg {
+    display: none;
+    color: #ff3a6f;
+    font-weight: 400;
+    font-size: 15px;
+    overflow-wrap: break-word;
+    max-width: 350px;
+}
+
+.authEntry:invalid[focused="true"]{
+    border-color: #ff3a6f;
+}
+
+.authEntry:invalid[focused="true"] ~ .errorMsg {
+    display: block;
+}

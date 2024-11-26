@@ -10,6 +10,11 @@ import passConfirm_icon from "../Assets/passConfirm_icon.svg"
 
 const AuthForm = () => {
 
+    const [selectState, setState] = useState("Have an account?")
+
+    const handleHover = (thingy) => {
+        setState(thingy === 0 ? "Login" : "Have an account?"); 
+    }
     const [values, setValues] = useState({
         username:"",
         email:"",
@@ -57,10 +62,22 @@ const AuthForm = () => {
     return (
         <div className="auth">
             <form>
+                <div className="title">
+                    <h1>neur</h1>
+                    <h2>empowering entrepreneurs</h2>
+                </div>
+
                 {inputs.map((input) => (
                     <FormInput key={input.id} {...input} value={values[input.name]} onChange={onChange}/>
                 ))}
-                <button>Submit</button>
+                <div className="formButtons">
+                    <button>Sign up</button>
+                    <button 
+                        onMouseEnter={() => handleHover(0)} 
+                        onMouseLeave={() => handleHover(1)}>
+                            {selectState}
+                    </button>
+                </div>
             </form>
         </div>
 

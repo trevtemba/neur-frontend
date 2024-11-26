@@ -6,6 +6,7 @@ import React from "react";
 import user_icon from "../Assets/user_icon.svg"
 import email_icon from "../Assets/email_icon.svg"
 import password_icon from "../Assets/password_icon.svg"
+import passConfirm_icon from "../Assets/passConfirm_icon.svg"
 
 const AuthForm = () => {
 
@@ -43,7 +44,7 @@ const AuthForm = () => {
             name:"confirmPassword",
             type:"password",
             placeholder:"Confirm Password",
-            label:<img src={password_icon}/>
+            label:<img src={passConfirm_icon}/>
         },
     ];
 
@@ -59,12 +60,6 @@ const AuthForm = () => {
                 {inputs.map((input) => (
                     <FormInput key={input.id} {...input} value={values[input.name]} onChange={onChange}/>
                 ))}
-
-                <label>
-                    <input name="agree" type="checkbox" required/>
-                    I agree to the Terms and Conditions
-                </label>
-                <br></br>
                 <button>Submit</button>
             </form>
         </div>

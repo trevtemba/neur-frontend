@@ -1,16 +1,16 @@
 .auth {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    justify-self: center;
+    align-self: center;
     height: 100%;
     width: 100%;
+    margin-top: 300px;
 }
 
 .title {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 h1 {
     display: flex;
@@ -31,21 +31,28 @@ h2 {
     color: rgb(168, 168, 168);
     font-weight: 300;
 }
-form {
+.registerForm {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 15px;
-    position: absolute;
-    top: 20%;
+    position: relative;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    bottom: 21px;
 }
 
 .formButtons {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 200px;
     margin: 20px;
     gap: 10px
 }
@@ -57,7 +64,7 @@ form button {
     color: white;
     border-color: transparent;
     border-radius: 9px;
-    width: 55%;
+    width: 200px;
     height: 50px;
     cursor: pointer;
     transition: background-color 0.3s ease-in, color 0.4s ease-in-out;

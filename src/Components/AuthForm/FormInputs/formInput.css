@@ -1,6 +1,7 @@
 .formInput {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 10px;
 }
 
@@ -44,4 +45,15 @@
 
 .authEntry:invalid[focused="true"] ~ .errorMsg {
     display: block;
+}
+
+input {
+    background-color:  rgb(9, 9, 9);
+    color: white;
+}
+
+input:-webkit-autofill {
+    background-color: inherit !important; /* Maintain original background */
+    color: inherit !important; /* Maintain text color */
+    transition: background-color 5000s ease-in-out 0s, color 5000s ease-in-out 0s; /* Prevent sudden changes */    
 }

@@ -10,10 +10,16 @@ import passConfirm_icon from "../Assets/passConfirm_icon.svg"
 
 const AuthForm = () => {
 
-    const [selectState, setState] = useState("Have an account?")
+    const [formState, setForm] = useState("Login"); // Register, Login, Verification, Forgot Password, Success
+    const [selectState, setState] = useState("Have an account?");
 
     const handleHover = (thingy) => {
         setState(thingy === 0 ? "Login" : "Have an account?"); 
+    }
+
+    const toggleForm = (type) => {
+        setForm(type);
+        handleHover(1);
     }
     const [values, setValues] = useState({
         username:"",
@@ -68,7 +74,7 @@ const AuthForm = () => {
         setValues({...values, [e.target.name]: e.target.value })
     }
 
-    const handleSubmit = async (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
 
         const { confirmPassword, ...dataToSend} = values;
@@ -86,7 +92,7 @@ const AuthForm = () => {
             if (response.ok) {
                 const result = await response.json();
                 console.log("Success", result);
-                alert("Form submitted successfully!")
+                setForm("Login");
             } else {
                 console.log("Error: ", response.statusText);
                 alert("Form submission failed!");
@@ -97,26 +103,83 @@ const AuthForm = () => {
         }
     };
     
+    const handleLogin = async (e) => {
+        e.preventDefault();
+
+        const { email, confirmPassword, ...dataToSend} = values;
+        console.log("Data being sent:", dataToSend);
+        try {
+            const response = await fetch("http://localhost:8080/users/register", {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify(dataToSend),
+            });
+
+            console.log("got response");
+            if (response.ok) {
+                const result = await response.json();
+                console.log("Success", result);
+                setForm("Verification");
+            } else {
+                console.log("Error: ", response.statusText);
+                alert("Form submission failed!");
+            }
+        } catch (error) {
+            console.error("Error: ", error);
+            alert("Form submission failed!");
+        }
+    };
+
     return (
         <div className="auth">
-            <form onSubmit={handleSubmit}>
-                <div className="title">
-                    <h1>neur</h1>
-                    <h2>empowering entrepreneurs</h2>
-                </div>
+            {formState == "Register" && (
+                <form className="registerForm" onSubmit={handleRegister}>
+                    <div className="title">
+                        <h1>neur</h1>
+                        <h2>empowering entrepreneurs</h2>
+                    </div>
 
-                {inputs.map((input) => (
-                    <FormInput key={input.id} {...input} value={values[input.name]} onChange={onChange}/>
-                ))}
-                <div className="formButtons">
-                    <button type="submit">Sign up</button>
-                    <button 
-                        onMouseEnter={() => handleHover(0)} 
-                        onMouseLeave={() => handleHover(1)}>
-                            {selectState}
-                    </button>
-                </div>
-            </form>
+                    {inputs.map((input) => (
+                        <FormInput key={input.id} {...input} value={values[input.name]} onChange={onChange}/>
+                    ))}
+                    <div className="formButtons">
+                        <button type="submit">Sign up</button>
+                        <button 
+                            onClick={ () => toggleForm("Login")  }
+                            onMouseEnter={() => handleHover(0)} 
+                            onMouseLeave={() => handleHover(1)}>
+                                {selectState}
+                        </button>
+                    </div>
+                </form>
+            )};
+            {formState == "Login" && (
+                <form className="loginForm" onSubmit={handleLogin}>
+                    <div className="title">
+                        <h1>neur</h1>
+                        <h2>empowering entrepreneurs</h2>
+                    </div>
+
+                    {inputs
+                        .filter((item) => item.id === 1 || item.id === 3)
+                        .map((input) => (
+                            <FormInput 
+                            key={input.id}
+                            {...input}
+                            value={values[input.name]}
+                            onChange={onChange}/>
+                    ))}
+                    <div className="formButtons">
+                        <button type="submit">Login</button>
+                        <button onClick={ () => toggleForm("Register") }>
+                            Create new account
+                        </button>
+                    </div>
+                </form>
+            )};
+
         </div>
 
     );

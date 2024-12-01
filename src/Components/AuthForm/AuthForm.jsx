@@ -109,7 +109,7 @@ const AuthForm = () => {
         const { email, confirmPassword, ...dataToSend} = values;
         console.log("Data being sent:", dataToSend);
         try {
-            const response = await fetch("http://localhost:8080/users/register", {
+            const response = await fetch("http://localhost:8080/users/login", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",

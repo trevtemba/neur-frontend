@@ -5,7 +5,7 @@
     align-self: center;
     height: 100%;
     width: 100%;
-    margin-top: 300px;
+    margin-top: 250px;
 }
 
 .title {
@@ -37,6 +37,7 @@ h2 {
     align-items: center;
     gap: 15px;
     position: relative;
+    bottom: 21px
 }
 
 .loginForm {
@@ -45,7 +46,7 @@ h2 {
     align-items: center;
     gap: 15px;
     position: relative;
-    bottom: 21px;
+    bottom: 0px;
 }
 
 .formButtons {

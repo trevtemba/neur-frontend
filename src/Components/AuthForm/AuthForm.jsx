@@ -164,78 +164,129 @@ const AuthForm = () => {
                     opacity: 0,
                 }}
             >
-                {formState == "Register" && (
-                    <form className="registerForm" onSubmit={handleRegister}>
-                        <div className="title">
-                            <h1>neur</h1>
-                            <h2>empowering entrepreneurs</h2>
-                        </div>
+                <div className="title">
+                    <h1>neur</h1>
+                    <h2>empowering entrepreneurs</h2>
+                </div>
 
-                        {inputs.map((input) => (
-                            <FormInput key={input.id} {...input} value={values[input.name]} onChange={onChange}/>
-                        ))}
-                        <div className="formButtons">
-                            <button type="submit">Sign up</button>
-                            <button 
-                                onClick={ () => toggleForm("Login")  }
-                                onMouseEnter={() => handleHover(0)} 
-                                onMouseLeave={() => handleHover(1)}>
-                                    {selectState}
-                            </button>
-                        </div>
-                    </form>
-                )};
+                {/* <AnimatePresence> */}
                 {formState == "Login" && (
-                    <form className="loginForm" onSubmit={handleLogin}>
-                        <div className="title">
-                            <h1>neur</h1>
-                            <h2>empowering entrepreneurs</h2>
-                        </div>
+                        <motion.form 
+                            className="loginForm" 
+                            initial={{
+                                opacity: 0,
+                                x: -25,
+                            }}
+                            animate={{
+                                opacity: 1,
+                                x: 0,
+                            }}
+                            transition={{
+                                duration: 1,
+                                ease: [0.25, 1, 0.5, 1]
+                            }}
+                            exit={{
+                                opacity: 0,
+                            }}
+                            onSubmit={handleLogin}
+                        >
+                            {inputs
+                                .filter((item) => item.id === 1 || item.id === 3)
+                                .map((input) => (
+                                    <FormInput 
+                                    key={input.id}
+                                    {...input}
+                                    value={values[input.name]}
+                                    onChange={onChange}/>
+                            ))}
+                            <div className="formButtons">
+                                <button type="submit">Login</button>
+                                <button onClick={ () => toggleForm("Register") }>
+                                    Create new account
+                                </button>
+                            </div>
+                        </motion.form>
+                    )};
+                {/* </AnimatePresence> */}
 
-                        {inputs
-                            .filter((item) => item.id === 1 || item.id === 3)
-                            .map((input) => (
-                                <FormInput 
-                                key={input.id}
-                                {...input}
-                                value={values[input.name]}
-                                onChange={onChange}/>
-                        ))}
-                        <div className="formButtons">
-                            <button type="submit">Login</button>
-                            <button onClick={ () => toggleForm("Register") }>
-                                Create new account
-                            </button>
-                        </div>
-                    </form>
-                )};
-                {formState == "Verification" && (
-                    <form className="loginForm" onSubmit={handleLogin}>
-                        <div className="title">
-                            <h1>neur</h1>
-                            <h2>empowering entrepreneurs</h2>
-                        </div>
-
-                        {inputs
-                            .filter((item) => item.id === 1 || item.id === 3)
-                            .map((input) => (
-                                <FormInput 
-                                key={input.id}
-                                {...input}
-                                value={values[input.name]}
-                                onChange={onChange}/>
-                        ))}
-                        <div className="formButtons">
-                            <button type="submit">Resend Code</button>
-                            <button onClick={ () => toggleForm("Register") }>
-                                Create new account
-                            </button>
-                        </div>
-                    </form>
-                )};
+                {/* <AnimatePresence> */}
+                    {formState == "Register" && (
+                        <motion.form 
+                            className="registerForm" 
+                            initial={{
+                                opacity: 0,
+                                x: 25,
+                            }}
+                            animate={{
+                                opacity: 1,
+                                x: 0,
+                            }}
+                            transition={{
+                                duration: 1,
+                                ease: [0.25, 1, 0.5, 1]
+                            }}
+                            exit={{
+                                opacity: 0,
+                            }}
+                            onSubmit={handleRegister}
+                        >
+                            {inputs.map((input) => (
+                                <FormInput key={input.id} {...input} value={values[input.name]} onChange={onChange}/>
+                            ))}
+                            <div className="formButtons">
+                                <button type="submit">Sign up</button>
+                                <button 
+                                    onClick={ () => toggleForm("Login")  }
+                                    onMouseEnter={() => handleHover(0)} 
+                                    onMouseLeave={() => handleHover(1)}>
+                                        {selectState}
+                                </button>
+                            </div>
+                        </motion.form>
+                    )}; 
+                {/* </AnimatePresence> */}
+                
+                {/* <AnimatePresence> */}
+                    {formState == "Verification" && (
+                        <motion.form 
+                            className="loginForm"
+                            initial={{
+                                opacity: 0,
+                                x: 25,
+                            }}
+                            animate={{
+                                opacity: 1,
+                                x: 0,
+                            }}
+                            transition={{
+                                duration: 1,
+                                ease: [0.25, 1, 0.5, 1]
+                            }}
+                            exit={{
+                                opacity: 0,
+                            }}
+                            onSubmit={handleLogin}
+                        >
+                            {inputs
+                                .filter((item) => item.id === 5)
+                                .map((input) => (
+                                    <FormInput 
+                                    key={input.id}
+                                    {...input}
+                                    value={values[input.name]}
+                                    onChange={onChange}/>
+                            ))}
+                            <div className="formButtons">
+                                <button type="submit">Resend Code</button>
+                                <button onClick={ () => toggleForm("Register") }>
+                                    Create new account
+                                </button>
+                            </div>
+                        </motion.form>
+                    )};
+                {/* </AnimatePresence> */}
             </motion.div>
         </AnimatePresence>
-
     );
 }
 

@@ -2,11 +2,13 @@ import { useState } from "react"
 import FormInput from "./FormInputs/FormInput";
 import "./authForm.css"
 import React from "react";
+import { motion, AnimatePresence } from "framer-motion"
 
 import user_icon from "../Assets/user_icon.svg"
 import email_icon from "../Assets/email_icon.svg"
 import password_icon from "../Assets/password_icon.svg"
 import passConfirm_icon from "../Assets/passConfirm_icon.svg"
+import verification_icon from "../Assets/verification_icon.svg"
 
 const AuthForm = () => {
 
@@ -26,6 +28,7 @@ const AuthForm = () => {
         email:"",
         password:"",
         confirmPassword:"",
+        verificationCode:"",
     });
 
     const inputs = [
@@ -68,6 +71,16 @@ const AuthForm = () => {
             label:<img src={passConfirm_icon}/>,
             required: true,
         },
+        {
+            id:5,
+            name:"verificationCode",
+            type:"text",
+            placeholder:"Verification code",
+            errorMsg: "Incorrect code",
+            pattern: values.password,
+            label:<img src={passConfirm_icon}/>,
+            required: true,
+        },
     ];
 
     const onChange = (e)=>{
@@ -77,7 +90,7 @@ const AuthForm = () => {
     const handleRegister = async (e) => {
         e.preventDefault();
 
-        const { confirmPassword, ...dataToSend} = values;
+        const { verificationCode, confirmPassword, ...dataToSend} = values;
         console.log("Data being sent:", dataToSend);
         try {
             const response = await fetch("http://localhost:8080/users/register", {
@@ -106,7 +119,7 @@ const AuthForm = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
 
-        const { email, confirmPassword, ...dataToSend} = values;
+        const { verificationCode, email, confirmPassword, ...dataToSend} = values;
         console.log("Data being sent:", dataToSend);
         try {
             const response = await fetch("http://localhost:8080/users/login", {
@@ -133,54 +146,95 @@ const AuthForm = () => {
     };
 
     return (
-        <div className="auth">
-            {formState == "Register" && (
-                <form className="registerForm" onSubmit={handleRegister}>
-                    <div className="title">
-                        <h1>neur</h1>
-                        <h2>empowering entrepreneurs</h2>
-                    </div>
+        <AnimatePresence>
+            <motion.div 
+                className="auth"
+                initial={{
+                    y: 50,
+                    opacity: 0,
+                }}
+                animate={{
+                    y: 0,
+                    opacity: 1,
+                }}
+                transition={{
+                    duration: 1,
+                }}
+                exit={{
+                    opacity: 0,
+                }}
+            >
+                {formState == "Register" && (
+                    <form className="registerForm" onSubmit={handleRegister}>
+                        <div className="title">
+                            <h1>neur</h1>
+                            <h2>empowering entrepreneurs</h2>
+                        </div>
 
-                    {inputs.map((input) => (
-                        <FormInput key={input.id} {...input} value={values[input.name]} onChange={onChange}/>
-                    ))}
-                    <div className="formButtons">
-                        <button type="submit">Sign up</button>
-                        <button 
-                            onClick={ () => toggleForm("Login")  }
-                            onMouseEnter={() => handleHover(0)} 
-                            onMouseLeave={() => handleHover(1)}>
-                                {selectState}
-                        </button>
-                    </div>
-                </form>
-            )};
-            {formState == "Login" && (
-                <form className="loginForm" onSubmit={handleLogin}>
-                    <div className="title">
-                        <h1>neur</h1>
-                        <h2>empowering entrepreneurs</h2>
-                    </div>
+                        {inputs.map((input) => (
+                            <FormInput key={input.id} {...input} value={values[input.name]} onChange={onChange}/>
+                        ))}
+                        <div className="formButtons">
+                            <button type="submit">Sign up</button>
+                            <button 
+                                onClick={ () => toggleForm("Login")  }
+                                onMouseEnter={() => handleHover(0)} 
+                                onMouseLeave={() => handleHover(1)}>
+                                    {selectState}
+                            </button>
+                        </div>
+                    </form>
+                )};
+                {formState == "Login" && (
+                    <form className="loginForm" onSubmit={handleLogin}>
+                        <div className="title">
+                            <h1>neur</h1>
+                            <h2>empowering entrepreneurs</h2>
+                        </div>
 
-                    {inputs
-                        .filter((item) => item.id === 1 || item.id === 3)
-                        .map((input) => (
-                            <FormInput 
-                            key={input.id}
-                            {...input}
-                            value={values[input.name]}
-                            onChange={onChange}/>
-                    ))}
-                    <div className="formButtons">
-                        <button type="submit">Login</button>
-                        <button onClick={ () => toggleForm("Register") }>
-                            Create new account
-                        </button>
-                    </div>
-                </form>
-            )};
+                        {inputs
+                            .filter((item) => item.id === 1 || item.id === 3)
+                            .map((input) => (
+                                <FormInput 
+                                key={input.id}
+                                {...input}
+                                value={values[input.name]}
+                                onChange={onChange}/>
+                        ))}
+                        <div className="formButtons">
+                            <button type="submit">Login</button>
+                            <button onClick={ () => toggleForm("Register") }>
+                                Create new account
+                            </button>
+                        </div>
+                    </form>
+                )};
+                {formState == "Verification" && (
+                    <form className="loginForm" onSubmit={handleLogin}>
+                        <div className="title">
+                            <h1>neur</h1>
+                            <h2>empowering entrepreneurs</h2>
+                        </div>
 
-        </div>
+                        {inputs
+                            .filter((item) => item.id === 1 || item.id === 3)
+                            .map((input) => (
+                                <FormInput 
+                                key={input.id}
+                                {...input}
+                                value={values[input.name]}
+                                onChange={onChange}/>
+                        ))}
+                        <div className="formButtons">
+                            <button type="submit">Resend Code</button>
+                            <button onClick={ () => toggleForm("Register") }>
+                                Create new account
+                            </button>
+                        </div>
+                    </form>
+                )};
+            </motion.div>
+        </AnimatePresence>
 
     );
 }

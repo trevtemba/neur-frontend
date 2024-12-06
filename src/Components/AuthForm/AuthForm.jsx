@@ -134,6 +134,9 @@ const AuthForm = () => {
             if (response.ok) {
                 const result = await response.json();
                 console.log("Success", result);
+
+                //Storing token
+                localStorage.setItem("accessToken", result.accessToken);
                 setForm("Verification");
             } else {
                 console.log("Error: ", response.statusText);
@@ -230,7 +233,9 @@ const AuthForm = () => {
                             }}
                             onSubmit={handleRegister}
                         >
-                            {inputs.map((input) => (
+                            {inputs
+                            .filter((item) => item.id !== 5)
+                            .map((input) => (
                                 <FormInput key={input.id} {...input} value={values[input.name]} onChange={onChange}/>
                             ))}
                             <div className="formButtons">

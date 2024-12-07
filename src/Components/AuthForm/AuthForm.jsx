@@ -171,7 +171,7 @@ const AuthForm = () => {
                     <h1>neur</h1>
                     <h2>empowering entrepreneurs</h2>
                 </div>
-                <div className="container">
+                <div className="authContainer">
                     {/* <AnimatePresence> */}
                         {formState == "Login" && (
                             <motion.form 
@@ -190,6 +190,7 @@ const AuthForm = () => {
                                 }}
                                 exit={{
                                     opacity: 0,
+                                    x: 25,
                                 }}
                                 onSubmit={handleLogin}
                             >
@@ -230,6 +231,7 @@ const AuthForm = () => {
                                 }}
                                 exit={{
                                     opacity: 0,
+                                    x: 25,
                                 }}
                                 onSubmit={handleRegister}
                             >
@@ -269,6 +271,7 @@ const AuthForm = () => {
                                 }}
                                 exit={{
                                     opacity: 0,
+                                    x: 25,
                                 }}
                                 onSubmit={handleLogin}
                             >

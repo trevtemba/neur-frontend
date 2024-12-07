@@ -5,13 +5,16 @@
     align-self: center;
     height: 100%;
     width: 100%;
-    margin-top: 200px;
+    margin-top: 150px;
 }
 
 .title {
     display: flex;
     flex-direction: column;
+    justify-self: center;
+    align-self: center;
 }
+
 h1 {
     display: flex;
     margin: auto;
@@ -31,9 +34,20 @@ h2 {
     color: rgb(168, 168, 168);
     font-weight: 300;
 }
+
+.authContainer {
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+    width: 374px;
+}
+
 .registerForm {
     display: flex;
     flex-direction: column;
+    width: 375px;
     align-items: center;
     gap: 15px;
     position: relative;
@@ -42,9 +56,11 @@ h2 {
 .loginForm {
     display: flex;
     flex-direction: column;
+    width: 375px;
     align-items: center;
     gap: 15px;
     position: relative;
+    left: 4px
 }
 
 .formButtons {

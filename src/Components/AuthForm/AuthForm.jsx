@@ -78,7 +78,7 @@ const AuthForm = () => {
             placeholder:"Verification code",
             errorMsg: "Incorrect code",
             pattern: values.password,
-            label:<img src={passConfirm_icon}/>,
+            label:<img src={verification_icon}/>,
             required: true,
         },
     ];

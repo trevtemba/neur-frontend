@@ -5,11 +5,21 @@ import { useState } from "react";
 import "./navigation.css"
 import React from "react";
 
+import home_icon from "../Assets/home_icon.svg"
+import explore_icon from "../Assets/explore_icon.svg"
+import appointments_icon from "../Assets/appointments_icon.svg"
+import earnings_icon from "../Assets/earnings_icon.svg"
+import profile_icon from "../Assets/profile_icon.svg"
+
 const buttonAnimation = {
-    initial: { color: "#646464" },
+    initial: { 
+        backgroundColor: "#0a0a0a",
+        borderRadius: "25px",
+    },
     whileHover: {
-        scale: 1.05,
-        color: "#FFFFFF",
+        scale: 1.1,
+        backgroundColor: "#0f0f0f",
+        borderRadius: "15px"
     },
     whileTap: {
         scale: 0.95,
@@ -32,25 +42,31 @@ const Navigation = () => {
                 className="navButton"
                 onClick={ () => setPage("home") }
                 {...buttonAnimation}>
-                    HOME
+                    <img src={home_icon}/>
                 </motion.button>
                 <motion.button
                 className="navButton"
                 onClick={ () => setPage("appnt") }
                 {...buttonAnimation}>
-                    APPOINTMENTS
+                    <img src={appointments_icon}/>
                 </motion.button>                    
                 <motion.button
                 className="navButton"
                 onClick={ () => setPage("explore") }
                 {...buttonAnimation}>
-                    EXPLORE
+                    <img src={explore_icon}/>
                 </motion.button>                    
                 <motion.button
                 className="navButton"
                 onClick={ () => setPage("earnings") }
                 {...buttonAnimation}>
-                    EARNINGS
+                    <img src={earnings_icon}/>
+                </motion.button>
+                <motion.button
+                className="navButton"
+                onClick={ () => setPage("profile") }
+                {...buttonAnimation}>
+                    <img src={profile_icon}/>
                 </motion.button>
         </div>
     );

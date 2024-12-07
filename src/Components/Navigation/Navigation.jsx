@@ -11,7 +11,7 @@ import appointments_icon from "../Assets/appointments_icon.svg"
 import earnings_icon from "../Assets/earnings_icon.svg"
 import profile_icon from "../Assets/profile_icon.svg"
 
-const buttonAnimation = {
+const navButtonAnimation = {
     initial: { 
         backgroundColor: "#0a0a0a",
         borderRadius: "25px",
@@ -29,6 +29,23 @@ const buttonAnimation = {
         ease: "easeInOut"
     },
 };
+const buttonAnimation = {
+    initial: { 
+        backgroundColor: "#ffffff",
+        borderRadius: "25px",
+    },
+    whileHover: {
+        backgroundColor: "#e1e1e1",
+        borderRadius: "20px",
+    },
+    whileTap: {
+        scale: 0.95,
+    },
+    transition: {
+        duration: 0.125,
+        ease: "easeInOut"
+    },
+};
 
 const Navigation = () => {
 
@@ -37,38 +54,55 @@ const Navigation = () => {
 
     return (
         <div
-        className="container">
+        className="topBar">
+            <motion.div 
+            className="logoContainer">
+                neur
+            </motion.div>
+            <div
+            className="navContainer">
                 <motion.button
                 className="navButton"
                 onClick={ () => setPage("home") }
-                {...buttonAnimation}>
+                {...navButtonAnimation}>
                     <img src={home_icon}/>
                 </motion.button>
                 <motion.button
                 className="navButton"
                 onClick={ () => setPage("appnt") }
-                {...buttonAnimation}>
+                {...navButtonAnimation}>
                     <img src={appointments_icon}/>
                 </motion.button>                    
                 <motion.button
                 className="navButton"
                 onClick={ () => setPage("explore") }
-                {...buttonAnimation}>
+                {...navButtonAnimation}>
                     <img src={explore_icon}/>
                 </motion.button>                    
                 <motion.button
                 className="navButton"
                 onClick={ () => setPage("earnings") }
-                {...buttonAnimation}>
+                {...navButtonAnimation}>
                     <img src={earnings_icon}/>
                 </motion.button>
                 <motion.button
                 className="navButton"
                 onClick={ () => setPage("profile") }
-                {...buttonAnimation}>
+                {...navButtonAnimation}>
                     <img src={profile_icon}/>
                 </motion.button>
+            </div>
+            <div
+            className="rightContainer">
+                <motion.button
+                className="logoutButton"
+                onClick={ () => setPage("profile") }
+                {...buttonAnimation}>
+                    Logout
+                </motion.button>   
+            </div>
         </div>
+
     );
 }
 

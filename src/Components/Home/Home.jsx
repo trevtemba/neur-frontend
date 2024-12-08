@@ -1,6 +1,6 @@
 import React from "react";
 import "./home.css"
-import featuredHero from "../Assets/featured_hero.jpeg"
+import featuredHero from "../Assets/featured_hero.jpg"
 
 const Home = () => {
     return (
@@ -13,9 +13,10 @@ const Home = () => {
                     <img className="featuredHero" src={featuredHero}/>
                     <span className="subTitle">THIS MONTH'S</span>
                     <span className="mainTitle">FEATURED</span>
-                    <span className="bottomTitle">STYLIST</span>
+                    <span className="bottomTitle">STYLIST:</span>
+                    <span className="nameTitle">Linda Stuart</span>
                     <span className="textBody">
-                        <span className="personName">Linda Stuart</span> has been killing it this week!
+                        <span className="personName">Linda</span> has been killing it this week!
                         Earning over 50 favorites this week, her spot on this months
                         featured is well deserved!
                     </span>

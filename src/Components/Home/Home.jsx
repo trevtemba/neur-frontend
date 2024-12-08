@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "motion/react";
+
 import "./home.css"
 import featuredHero from "../Assets/featured_hero.jpg"
 
@@ -21,8 +23,28 @@ const Home = () => {
                         featured is well deserved!
                     </span>
                     <div className="featuredButtons">
-                        <button className="bookButton">BOOK</button>
-                        <button className="favoriteButton">FAVORITE</button>
+                        <motion.button 
+                        className="bookButton"
+                        initial={{
+                            backgroundColor: "#009f79",
+                        }}
+                        whileHover={{
+                            backgroundColor: "#00dfa9",
+                        }}>
+                            BOOK
+                        </motion.button>
+                        <motion.button 
+                        className="favoriteButton"
+                            initial={{
+                            background: "transparent",
+                            color: "#ffffff"
+                        }}
+                        whileHover={{
+                            backgroundColor: "#ffffff",
+                            color: "#000000",
+                        }}>
+                            FAVORITE
+                        </motion.button>
                     </div>
                 </div>
 

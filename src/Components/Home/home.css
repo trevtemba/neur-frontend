@@ -108,13 +108,10 @@
 
 .bookButton {
 
-    background-color: #009f79;
     color: white;
     border-color: transparent;
 }
 
 .favoriteButton {
-    background-color: transparent;
-    color: white;
     border-color: aliceblue;
 }

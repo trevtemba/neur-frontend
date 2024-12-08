@@ -4,6 +4,16 @@ import { motion } from "motion/react";
 import "./home.css"
 import featuredHero from "../Assets/featured_hero.jpg"
 
+import fi1 from "../Assets/featuredGrid/fi1.jpg"
+import fi2 from "../Assets/featuredGrid/fi2.jpg"
+import fi3 from "../Assets/featuredGrid/fi3.jpg"
+import fi4 from "../Assets/featuredGrid/fi4.jpg"
+import fi5 from "../Assets/featuredGrid/fi5.jpg"
+import fi6 from "../Assets/featuredGrid/fi6.jpg"
+import fi7 from "../Assets/featuredGrid/fi7.jpg"
+import fi8 from "../Assets/featuredGrid/fi8.jpg"
+import fi9 from "../Assets/featuredGrid/fi8.jpg"
+
 const Home = () => {
     return (
         <div className="homePage">
@@ -48,8 +58,43 @@ const Home = () => {
                     </div>
                 </div>
                 <dir
-                className="featuredImageGrid">
-                    <div></div>
+                className="featuredImagesContainer">
+                    <div
+                    className="column">
+                        <div className="photo">
+                            <img src={fi1}/>
+                        </div>
+                        <div className="photo">
+                            <img src={fi2}/>
+                        </div>
+                        <div className="photo">
+                            <img src={fi3}/>
+                        </div>
+                    </div>
+                    <div
+                    className="column">
+                        <div className="photo">
+                            <img src={fi4}/>
+                        </div>
+                        <div className="photo">
+                            <img src={fi5}/>
+                        </div>
+                        <div className="photo">
+                            <img src={fi6}/>
+                        </div>
+                    </div>
+                    <div
+                    className="column">
+                        <div className="photo">
+                            <img src={fi7}/>
+                        </div>
+                        <div className="photo">
+                            <img src={fi8}/>
+                        </div>
+                        <div className="photo">
+                            <img src={fi9}/>
+                        </div>
+                    </div>
                 </dir>
             </div>
         </div>

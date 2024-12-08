@@ -32,11 +32,11 @@ const navButtonAnimation = {
 const buttonAnimation = {
     initial: { 
         backgroundColor: "#ffffff",
-        borderRadius: "25px",
+        borderRadius: "30px",
     },
     whileHover: {
         backgroundColor: "#e1e1e1",
-        borderRadius: "20px",
+        borderRadius: "15px",
     },
     whileTap: {
         scale: 0.95,
@@ -55,6 +55,7 @@ const Navigation = () => {
     return (
         <div
         className="topBar">
+            
             <motion.div 
             className="logoContainer">
                 neur

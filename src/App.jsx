@@ -13,6 +13,7 @@ const App = () => {
       <nav>
         < Navigation />
       </nav>
+      
       <Routes>
         <Route path="/" element={<AuthForm />} />
         <Route path="/profile" element={<Profile />} />

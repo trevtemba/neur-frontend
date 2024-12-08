@@ -1,0 +1,59 @@
+.homePage {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vw;
+    background-color: transparent;
+}
+
+.pageContainer {
+    display: grid;
+    width: 90%;
+    height: 100%;
+    background-color: rgb(18, 18, 18);
+}
+
+.featuredContainer {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    line-height: 0.;
+}
+
+.textBody {
+    color: white;
+    height: 50px;
+    width: 250px;
+    overflow-wrap: break-word;
+}
+
+.subTitle {
+    color: white;
+    font-style: italic;
+    font-size: 25px;
+    margin-bottom: -10px;
+}
+
+.mainTitle {
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+
+.featuredButtons button{
+
+
+    border-radius: 2px;
+    border-color: transparent;
+}
+
+.bookButtons {
+    background-color: orangered;
+}
+
+.favoriteBooks {
+
+}

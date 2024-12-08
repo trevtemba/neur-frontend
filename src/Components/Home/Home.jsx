@@ -47,7 +47,10 @@ const Home = () => {
                         </motion.button>
                     </div>
                 </div>
-
+                <dir
+                className="featuredImageGrid">
+                    <div></div>
+                </dir>
             </div>
         </div>
     );

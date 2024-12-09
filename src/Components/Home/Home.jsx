@@ -84,8 +84,8 @@ const Home = () => {
                         <div className="photo">
                             <img src={fi1}/>
                             <div className="overlay">
-                                
-                                <button>username</button>
+                                <button className="likeBtn"><img src={likeIcon}/></button>
+                                <button className="userLink">username</button>
                             </div>
                         </div>
                         <div className="photo">

@@ -205,19 +205,33 @@
     color: white;
 }
 
-.photo .overlay button {
+.photo .overlay .userLink {
     position: absolute;
     background-color: white;
     border-color: transparent;
     border-radius: 25px;
     z-index: 3;
     font-size: 17px;
-    padding: 7px 25px;
+    padding: 7px 20px;
     bottom: 10px;
     left: 10px;
 }
 
-
+.photo .overlay .likeBtn {
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    background-color: #9f0042;
+    border-color: transparent;
+    border-radius: 25px;
+    z-index: 3;
+    width: 40px;
+    height: 40px;
+    padding-top: 3px;
+    font-size: 17px;
+    top: 10px;
+    right: 10px;
+}
 
 
 

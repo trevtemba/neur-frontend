@@ -13,6 +13,7 @@ import fi6 from "../Assets/featuredGrid/fi6.jpg"
 import fi7 from "../Assets/featuredGrid/fi7.jpg"
 import fi8 from "../Assets/featuredGrid/fi8.jpg"
 import fi9 from "../Assets/featuredGrid/fi8.jpg"
+import likeIcon from "../Assets/featuredGrid/like_icon.svg"
 
 const Home = () => {
     return (
@@ -72,7 +73,7 @@ const Home = () => {
                             backgroundColor: "#d1d1d1",
                         }}
                         >
-                            EXPLORE
+                            EXPLORE MORE
                         </motion.button>
                     </div>
                 </div>
@@ -82,6 +83,14 @@ const Home = () => {
                     className="column">
                         <div className="photo">
                             <img src={fi1}/>
+                            <div className="overlay">
+                                <div className="ovlTopContainer">
+                                    <button><img src={likeIcon}/></button>
+                                </div>
+                                <div className="ovlBottomContainer">
+                                    <button>username</button>
+                                </div>
+                            </div>
                         </div>
                         <div className="photo">
                             <img src={fi2}/>

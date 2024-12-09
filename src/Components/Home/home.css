@@ -27,15 +27,16 @@
 
 .featuredImagesContainer {
     display: flex;
-    flex-direction: row;
-    background-color: rgb(10, 10, 10);
+    /* flex-direction: row; */
+    background-color: transparent;
     padding: 0;
     width: 900px;
     height: 900px;
     border-radius: 10px;
     box-sizing: border-box;
     gap: 15px;
-    overflow: hidden;
+    z-index: 0;
+    /* overflow: hidden; */
 }
 
 .featuredHero {
@@ -44,7 +45,6 @@
     height: 450px;
     opacity: 1;
     border-radius: 10px;
-    z-index: 0;
 }
 
 .subTitle {
@@ -176,6 +176,13 @@
     align-items: start;
     gap: 10px;
     width: 300px;
+    z-index: 0;
+}
+
+.photo {
+    position: relative;
+    width: 100%;
+    border: 10px;
 }
 
 .photo img {
@@ -183,6 +190,31 @@
     height: 100%;
     border-radius: 10px;
     object-fit: contain;
+    z-index: 1;
+}
+
+.photo .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    z-index: 2;
+    color: white;
+}
+
+.photo .overlay button {
+    position: absolute;
+    background-color: white;
+    border-color: transparent;
+    border-radius: 25px;
+    z-index: 3;
+    font-size: 17px;
+    padding: 7px 25px;
+    bottom: 10px;
+    left: 10px;
 }
 
 

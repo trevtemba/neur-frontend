@@ -84,12 +84,8 @@ const Home = () => {
                         <div className="photo">
                             <img src={fi1}/>
                             <div className="overlay">
-                                <div className="ovlTopContainer">
-                                    <button><img src={likeIcon}/></button>
-                                </div>
-                                <div className="ovlBottomContainer">
-                                    <button>username</button>
-                                </div>
+                                
+                                <button>username</button>
                             </div>
                         </div>
                         <div className="photo">

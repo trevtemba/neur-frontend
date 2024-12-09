@@ -57,7 +57,26 @@ const Home = () => {
                         </motion.button>
                     </div>
                 </div>
-                <dir
+                <div className="htContainer">
+                    <div className="htLeft">
+                        <span className="hlTitle">NOVEMBER'S</span>
+                        <span className="hlTitleStyled">HIGHTLIGHTS</span>
+                    </div>
+                    <div className="htRight">
+                        <motion.button 
+                        className="exploreBtn"
+                        initial={{
+                            backgroundColor: "#ffffff",
+                        }}
+                        whileHover={{
+                            backgroundColor: "#d1d1d1",
+                        }}
+                        >
+                            EXPLORE
+                        </motion.button>
+                    </div>
+                </div>
+                <div
                 className="featuredImagesContainer">
                     <div
                     className="column">
@@ -95,7 +114,7 @@ const Home = () => {
                             <img src={fi9}/>
                         </div>
                     </div>
-                </dir>
+                </div>
             </div>
         </div>
     );

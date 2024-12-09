@@ -88,6 +88,46 @@
     z-index: 1;
 }
 
+.htContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 900px;
+    height: 80px;
+    box-sizing: border-box;
+    color: white;
+}
+
+.htLeft {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 500px;
+    font-size: 40px;
+}
+
+.hlTitle {
+    margin-right: 10px;
+    font-weight: 200;
+    height: 59px;
+}
+
+.hlTitleStyled {
+    font-weight: 500;
+    height: 59px;
+}
+
+.htRight {
+    display: flex;
+}
+
+.exploreBtn {
+    padding: 15px 50px;
+    border-color: transparent;
+    border-radius: 2px;
+}
+
 .textBody {
     color: white;
     height: 150px;

@@ -200,11 +200,16 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     z-index: 2;
     color: white;
-    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.photo .overlay:hover {
+    opacity: 1;
 }
 
 .photo .overlay .userLink {
@@ -223,7 +228,7 @@
     position: absolute;
     align-items: center;
     justify-content: center;
-    background-color: #9f0042;
+    background-color: #bf004e;
     border-color: transparent;
     border-radius: 25px;
     z-index: 3;

@@ -1,5 +1,5 @@
 import React from "react";
-import { motion, useAnimationControls } from "motion/react";
+import { motion } from "motion/react";
 
 import "./home.css"
 import featuredHero from "../Assets/featured_hero.jpg"
@@ -17,14 +17,6 @@ import likeIcon from "../Assets/featuredGrid/like_icon.svg"
 
 const Home = () => {
 
-    const controls = useAnimationControls();
-
-    const handleImgHover = () => {
-        controls.start("hovered");
-    }
-    const handleImgHoverOff = () => {
-        controls.start("initial");
-    }
 
     return (
         <div className="homePage">
@@ -91,54 +83,74 @@ const Home = () => {
                 className="featuredImagesContainer">
                     <div
                     className="column">
-                        <div className="photo" onMouseOver={handleImgHover} onMouseLeave={handleImgHoverOff}>
+                        <motion.div className="photo">
                             <img src={fi1}/>
-                            <motion.div 
-                            className="overlay"
-                            variants={{
-                                initial: {
-                                    opacity: 0,
-                                },
-                                hovered: {
-                                    opacity: 1,
-                                },
-                            }}
-                            initial="initial"
-                            animate={controls}
-                            >
+                            <motion.div className="overlay">
+                                <button className="likeBtn"><img src={likeIcon}/></button>
+                                <button className="userLink">username</button>
+                            </motion.div>
+                        </motion.div>
+                        <div className="photo">
+                            <img src={fi2}/>
+                            <motion.div className="overlay">
                                 <button className="likeBtn"><img src={likeIcon}/></button>
                                 <button className="userLink">username</button>
                             </motion.div>
                         </div>
                         <div className="photo">
-                            <img src={fi2}/>
-                        </div>
-                        <div className="photo">
                             <img src={fi3}/>
+                            <motion.div className="overlay">
+                                <button className="likeBtn"><img src={likeIcon}/></button>
+                                <button className="userLink">username</button>
+                            </motion.div>
                         </div>
                     </div>
                     <div
                     className="column">
                         <div className="photo">
                             <img src={fi4}/>
+                            <motion.div className="overlay">
+                                <button className="likeBtn"><img src={likeIcon}/></button>
+                                <button className="userLink">username</button>
+                            </motion.div>
                         </div>
                         <div className="photo">
                             <img src={fi5}/>
+                            <motion.div className="overlay">
+                                <button className="likeBtn"><img src={likeIcon}/></button>
+                                <button className="userLink">username</button>
+                            </motion.div>
                         </div>
                         <div className="photo">
                             <img src={fi6}/>
+                            <motion.div className="overlay">
+                                <button className="likeBtn"><img src={likeIcon}/></button>
+                                <button className="userLink">username</button>
+                            </motion.div>
                         </div>
                     </div>
                     <div
                     className="column">
                         <div className="photo">
                             <img src={fi7}/>
+                            <motion.div className="overlay">
+                                <button className="likeBtn"><img src={likeIcon}/></button>
+                                <button className="userLink">username</button>
+                            </motion.div>
                         </div>
                         <div className="photo">
                             <img src={fi8}/>
+                            <motion.div className="overlay">
+                                <button className="likeBtn"><img src={likeIcon}/></button>
+                                <button className="userLink">username</button>
+                            </motion.div>
                         </div>
                         <div className="photo">
                             <img src={fi9}/>
+                            <motion.div className="overlay">
+                                <button className="likeBtn"><img src={likeIcon}/></button>
+                                <button className="userLink">username</button>
+                            </motion.div>
                         </div>
                     </div>
                 </div>

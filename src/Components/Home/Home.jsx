@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "motion/react";
+import { motion, useAnimationControls } from "motion/react";
 
 import "./home.css"
 import featuredHero from "../Assets/featured_hero.jpg"
@@ -16,6 +16,16 @@ import fi9 from "../Assets/featuredGrid/fi8.jpg"
 import likeIcon from "../Assets/featuredGrid/like_icon.svg"
 
 const Home = () => {
+
+    const controls = useAnimationControls();
+
+    const handleImgHover = () => {
+        controls.start("hovered");
+    }
+    const handleImgHoverOff = () => {
+        controls.start("initial");
+    }
+
     return (
         <div className="homePage">
             <div
@@ -81,12 +91,24 @@ const Home = () => {
                 className="featuredImagesContainer">
                     <div
                     className="column">
-                        <div className="photo">
+                        <div className="photo" onMouseOver={handleImgHover} onMouseLeave={handleImgHoverOff}>
                             <img src={fi1}/>
-                            <div className="overlay">
+                            <motion.div 
+                            className="overlay"
+                            variants={{
+                                initial: {
+                                    opacity: 0,
+                                },
+                                hovered: {
+                                    opacity: 1,
+                                },
+                            }}
+                            initial="initial"
+                            animate={controls}
+                            >
                                 <button className="likeBtn"><img src={likeIcon}/></button>
                                 <button className="userLink">username</button>
-                            </div>
+                            </motion.div>
                         </div>
                         <div className="photo">
                             <img src={fi2}/>

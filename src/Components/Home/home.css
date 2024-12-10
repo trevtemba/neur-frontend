@@ -126,6 +126,7 @@
     padding: 15px 50px;
     border-color: transparent;
     border-radius: 2px;
+    cursor: pointer;
 }
 
 .textBody {
@@ -164,10 +165,12 @@
 
     color: white;
     border-color: transparent;
+    cursor: pointer;
 }
 
 .favoriteButton {
     border-color: aliceblue;
+    cursor: pointer;
 }
 
 .column {
@@ -225,6 +228,9 @@
     left: 10px;
 }
 
+.userLink:hover {
+    background-color: rgb(201, 201, 201);
+}
 
 .userLink img {
     position: absolute;

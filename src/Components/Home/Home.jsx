@@ -88,7 +88,16 @@ const Home = () => {
                             <img src={fi1}/>
                             <motion.div className="overlay">
                                 <button className="likeBtn"><img src={likeIcon}/></button>
-                                <button className="userLink"><img src={linkIcon}/>lindas_locs</button>
+                                <motion.button className="userLink"
+                                initial = {{
+                                    scale: 1,
+                                }}
+                                animate = {{
+                                    scale: 1.05,
+                                }}
+                                >
+                                    <img src={linkIcon}/>lindas_locs
+                                </motion.button>
                             </motion.div>
                         </motion.div>
                         <div className="photo">

@@ -19,8 +19,7 @@ const navButtonAnimation = {
     },
     whileHover: {
         scale: 1.1,
-        backgroundColor: "#0f0f0f",
-        filter: "invert(1)",
+        backgroundColor: "#1a1a1a",
         borderRadius: "15px"
     },
     whileTap: {
@@ -52,11 +51,13 @@ const Navigation = () => {
     const navigate = useNavigate();
     
     const [pageState, setPage] = useState("Home");
-    const [isClicked, setIsClicked] = useState(false);
-    const goPage = (path) => {
-        if (path === "home") {
+    const [activeButton, setActiveButton] = useState("");
+
+    const goPage = (buttonId) => {
+        if (buttonId === "home") {
             navigate("/home")
         }
+        setActiveButton(buttonId)
 
     }
 
@@ -72,6 +73,9 @@ const Navigation = () => {
             className="navContainer">
                 <motion.button
                 className="navButton"
+                style={{
+                    filter: activeButton === "home" ? "invert(1)" : "invert(0)",
+                }}
                 onClick={ () => goPage("home") }
                 {...navButtonAnimation}>
                     <img src={home_icon}/>

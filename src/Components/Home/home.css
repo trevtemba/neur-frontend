@@ -215,7 +215,7 @@
     opacity: 1;
 }
 
-.photo .overlay .userLink {
+.userLink {
     position: absolute;
     background-color: white;
     border-color: transparent;
@@ -226,10 +226,12 @@
     padding: 7px 20px 7px 45px;
     bottom: 10px;
     left: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .userLink:hover {
-    background-color: rgb(201, 201, 201);
+    background-color: rgb(220, 220, 220);
 }
 
 .userLink img {
@@ -242,7 +244,7 @@
     top: 10px
 }
 
-.photo .overlay .likeBtn {
+.likeBtn {
     position: absolute;
     align-items: center;
     justify-content: center;
@@ -255,6 +257,12 @@
     padding-top: 3px;
     top: 10px;
     right: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.likeBtn:hover {
+    background-color: #a30044;
 }
 
 .fadeOverlay {

@@ -35,8 +35,7 @@ const buttonAnimation = {
         borderRadius: "30px",
     },
     whileHover: {
-        backgroundColor: "#e1e1e1",
-        borderRadius: "15px",
+        backgroundColor: "#d1d1d1",
     },
     whileTap: {
         scale: 0.95,

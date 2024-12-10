@@ -87,13 +87,10 @@ const Home = () => {
                         <motion.div className="photo">
                             <img src={fi1}/>
                             <motion.div className="overlay">
-                                <button className="likeBtn"><img src={likeIcon}/></button>
+                                <motion.button className="likeBtn" whileHover={{scale: 1.05,}}><img src={likeIcon}/></motion.button>
                                 <motion.button className="userLink"
-                                initial = {{
-                                    scale: 1,
-                                }}
-                                animate = {{
-                                    scale: 1.05,
+                                whileHover={{
+                                    scale: 1.025,
                                 }}
                                 >
                                     <img src={linkIcon}/>lindas_locs
@@ -103,15 +100,27 @@ const Home = () => {
                         <div className="photo">
                             <img src={fi2}/>
                             <motion.div className="overlay">
-                                <button className="likeBtn"><img src={likeIcon}/></button>
-                                <button className="userLink"><img src={linkIcon}/>username</button>
+                                <motion.button className="likeBtn" whileHover={{scale: 1.05,}}><img src={likeIcon}/></motion.button>
+                                <motion.button className="userLink"
+                                whileHover={{
+                                    scale: 1.025,
+                                }}
+                                >
+                                    <img src={linkIcon}/>carterr04
+                                </motion.button>
                             </motion.div>
                         </div>
                         <div className="photo">
                             <img src={fi3}/>
                             <motion.div className="overlay">
-                                <button className="likeBtn"><img src={likeIcon}/></button>
-                                <button className="userLink"><img src={linkIcon}/>username</button>
+                                <motion.button className="likeBtn" whileHover={{scale: 1.05,}}><img src={likeIcon}/></motion.button>
+                                <motion.button className="userLink"
+                                whileHover={{
+                                    scale: 1.025,
+                                }}
+                                >
+                                    <img src={linkIcon}/>nilah_nails
+                                </motion.button>
                             </motion.div>
                         </div>
                     </div>
@@ -120,22 +129,40 @@ const Home = () => {
                         <div className="photo">
                             <img src={fi4}/>
                             <motion.div className="overlay">
-                                <button className="likeBtn"><img src={likeIcon}/></button>
-                                <button className="userLink"><img src={linkIcon}/>username</button>
+                                <motion.button className="likeBtn" whileHover={{scale: 1.05,}}><img src={likeIcon}/></motion.button>
+                                <motion.button className="userLink"
+                                whileHover={{
+                                    scale: 1.025,
+                                }}
+                                >
+                                    <img src={linkIcon}/>lindas_locs
+                                </motion.button>
                             </motion.div>
                         </div>
                         <div className="photo">
                             <img src={fi5}/>
                             <motion.div className="overlay">
-                                <button className="likeBtn"><img src={likeIcon}/></button>
-                                <button className="userLink"><img src={linkIcon}/>username</button>
+                                <motion.button className="likeBtn" whileHover={{scale: 1.05,}}><img src={likeIcon}/></motion.button>
+                                <motion.button className="userLink"
+                                whileHover={{
+                                    scale: 1.025,
+                                }}
+                                >
+                                    <img src={linkIcon}/>lindas_locs
+                                </motion.button>
                             </motion.div>
                         </div>
                         <div className="photo">
                             <img src={fi6}/>
                             <motion.div className="overlay">
-                                <button className="likeBtn"><img src={likeIcon}/></button>
-                                <button className="userLink"><img src={linkIcon}/>username</button>
+                                <motion.button className="likeBtn" whileHover={{scale: 1.05,}}><img src={likeIcon}/></motion.button>
+                                <motion.button className="userLink"
+                                whileHover={{
+                                    scale: 1.025,
+                                }}
+                                >
+                                    <img src={linkIcon}/>brooks_braids
+                                </motion.button>
                             </motion.div>
                         </div>
                     </div>
@@ -144,22 +171,40 @@ const Home = () => {
                         <div className="photo">
                             <img src={fi7}/>
                             <motion.div className="overlay">
-                                <button className="likeBtn"><img src={likeIcon}/></button>
-                                <button className="userLink"><img src={linkIcon}/>username</button>
+                                <motion.button className="likeBtn" whileHover={{scale: 1.05,}}><img src={likeIcon}/></motion.button>
+                                <motion.button className="userLink"
+                                whileHover={{
+                                    scale: 1.025,
+                                }}
+                                >
+                                    <img src={linkIcon}/>nilah_nails
+                                </motion.button>
                             </motion.div>
                         </div>
                         <div className="photo">
                             <img src={fi8}/>
                             <motion.div className="overlay">
-                                <button className="likeBtn"><img src={likeIcon}/></button>
-                                <button className="userLink"><img src={linkIcon}/>username</button>
+                                <motion.button className="likeBtn" whileHover={{scale: 1.05,}}><img src={likeIcon}/></motion.button>
+                                <motion.button className="userLink"
+                                whileHover={{
+                                    scale: 1.025,
+                                }}
+                                >
+                                    <img src={linkIcon}/>lindas_locs
+                                </motion.button>
                             </motion.div>
                         </div>
                         <div className="photo">
                             <img src={fi9}/>
                             <motion.div className="overlay">
-                                <button className="likeBtn"><img src={likeIcon}/></button>
-                                <button className="userLink"><img src={linkIcon}/>username</button>
+                                <motion.button className="likeBtn" whileHover={{scale: 1.05,}}><img src={likeIcon}/></motion.button>
+                                <motion.button className="userLink"
+                                whileHover={{
+                                    scale: 1.025,
+                                }}
+                                >
+                                    <img src={linkIcon}/>lindas_locs
+                                </motion.button>
                             </motion.div>
                         </div>
                     </div>

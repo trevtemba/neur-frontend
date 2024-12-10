@@ -14,6 +14,7 @@ import fi7 from "../Assets/featuredGrid/fi7.jpg"
 import fi8 from "../Assets/featuredGrid/fi8.jpg"
 import fi9 from "../Assets/featuredGrid/fi8.jpg"
 import likeIcon from "../Assets/featuredGrid/like_icon.svg"
+import linkIcon from "../Assets/featuredGrid/link_icon.svg"
 
 const Home = () => {
 
@@ -32,7 +33,7 @@ const Home = () => {
                     <span className="nameTitle">Linda Stuart</span>
                     <span className="textBody">
                         <span className="personName">Linda</span> has been killing it this week!
-                        Earning over 50 favorites this week, her spot on this months
+                        Earning over 50 favorites this week, her spot on November's
                         featured is well deserved!
                     </span>
                     <div className="featuredButtons">
@@ -87,21 +88,21 @@ const Home = () => {
                             <img src={fi1}/>
                             <motion.div className="overlay">
                                 <button className="likeBtn"><img src={likeIcon}/></button>
-                                <button className="userLink">username</button>
+                                <button className="userLink"><img src={linkIcon}/>lindas_locs</button>
                             </motion.div>
                         </motion.div>
                         <div className="photo">
                             <img src={fi2}/>
                             <motion.div className="overlay">
                                 <button className="likeBtn"><img src={likeIcon}/></button>
-                                <button className="userLink">username</button>
+                                <button className="userLink"><img src={linkIcon}/>username</button>
                             </motion.div>
                         </div>
                         <div className="photo">
                             <img src={fi3}/>
                             <motion.div className="overlay">
                                 <button className="likeBtn"><img src={likeIcon}/></button>
-                                <button className="userLink">username</button>
+                                <button className="userLink"><img src={linkIcon}/>username</button>
                             </motion.div>
                         </div>
                     </div>
@@ -111,21 +112,21 @@ const Home = () => {
                             <img src={fi4}/>
                             <motion.div className="overlay">
                                 <button className="likeBtn"><img src={likeIcon}/></button>
-                                <button className="userLink">username</button>
+                                <button className="userLink"><img src={linkIcon}/>username</button>
                             </motion.div>
                         </div>
                         <div className="photo">
                             <img src={fi5}/>
                             <motion.div className="overlay">
                                 <button className="likeBtn"><img src={likeIcon}/></button>
-                                <button className="userLink">username</button>
+                                <button className="userLink"><img src={linkIcon}/>username</button>
                             </motion.div>
                         </div>
                         <div className="photo">
                             <img src={fi6}/>
                             <motion.div className="overlay">
                                 <button className="likeBtn"><img src={likeIcon}/></button>
-                                <button className="userLink">username</button>
+                                <button className="userLink"><img src={linkIcon}/>username</button>
                             </motion.div>
                         </div>
                     </div>
@@ -135,24 +136,27 @@ const Home = () => {
                             <img src={fi7}/>
                             <motion.div className="overlay">
                                 <button className="likeBtn"><img src={likeIcon}/></button>
-                                <button className="userLink">username</button>
+                                <button className="userLink"><img src={linkIcon}/>username</button>
                             </motion.div>
                         </div>
                         <div className="photo">
                             <img src={fi8}/>
                             <motion.div className="overlay">
                                 <button className="likeBtn"><img src={likeIcon}/></button>
-                                <button className="userLink">username</button>
+                                <button className="userLink"><img src={linkIcon}/>username</button>
                             </motion.div>
                         </div>
                         <div className="photo">
                             <img src={fi9}/>
                             <motion.div className="overlay">
                                 <button className="likeBtn"><img src={likeIcon}/></button>
-                                <button className="userLink">username</button>
+                                <button className="userLink"><img src={linkIcon}/>username</button>
                             </motion.div>
                         </div>
                     </div>
+                </div>
+                <div className="fadeOverlay">
+
                 </div>
             </div>
         </div>

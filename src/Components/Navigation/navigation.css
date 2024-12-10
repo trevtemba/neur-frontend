@@ -17,8 +17,8 @@
     width: 100px;
     height: 100%;
     color: white;
-    font-size: 25px;
-    letter-spacing: -1px;
+    font-size: 35px;
+    letter-spacing: -2px;
 }
 .navContainer {
     display: flex;

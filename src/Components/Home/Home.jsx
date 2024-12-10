@@ -24,8 +24,24 @@ const Home = () => {
             <div
             className="pageContainer">
 
-                <div
-                className="featuredContainer">
+                <motion.div
+                className="featuredContainer"
+                initial={{
+                    x: -25,
+                    opacity: 0,
+                }}
+                animate={{
+                    x: 0,
+                    opacity: 1,
+                }}
+                transition={{
+                    duration: 3,
+                    ease: [0.25, 1, 0.5, 1]
+                }}
+                exit={{
+                    opacity: 0,
+                }}
+                >
                     <img className="featuredHero" src={featuredHero}/>
                     <span className="subTitle">THIS MONTH'S</span>
                     <span className="mainTitle">FEATURED</span>
@@ -60,8 +76,24 @@ const Home = () => {
                             FAVORITE
                         </motion.button>
                     </div>
-                </div>
-                <div className="htContainer">
+                </motion.div>
+                <motion.div className="htContainer"
+                initial={{
+                    x: 25,
+                    opacity: 0,
+                }}
+                animate={{
+                    x: 0,
+                    opacity: 1,
+                }}
+                transition={{
+                    duration: 3,
+                    ease: [0.25, 1, 0.5, 1]
+                }}
+                exit={{
+                    opacity: 0,
+                }}
+                >
                     <div className="htLeft">
                         <span className="hlTitle">NOVEMBER'S</span>
                         <span className="hlTitleStyled">HIGHTLIGHTS</span>
@@ -79,9 +111,24 @@ const Home = () => {
                             EXPLORE MORE
                         </motion.button>
                     </div>
-                </div>
-                <div
-                className="featuredImagesContainer">
+                </motion.div>
+                <motion.div
+                className="featuredImagesContainer"
+                initial={{
+                    opacity: 0,
+                }}
+                animate={{
+
+                    opacity: 1,
+                }}
+                transition={{
+                    duration: 3,
+                    ease: [0.25, 1, 0.5, 1]
+                }}
+                exit={{
+                    opacity: 0,
+                }}
+                >
                     <div
                     className="column">
                         <motion.div className="photo">
@@ -208,7 +255,7 @@ const Home = () => {
                             </motion.div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
                 <div className="fadeOverlay">
 
                 </div>

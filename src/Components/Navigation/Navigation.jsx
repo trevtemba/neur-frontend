@@ -1,6 +1,7 @@
-import { div } from "motion/react-client";
+import { div, filter } from "motion/react-client";
 import { motion, MotionConfig } from "motion/react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./navigation.css"
 import React from "react";
@@ -19,6 +20,7 @@ const navButtonAnimation = {
     whileHover: {
         scale: 1.1,
         backgroundColor: "#0f0f0f",
+        filter: "invert(1)",
         borderRadius: "15px"
     },
     whileTap: {
@@ -47,9 +49,16 @@ const buttonAnimation = {
 };
 
 const Navigation = () => {
-
-    const [pageState, setPage] = useState("Home");
+    const navigate = useNavigate();
     
+    const [pageState, setPage] = useState("Home");
+    const [isClicked, setIsClicked] = useState(false);
+    const goPage = (path) => {
+        if (path === "home") {
+            navigate("/home")
+        }
+
+    }
 
     return (
         <div
@@ -63,7 +72,7 @@ const Navigation = () => {
             className="navContainer">
                 <motion.button
                 className="navButton"
-                onClick={ () => setPage("home") }
+                onClick={ () => goPage("home") }
                 {...navButtonAnimation}>
                     <img src={home_icon}/>
                 </motion.button>

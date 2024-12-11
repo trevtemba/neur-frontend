@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import "./profile.css"
 import profileSplash from "../Assets/profileAssets/mock_splash.jpg"
 import profileIcon from "../Assets/profileAssets/mock_icon.jpg"
-
+import starIcon from "../Assets/profileAssets/star_icon.jpg"
 const Profile = () => {
 
     const [pageState, setPageState] = useState("info")
@@ -29,7 +29,7 @@ const Profile = () => {
                         SHARE PROFILE
                     </motion.button>
                     <div className="reviewScore">
-                        <img src=""/>
+                        <img src={starIcon}/>
                         <span className="score">5.0</span><span className="reviewCount">(131)</span>
                     </div>
                 </div>
@@ -45,17 +45,17 @@ const Profile = () => {
                     REVIEWS
                 </motion.button>
             </motion.div>
-            {pageState === "info" && (
+            {pageState == "info" && (
                 <motion.div className="infoPage">
                     <div></div>
                 </motion.div>
             )};
-            {pageState === "services" && (
+            {pageState == "services" && (
                 <motion.div className="servicesPage">
                     <div></div>
                 </motion.div>
             )};
-            {pageState === "reviews" && (
+            {pageState == "reviews" && (
                 <motion.div className="reviewsPage">
                     <div></div>
                 </motion.div>

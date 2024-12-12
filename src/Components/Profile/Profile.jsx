@@ -60,7 +60,7 @@ const Profile = () => {
                     {pageState == "info" && (
                         <motion.div className="infoPage">
                             <div className="aboutSect">
-                                <div className="subHeader">About <button className="editBtn"><img src={editIcon}/></button></div>
+                                <div className="subHeader">About<button className="editBtn"><img src={editIcon}/></button></div>
                                 <div className="aboutText">
                                     <p>
                                         My name is Camille, and I've been doing hair for 3 years now!<br />
@@ -71,10 +71,51 @@ const Profile = () => {
                                 </div>
                             </div>
                             <div className="availSect">
-                                Availability
+                                <div className="subHeader">Availability<button className="editBtn"><img src={editIcon}/></button></div>
+                                <div className="availChart">
+                                    <div className="chartHeader">
+                                        <div className="dow">Sun</div>
+                                        <div className="dow">Mon</div>
+                                        <div className="dow">Tue</div>
+                                        <div className="dow">Wed</div>
+                                        <div className="dow">Thu</div>
+                                        <div className="dow">Fri</div>
+                                        <div className="dow">Sat</div>
+                                    </div>
+                                    <div className="datesFrame">
+                                        <button className="dateBtn">
+                                            <span className="dayLab">08</span>
+                                            <span className="monthLab">Dec</span>
+                                        </button>
+                                        <button className="dateBtn">
+                                            <span className="dayLab">09</span>
+                                            <span className="monthLab">Dec</span>
+                                        </button>
+                                        <button className="dateBtn">
+                                            <span className="dayLab">10</span>
+                                            <span className="monthLab">Dec</span>
+                                        </button>
+                                        <button className="dateBtn">
+                                            <span className="dayLab">11</span>
+                                            <span className="monthLab">Dec</span>
+                                        </button>
+                                        <button className="dateBtn">
+                                            <span className="dayLab">12</span>
+                                            <span className="monthLab">Dec</span>
+                                        </button>
+                                        <button className="dateBtn">
+                                            <span className="dayLab">13</span>
+                                            <span className="monthLab">Dec</span>
+                                        </button>
+                                        <button className="dateBtn">
+                                            <span className="dayLab">14</span>
+                                            <span className="monthLab">Dec</span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             <div className="clientSect">
-                                Clients
+                                <div className="subHeader">Clients<button className="editBtn"><img src={editIcon}/></button></div>
                             </div>
                             
                         </motion.div>

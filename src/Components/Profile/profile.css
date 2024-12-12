@@ -19,7 +19,7 @@
     display: flex;
     align-items: center;
     width: 900px;
-    height: 450px;
+    height: 310px;
     z-index: 1;
     background-color: rgb(0, 0, 0);
 }
@@ -74,7 +74,7 @@
 
 .profileUsn {
     color: hsl(0, 0%, 100%);
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 500;
 }
 
@@ -87,6 +87,8 @@
 .bookBtn {
     position: absolute;
     border-color: transparent;
+    background-color: hsl(166, 100%, 31%);
+    color: white;
     border-radius: 4px;
     font-size: 16px;
     width: 200px;
@@ -96,15 +98,31 @@
     z-index: 3;
 }
 
-.shareBtn {
+.favBtn {
     position: absolute;
-    border-color: transparent;
+    background-color: transparent;
+    color: white;
+    border-color: white;
     border-radius: 4px;
     font-size: 16px;
     width: 200px;
     height: 50px;
     bottom: 20px;
     left: 240px;
+    z-index: 3;
+}
+
+.shareBtn {
+    position: absolute;
+    background-color: hsl(0, 0%, 5%);
+    filter: invert(1);
+    border-color: transparent;
+    border-radius: 25px;
+    font-size: 16px;
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
     z-index: 3;
 }
 
@@ -171,4 +189,10 @@
 
 .profileNavBtn:hover {
     color: hsl(0, 0%, 100%);
+}
+
+.tabContainer {
+    width: 900px;
+    height: 800px;
+    background-color: white;
 }

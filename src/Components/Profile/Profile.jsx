@@ -5,6 +5,7 @@ import "./profile.css"
 import profileSplash from "../Assets/profileAssets/mock_splash.jpg"
 import profileIcon from "../Assets/profileAssets/mock_icon.jpg"
 import starIcon from "../Assets/profileAssets/star_icon.svg"
+import shareIcon from "../Assets/profileAssets/share_icon.svg"
 import { div } from "motion/react-client";
 const Profile = () => {
 
@@ -31,8 +32,11 @@ const Profile = () => {
                     <motion.button className="bookBtn">
                         BOOK
                     </motion.button>
+                    <motion.button className="favBtn">
+                        FAVORITE
+                    </motion.button>
                     <motion.button className="shareBtn">
-                        SHARE
+                        <img src={shareIcon} />
                     </motion.button>
                     <div className="reviewScore">
                         <img className="revIcon" src={starIcon}/>
@@ -50,21 +54,24 @@ const Profile = () => {
                         REVIEWS
                     </motion.button>
                 </motion.div>
-                {pageState == "info" && (
-                    <motion.div className="infoPage">
-                        <div></div>
-                    </motion.div>
-                )};
-                {pageState == "services" && (
-                    <motion.div className="servicesPage">
-                        <div></div>
-                    </motion.div>
-                )};
-                {pageState == "reviews" && (
-                    <motion.div className="reviewsPage">
-                        <div></div>
-                    </motion.div>
-                )};  
+                <div className="tabContainer">
+                    {pageState == "info" && (
+                        <motion.div className="infoPage">
+                            <div></div>
+                        </motion.div>
+                    )}
+                    {pageState == "services" && (
+                        <motion.div className="servicesPage">
+                            <div></div>
+                        </motion.div>
+                    )}
+                    {pageState == "reviews" && (
+                        <motion.div className="reviewsPage">
+                            <div></div>
+                        </motion.div>
+                    )}
+                </div>
+
             </div>
         </div>
     );

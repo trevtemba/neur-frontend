@@ -7,7 +7,18 @@ import profileIcon from "../Assets/profileAssets/mock_icon.jpg"
 import starIcon from "../Assets/profileAssets/star_icon.svg"
 import shareIcon from "../Assets/profileAssets/share_icon.svg"
 import editIcon from "../Assets/profileAssets/edit_icon.svg"
+import likeIcon from "../Assets/featuredGrid/like_icon.svg"
+import nextIcon from "../Assets/profileAssets/next_icon.svg"
 
+import fi1 from "../Assets/featuredGrid/fi1.jpg"
+import fi2 from "../Assets/featuredGrid/fi2.jpg"
+import fi3 from "../Assets/featuredGrid/fi3.jpg"
+import fi4 from "../Assets/featuredGrid/fi4.jpg"
+import fi5 from "../Assets/featuredGrid/fi5.jpg"
+import fi6 from "../Assets/featuredGrid/fi6.jpg"
+import fi7 from "../Assets/featuredGrid/fi7.jpg"
+import fi8 from "../Assets/featuredGrid/fi8.jpg"
+import fi9 from "../Assets/featuredGrid/fi8.jpg"
 import { div } from "motion/react-client";
 const Profile = () => {
 
@@ -70,7 +81,7 @@ const Profile = () => {
                                     </p>
                                 </div>
                             </div>
-                            <div className="availSect">
+                            {/* <div className="availSect">
                                 <div className="subHeader">Availability<button className="editBtn"><img src={editIcon}/></button></div>
                                 <div className="availChart">
                                     <div className="chartHeader">
@@ -113,9 +124,24 @@ const Profile = () => {
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="clientSect">
                                 <div className="subHeader">Clients<button className="editBtn"><img src={editIcon}/></button></div>
+                                <div className="clientGrid">
+                                    <motion.div className="photo">
+                                        <img src={fi6}/>
+                                        <motion.div className="overlay">
+                                            <motion.button className="likeBtn" whileHover={{scale: 1.05,}}><img src={likeIcon}/></motion.button>
+                                            <motion.button className="serviceLink"
+                                            whileHover={{
+                                                scale: 1.025,
+                                            }}
+                                            >
+                                                <span>Get this</span>
+                                            </motion.button>
+                                        </motion.div>
+                                    </motion.div>
+                                </div>
                             </div>
                             
                         </motion.div>

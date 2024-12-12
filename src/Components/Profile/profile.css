@@ -34,7 +34,7 @@
 
 .splashImg {
     filter: blur(0px);
-    opacity: 0.4;
+    opacity: 0.3;
     width: 900px;
     height: 100%;
     border-radius: 10px;
@@ -60,9 +60,36 @@
     z-index: 2;
 }
 
+.infoBox {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: transparent;
+    width: 200px;
+    height: 100px;
+    top: 20px;
+    left: 240px;
+    z-index: 3;
+}
+
+.profileUsn {
+    color: hsl(0, 0%, 100%);
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.roleName {
+    color: hsl(0, 0%, 60%);
+    font-size: 20px;
+    font-weight: 400;
+}
+
 .bookBtn {
     position: absolute;
-    width: 150px;
+    border-color: transparent;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 200px;
     height: 50px;
     bottom: 20px;
     left: 20px;
@@ -71,11 +98,53 @@
 
 .shareBtn {
     position: absolute;
-    width: 150px;
+    border-color: transparent;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 200px;
     height: 50px;
     bottom: 20px;
-    left: 190px;
+    left: 240px;
     z-index: 3;
+}
+
+.reviewScore {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    border-color: transparent;
+    border-radius: 4px;
+    background-color: hsl(0, 0%, 5%);
+    top: 20px;
+    right: 20px;
+    width: 150px;
+    height: 50px;
+    z-index: 3;
+}
+
+.revIcon {
+    align-self: center;
+    width: 20px;
+    height: 20px;
+    margin-left: 20px;
+}
+
+.score {
+    align-self: center;
+    margin-top: -2px;
+    font-size: 20px;
+    color: hsl(50, 100%, 50%);
+    font-weight: 500;
+    margin-left: 15px;
+}
+
+.reviewCount {
+    align-self: center;
+    margin-top: 2px;
+    font-size: 16px;
+    color: hsl(0, 0%, 50%);
+    margin-left: 4px;
+    font-weight: 500;
 }
 
 .profileNav {
@@ -83,7 +152,7 @@
     position: relative;
     flex-direction: row;
     justify-content: space-between;
-    width: 850px;
+    width: 900px;
     height: 50px;
     z-index: 1;
     background-color: rgb(0, 0, 0);
@@ -91,6 +160,15 @@
 
 .profileNavBtn {
     font-size: 16px;
-    width: 200px;
+    width: 300px;
     height: 100%;
+    background-color: transparent;
+    color: hsl(0, 0%, 60%);
+    border-color: transparent;
+    border-bottom-color: hsl(0, 0%, 0%);
+    transition: color 0.15s ease-in-out;
+}
+
+.profileNavBtn:hover {
+    color: hsl(0, 0%, 100%);
 }

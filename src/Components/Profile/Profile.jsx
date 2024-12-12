@@ -23,8 +23,10 @@ const Profile = () => {
                     </div>
                     <div className="profileIcon">
                         <img className="iconImg" src={profileIcon}/>
-                        <span>Camillee_01</span>
-                        <span>Hairst</span>
+                    </div>
+                    <div className="infoBox">
+                            <span className="profileUsn">Camillee_01</span>
+                            <span className="roleName">Hair stylist</span>
                     </div>
                     <motion.button className="bookBtn">
                         BOOK
@@ -33,13 +35,13 @@ const Profile = () => {
                         SHARE
                     </motion.button>
                     <div className="reviewScore">
-                        <img src={starIcon}/>
-                        <span className="score">5.0</span><span className="reviewCount">(131)</span>
+                        <img className="revIcon" src={starIcon}/>
+                        <span className="score">5.0</span><span className="reviewCount">/ 131</span>
                     </div>
                 </motion.div>
                 <motion.div className="profileNav">
                     <motion.button className="profileNavBtn" onClick={ () => changePage("info")}>
-                        INFO
+                        ABOUT
                     </motion.button>
                     <motion.button className="profileNavBtn" onClick={ () => changePage("services")}>
                         SERVICES

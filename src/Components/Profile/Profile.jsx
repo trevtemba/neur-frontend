@@ -6,6 +6,8 @@ import profileSplash from "../Assets/profileAssets/mock_splash.jpg"
 import profileIcon from "../Assets/profileAssets/mock_icon.jpg"
 import starIcon from "../Assets/profileAssets/star_icon.svg"
 import shareIcon from "../Assets/profileAssets/share_icon.svg"
+import editIcon from "../Assets/profileAssets/edit_icon.svg"
+
 import { div } from "motion/react-client";
 const Profile = () => {
 
@@ -45,7 +47,7 @@ const Profile = () => {
                 </motion.div>
                 <motion.div className="profileNav">
                     <motion.button className="profileNavBtn" onClick={ () => changePage("info")}>
-                        ABOUT
+                        INFO
                     </motion.button>
                     <motion.button className="profileNavBtn" onClick={ () => changePage("services")}>
                         SERVICES
@@ -57,7 +59,24 @@ const Profile = () => {
                 <div className="tabContainer">
                     {pageState == "info" && (
                         <motion.div className="infoPage">
-                            <div></div>
+                            <div className="aboutSect">
+                                <div className="subHeader">About <button className="editBtn"><img src={editIcon}/></button></div>
+                                <div className="aboutText">
+                                    <p>
+                                        My name is Camille, and I've been doing hair for 3 years now!<br />
+                                        If you like my previous work, be sure to book an appointment with me!<br />
+                                        <br />
+                                        Follow me on IG: @camille_marie
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="availSect">
+                                Availability
+                            </div>
+                            <div className="clientSect">
+                                Clients
+                            </div>
+                            
                         </motion.div>
                     )}
                     {pageState == "services" && (

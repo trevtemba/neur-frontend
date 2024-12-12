@@ -1,0 +1,96 @@
+.profilePage {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color:hsl(0, 0, 0);
+}
+
+.profileContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: hsl(0, 0, 0);
+}
+.profileHeader {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 900px;
+    height: 450px;
+    z-index: 1;
+    background-color: rgb(0, 0, 0);
+}
+
+.profileSplash {
+    background-color: rgb(0, 0, 0);
+    width: 900px;
+    height: 100%;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.splashImg {
+    filter: blur(0px);
+    opacity: 0.4;
+    width: 900px;
+    height: 100%;
+    border-radius: 10px;
+    z-index: 2;
+    object-fit: cover;
+}
+
+.profileIcon {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+}
+
+.iconImg {
+    width: 100%;
+    height: 100%;
+    border-radius: 100px;
+    object-fit: contain;
+    z-index: 2;
+}
+
+.bookBtn {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    bottom: 20px;
+    left: 20px;
+    z-index: 3;
+}
+
+.shareBtn {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    bottom: 20px;
+    left: 190px;
+    z-index: 3;
+}
+
+.profileNav {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 850px;
+    height: 50px;
+    z-index: 1;
+    background-color: rgb(0, 0, 0);
+}
+
+.profileNavBtn {
+    font-size: 16px;
+    width: 200px;
+    height: 100%;
+}

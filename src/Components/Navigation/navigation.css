@@ -13,8 +13,8 @@
     align-items: center;
     justify-content: center;
     margin-right: auto;
-    padding-left: 35px;
-    width: 100px;
+    padding-left: 40px;
+    width: auto;
     height: 100%;
     color: white;
     font-size: 35px;
@@ -36,7 +36,7 @@
     align-items: center;
     justify-content: flex-end;
     margin-left: auto;
-    padding-right: 35px;
+    padding-right: 40px;
     width: 100px;
     height: 100%;
 }
@@ -54,10 +54,14 @@
 }
 
 .logoutButton {
-    width: 90px;
-    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 45px;
     font-weight: 600;
     border-color: transparent;
+    color: white;
     right: 50px;
     cursor: pointer;
 }

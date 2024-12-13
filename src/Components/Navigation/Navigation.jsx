@@ -14,12 +14,12 @@ import profile_icon from "../Assets/profile_icon.svg"
 
 const navButtonAnimation = {
     initial: { 
-        backgroundColor: "#0a0a0a",
+        backgroundColor: "hsl(0, 0%, 5%)",
         borderRadius: "25px",
     },
     whileHover: {
         scale: 1.1,
-        backgroundColor: "#1a1a1a",
+        backgroundColor: "hsl(0, 0%, 10%)",
         borderRadius: "15px"
     },
     whileTap: {
@@ -32,11 +32,11 @@ const navButtonAnimation = {
 };
 const buttonAnimation = {
     initial: { 
-        backgroundColor: "#ffffff",
+        backgroundColor: "hsl(0, 0%, 5%)",
         borderRadius: "30px",
     },
     whileHover: {
-        backgroundColor: "#d1d1d1",
+        backgroundColor: "hsl(0, 0%, 10%)",
     },
     whileTap: {
         scale: 0.95,

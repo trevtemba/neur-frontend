@@ -19,7 +19,7 @@ import fi6 from "../Assets/featuredGrid/fi6.jpg"
 import fi7 from "../Assets/featuredGrid/fi7.jpg"
 import fi8 from "../Assets/featuredGrid/fi8.jpg"
 import fi9 from "../Assets/featuredGrid/fi8.jpg"
-import { div } from "motion/react-client";
+import { div, style } from "motion/react-client";
 const Profile = () => {
 
     const [pageState, setPageState] = useState("info")
@@ -27,6 +27,20 @@ const Profile = () => {
     const changePage = (buttonId) => {
         setPageState(buttonId);
     }
+
+    const profileNavBtn = {
+        initial: {
+            color: "hsl(0, 0%, 60%)",
+            borderBottomColor: "hsl(0, 0%, 0%)",
+        },
+        whileHover: {
+            color: "hsl(0, 0%, 100%)",
+        },
+        transition: {
+            borderBottomColor: { duration: 0.1},
+            color: { duration: 0.25},
+        },
+    };
 
     return (
         <div className="profilePage">
@@ -57,13 +71,31 @@ const Profile = () => {
                     </div>
                 </motion.div>
                 <motion.div className="profileNav">
-                    <motion.button className="profileNavBtn" onClick={ () => changePage("info")}>
+                    <motion.button className="profileNavBtn" onClick={ () => changePage("info")} 
+                    {...profileNavBtn}
+                    animate={{
+                        borderBottomColor: pageState === "info" ? "hsl(0, 0%, 100%)" : "hsl(0, 0%, 0%)",
+                        color: pageState === "info" ? "hsl(0, 0%, 100%)" : "hsl(0, 0%, 60%)",
+                    }}
+                    >
                         INFO
                     </motion.button>
-                    <motion.button className="profileNavBtn" onClick={ () => changePage("services")}>
+                    <motion.button className="profileNavBtn" onClick={ () => changePage("services")}
+                    {...profileNavBtn}
+                    animate={{
+                        borderBottomColor: pageState === "services" ? "hsl(0, 0%, 100%)" : "hsl(0, 0%, 0%)",
+                        color: pageState === "services" ? "hsl(0, 0%, 100%)" : "hsl(0, 0%, 60%)",
+                    }}
+                    >
                         SERVICES
                     </motion.button>
-                    <motion.button className="profileNavBtn" onClick={ () => changePage("reviews")}>
+                    <motion.button className="profileNavBtn" onClick={ () => changePage("reviews")}
+                    {...profileNavBtn}
+                    animate={{
+                        borderBottomColor: pageState === "reviews" ? "hsl(0, 0%, 100%)" : "hsl(0, 0%, 0%)",
+                        color: pageState === "reviews" ? "hsl(0, 0%, 100%)" : "hsl(0, 0%, 60%)",
+                    }}
+                    >
                         REVIEWS
                     </motion.button>
                 </motion.div>

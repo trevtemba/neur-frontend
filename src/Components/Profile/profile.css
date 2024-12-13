@@ -132,7 +132,7 @@
     position: absolute;
     border-color: transparent;
     border-radius: 4px;
-    background-color: hsl(0, 0%, 5%);
+    background-color: hsl(0, 0%, 2.5%);
     top: 20px;
     right: 20px;
     width: 140px;
@@ -181,14 +181,7 @@
     width: 300px;
     height: 100%;
     background-color: transparent;
-    color: hsl(0, 0%, 60%);
     border-color: transparent;
-    border-bottom-color: hsl(0, 0%, 0%);
-    transition: color 0.15s ease-in-out;
-}
-
-.profileNavBtn:hover {
-    color: hsl(0, 0%, 100%);
 }
 
 .tabContainer {

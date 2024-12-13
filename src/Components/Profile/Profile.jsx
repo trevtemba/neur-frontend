@@ -9,6 +9,8 @@ import shareIcon from "../Assets/profileAssets/share_icon.svg"
 import editIcon from "../Assets/profileAssets/edit_icon.svg"
 import likeIcon from "../Assets/featuredGrid/like_icon.svg"
 import nextIcon from "../Assets/profileAssets/next_icon.svg"
+import arrowLIcon from "../Assets/profileAssets/arrow_back.svg"
+import arrowRIcon from "../Assets/profileAssets/arrow_forward.svg"
 
 import fi1 from "../Assets/featuredGrid/fi1.jpg"
 import fi2 from "../Assets/featuredGrid/fi2.jpg"
@@ -23,9 +25,14 @@ import { div, style } from "motion/react-client";
 const Profile = () => {
 
     const [pageState, setPageState] = useState("info")
+    const [serviceSelectState, setServiceSelectState] = useState()
 
     const changePage = (buttonId) => {
         setPageState(buttonId);
+    }
+
+    const changeServiceSelection = (buttonId) => {
+        setServiceSelectState(buttonId);
     }
 
     const profileNavBtn = {
@@ -44,15 +51,13 @@ const Profile = () => {
 
     const serviceBtn = {
         initial: {
-            color: "hsl(0, 0%, 60%)",
-            borderBottomColor: "hsl(0, 0%, 0%)",
+            filter: "invert(0)"
         },
         whileHover: {
-            color: "hsl(0, 0%, 100%)",
+            filter: "invert(1)"
         },
         transition: {
-            borderBottomColor: { duration: 0.1},
-            color: { duration: 0.25},
+            filter: { duration: 0.1},
         },
     };
 
@@ -153,7 +158,10 @@ const Profile = () => {
                             <div className="serviceSect">
                                 <div className="subHeader">Services<button className="editBtn"><img src={editIcon}/></button></div>
                                 <div className="serviceList">
-                                    <motion.button className="service">
+                                    <motion.button 
+                                    className="service" onClick={ () => setServiceSelectState(1)}
+                                    {...serviceBtn}
+                                    animate={{ filter: serviceSelectState == 1 ? "invert(1)" : "invert(0)" }}>
                                         <div className="textSect">
                                             <span className="name">Starter Locs</span>
                                             <span className="duration">3+ hours</span>
@@ -163,7 +171,10 @@ const Profile = () => {
                                             <span className="symbol">$</span><span className="price">160</span>
                                         </div>
                                     </motion.button>
-                                    <motion.button className="service">
+                                    <motion.button
+                                    className="service" onClick={ () => setServiceSelectState(2)}
+                                    {...serviceBtn}
+                                    animate={{ filter: serviceSelectState == 2 ? "invert(1)" : "invert(0)" }}>
                                         <div className="textSect">
                                             <span className="name">Retwist</span>
                                             <span className="duration">3+ hours</span>
@@ -173,7 +184,10 @@ const Profile = () => {
                                             <span className="symbol">$</span><span className="price">100</span>
                                         </div>
                                     </motion.button>
-                                    <motion.button className="service">
+                                    <motion.button
+                                    className="service" onClick={ () => setServiceSelectState(3)}
+                                    {...serviceBtn}
+                                    animate={{ filter: serviceSelectState == 3 ? "invert(1)" : "invert(0)" }}>
                                         <div className="textSect">
                                             <span className="name">Box braids</span>
                                             <span className="duration">3+ hours</span>
@@ -183,7 +197,10 @@ const Profile = () => {
                                             <span className="symbol">$</span><span className="price">60</span>
                                         </div>
                                     </motion.button>
-                                    <motion.button className="service">
+                                    <motion.button
+                                    className="service" onClick={ () => setServiceSelectState(4)}
+                                    {...serviceBtn}
+                                    animate={{ filter: serviceSelectState == 4 ? "invert(1)" : "invert(0)" }}>
                                         <div className="textSect">
                                             <span className="name">Two-strand twists</span>
                                             <span className="duration">3+ hours</span>
@@ -195,22 +212,56 @@ const Profile = () => {
                                     </motion.button>
                                 </div>
                             </div>
-                            <div className="clientSect">
-                                <div className="subHeader">Clients<button className="editBtn"><img src={editIcon}/></button></div>
-                                <div className="clientGrid">
-                                    <motion.div className="photo">
-                                        <img src={fi6}/>
-                                        <motion.div className="overlay">
-                                            <motion.button className="likeBtn" whileHover={{scale: 1.05,}}><img src={likeIcon}/></motion.button>
-                                            <motion.button className="serviceLink"
-                                            whileHover={{
-                                                scale: 1.025,
-                                            }}
-                                            >
-                                                <span>Get this</span>
-                                            </motion.button>
-                                        </motion.div>
-                                    </motion.div>
+                            <div className="scheduleSect">
+                                <div className="subHeader">Schedule<button className="editBtn"><img src={editIcon}/></button></div>
+                                <div className="dateSelection">
+                                    <div className="monthSelect">
+                                        <motion.button className="leftSelect"><img src={arrowLIcon}/></motion.button>
+                                        <div className="monthLabel">
+                                            <span className="prev">November 2024</span>
+                                            <span className="curr">December 2024</span>
+                                            <span className="next">January 2025</span>
+                                        </div>
+                                        <motion.button className="rightSelect"><img src={arrowRIcon}/></motion.button>
+                                    </div>
+                                    <div className="daySelect">
+                                        <motion.button className="leftSelect"><img src={arrowLIcon}/></motion.button>
+                                        <div className="weekChart">
+                                            <div className="dayLabel">
+                                                <div className="dow">Sun</div>
+                                                <div className="dow">Mon</div>
+                                                <div className="dow">Tue</div>
+                                                <div className="dow">Wed</div>
+                                                <div className="dow">Thu</div>
+                                                <div className="dow">Fri</div>
+                                                <div className="dow">Sat</div>
+                                            </div>
+                                            <div className="dayBtns">
+                                                <button className="dayBtn">
+                                                    8
+                                                </button>
+                                                <button className="dayBtn">
+                                                    9
+                                                </button>
+                                                <button className="dayBtn">
+                                                    10
+                                                </button>
+                                                <button className="dayBtn">
+                                                    11
+                                                </button>
+                                                <button className="dayBtn">
+                                                    12
+                                                </button>
+                                                <button className="dayBtn">
+                                                    13
+                                                </button>
+                                                <button className="dayBtn">
+                                                    14
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <motion.button className="rightSelect"><img src={arrowRIcon}/></motion.button>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>

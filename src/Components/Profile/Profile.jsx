@@ -42,6 +42,20 @@ const Profile = () => {
         },
     };
 
+    const serviceBtn = {
+        initial: {
+            color: "hsl(0, 0%, 60%)",
+            borderBottomColor: "hsl(0, 0%, 0%)",
+        },
+        whileHover: {
+            color: "hsl(0, 0%, 100%)",
+        },
+        transition: {
+            borderBottomColor: { duration: 0.1},
+            color: { duration: 0.25},
+        },
+    };
+
     return (
         <div className="profilePage">
             <div className="profileContainer">
@@ -113,50 +127,6 @@ const Profile = () => {
                                     </p>
                                 </div>
                             </div>
-                            {/* <div className="availSect">
-                                <div className="subHeader">Availability<button className="editBtn"><img src={editIcon}/></button></div>
-                                <div className="availChart">
-                                    <div className="chartHeader">
-                                        <div className="dow">Sun</div>
-                                        <div className="dow">Mon</div>
-                                        <div className="dow">Tue</div>
-                                        <div className="dow">Wed</div>
-                                        <div className="dow">Thu</div>
-                                        <div className="dow">Fri</div>
-                                        <div className="dow">Sat</div>
-                                    </div>
-                                    <div className="datesFrame">
-                                        <button className="dateBtn">
-                                            <span className="dayLab">08</span>
-                                            <span className="monthLab">Dec</span>
-                                        </button>
-                                        <button className="dateBtn">
-                                            <span className="dayLab">09</span>
-                                            <span className="monthLab">Dec</span>
-                                        </button>
-                                        <button className="dateBtn">
-                                            <span className="dayLab">10</span>
-                                            <span className="monthLab">Dec</span>
-                                        </button>
-                                        <button className="dateBtn">
-                                            <span className="dayLab">11</span>
-                                            <span className="monthLab">Dec</span>
-                                        </button>
-                                        <button className="dateBtn">
-                                            <span className="dayLab">12</span>
-                                            <span className="monthLab">Dec</span>
-                                        </button>
-                                        <button className="dateBtn">
-                                            <span className="dayLab">13</span>
-                                            <span className="monthLab">Dec</span>
-                                        </button>
-                                        <button className="dateBtn">
-                                            <span className="dayLab">14</span>
-                                            <span className="monthLab">Dec</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div> */}
                             <div className="clientSect">
                                 <div className="subHeader">Clients<button className="editBtn"><img src={editIcon}/></button></div>
                                 <div className="clientGrid">
@@ -180,7 +150,69 @@ const Profile = () => {
                     )}
                     {pageState == "services" && (
                         <motion.div className="servicesPage">
-                            <div></div>
+                            <div className="serviceSect">
+                                <div className="subHeader">Services<button className="editBtn"><img src={editIcon}/></button></div>
+                                <div className="serviceList">
+                                    <motion.button className="service">
+                                        <div className="textSect">
+                                            <span className="name">Starter Locs</span>
+                                            <span className="duration">3+ hours</span>
+                                            <span className="desc">Two-strand starter locs (full head of hair)</span>
+                                        </div>
+                                        <div className="priceSect">
+                                            <span className="symbol">$</span><span className="price">160</span>
+                                        </div>
+                                    </motion.button>
+                                    <motion.button className="service">
+                                        <div className="textSect">
+                                            <span className="name">Retwist</span>
+                                            <span className="duration">3+ hours</span>
+                                            <span className="desc">Two-strand retwist (wash and maintenance included)</span>
+                                        </div>
+                                        <div className="priceSect">
+                                            <span className="symbol">$</span><span className="price">100</span>
+                                        </div>
+                                    </motion.button>
+                                    <motion.button className="service">
+                                        <div className="textSect">
+                                            <span className="name">Box braids</span>
+                                            <span className="duration">3+ hours</span>
+                                            <span className="desc">Full head of box braids (blow dry included)</span>
+                                        </div>
+                                        <div className="priceSect">
+                                            <span className="symbol">$</span><span className="price">60</span>
+                                        </div>
+                                    </motion.button>
+                                    <motion.button className="service">
+                                        <div className="textSect">
+                                            <span className="name">Two-strand twists</span>
+                                            <span className="duration">3+ hours</span>
+                                            <span className="desc">Full head of two-strand twists (blow-dry included)</span>
+                                        </div>
+                                        <div className="priceSect">
+                                            <span className="symbol">$</span><span className="price">60</span>
+                                        </div>
+                                    </motion.button>
+                                </div>
+                            </div>
+                            <div className="clientSect">
+                                <div className="subHeader">Clients<button className="editBtn"><img src={editIcon}/></button></div>
+                                <div className="clientGrid">
+                                    <motion.div className="photo">
+                                        <img src={fi6}/>
+                                        <motion.div className="overlay">
+                                            <motion.button className="likeBtn" whileHover={{scale: 1.05,}}><img src={likeIcon}/></motion.button>
+                                            <motion.button className="serviceLink"
+                                            whileHover={{
+                                                scale: 1.025,
+                                            }}
+                                            >
+                                                <span>Get this</span>
+                                            </motion.button>
+                                        </motion.div>
+                                    </motion.div>
+                                </div>
+                            </div>
                         </motion.div>
                     )}
                     {pageState == "reviews" && (

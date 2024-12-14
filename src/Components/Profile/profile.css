@@ -464,7 +464,7 @@
     align-items: center;
     font-size: 20px;
     color: hsl(0, 0%, 80%);
-    background-color: transparent;
+    border-radius: 10px;
     width: 700px;
     height: 40px;
     border-radius: 100px;
@@ -474,15 +474,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: hsl(0, 0%, 95%);
+    color: hsl(0, 0%, 5%);
+    font-weight: 550;
+    padding: 8px 2px;
+    border-radius: 25px;
     width: 200px;
 }
 
-.prev {
+.monthLabel .prev {
     color: hsl(0, 0%, 20%);
+    background-color: hsl(0, 0%, 0%);
 }
 
-.next {
+.monthLabel .next {
     color: hsl(0, 0%, 20%);
+    background-color: hsl(0, 0%, 0%);
 }
 
 .daySelect {

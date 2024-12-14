@@ -348,7 +348,7 @@
     align-items: center;
     width: 900px;
     height: 100px;
-    box-sizing: border-box;
+    box-sizing: border-box; 
     background-color: hsl(0, 0%, 5%);
     border-radius: 5px;
     border-color: transparent;
@@ -390,7 +390,7 @@
     justify-content: right;
     align-items: center;
     padding-right: 20px;
-    gap: 2px;
+    gap: 5px;
     width: 10%;
     height: 100%;
     box-sizing: border-box;
@@ -506,7 +506,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    background-color: hsl(0, 0%, 2.5%);
+    background-color: transparent;
     width: 700px;
     height: 40px;
 }
@@ -528,13 +528,55 @@
     height: 70px;
 }
 
+.dayFrame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border-color: transparent;
+    width: 100px;
+}
+
 .dayBtn {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: hsl(0, 0%, 5%);
     color: hsl(0, 0%, 80%);
+    padding: 25px;
+    width: 10px;
+    height: 10px;
     font-size: 20px;
+    font-weight: 550;
+    border-radius: 30px;
     border-color: transparent;
-    width: 100px;
+}
+
+.timeSelect {
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+    height: 50px;
+}
+
+.timeGrid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 700px;
+    height: 50px;
+}
+
+.timeBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: hsl(0, 0%, 80%);
+    background-color: hsl(0, 0%, 5%);
+    width: 92px;
+    height: 50px;
+    font-size: 14px;
+    border-color: transparent;
+    border-radius: 5px;
+
 }

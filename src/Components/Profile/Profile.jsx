@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion } from "motion/react";
+import { color, motion } from "motion/react";
 
 import "./profile.css"
 import profileSplash from "../Assets/profileAssets/mock_splash.jpg"
@@ -8,7 +8,6 @@ import starIcon from "../Assets/profileAssets/star_icon.svg"
 import shareIcon from "../Assets/profileAssets/share_icon.svg"
 import editIcon from "../Assets/profileAssets/edit_icon.svg"
 import likeIcon from "../Assets/featuredGrid/like_icon.svg"
-import nextIcon from "../Assets/profileAssets/next_icon.svg"
 import arrowLIcon from "../Assets/profileAssets/arrow_back.svg"
 import arrowRIcon from "../Assets/profileAssets/arrow_forward.svg"
 
@@ -26,6 +25,8 @@ const Profile = () => {
 
     const [pageState, setPageState] = useState("info")
     const [serviceSelectState, setServiceSelectState] = useState()
+    const [dateSelectState, setDateSelectState] = useState()
+    const [timeSelectState, setTimeSelectState] = useState()
 
     const changePage = (buttonId) => {
         setPageState(buttonId);
@@ -33,6 +34,10 @@ const Profile = () => {
 
     const changeServiceSelection = (buttonId) => {
         setServiceSelectState(buttonId);
+    }
+
+    const changeTimeSelection = (buttonId) => {
+        setTimeSelectState(buttonId);
     }
 
     const profileNavBtn = {
@@ -49,12 +54,26 @@ const Profile = () => {
         },
     };
 
-    const serviceBtn = {
+    const genericBtn = {
         initial: {
-            filter: "invert(0)"
+            filter: "invert(0)",
+            backgroundColor: "hsl(0, 0%, 5%)"
         },
         whileHover: {
-            filter: "invert(1)"
+            backgroundColor: "hsl(0, 0%, 10%)"
+        },
+        transition: {
+            filter: { duration: 0.1},
+        },
+    };
+
+    const dateBtn = {
+        initial: {
+            filter: "invert(0)",
+            backgroundColor: "hsl(0, 0%, 0%)"
+        },
+        whileHover: {
+            backgroundColor: "hsl(0, 0%, 5%)"
         },
         transition: {
             filter: { duration: 0.1},
@@ -160,7 +179,7 @@ const Profile = () => {
                                 <div className="serviceList">
                                     <motion.button 
                                     className="service" onClick={ () => setServiceSelectState(1)}
-                                    {...serviceBtn}
+                                    {...genericBtn}
                                     animate={{ filter: serviceSelectState == 1 ? "invert(1)" : "invert(0)" }}>
                                         <div className="textSect">
                                             <span className="name">Starter Locs</span>
@@ -173,7 +192,7 @@ const Profile = () => {
                                     </motion.button>
                                     <motion.button
                                     className="service" onClick={ () => setServiceSelectState(2)}
-                                    {...serviceBtn}
+                                    {...genericBtn}
                                     animate={{ filter: serviceSelectState == 2 ? "invert(1)" : "invert(0)" }}>
                                         <div className="textSect">
                                             <span className="name">Retwist</span>
@@ -186,7 +205,7 @@ const Profile = () => {
                                     </motion.button>
                                     <motion.button
                                     className="service" onClick={ () => setServiceSelectState(3)}
-                                    {...serviceBtn}
+                                    {...genericBtn}
                                     animate={{ filter: serviceSelectState == 3 ? "invert(1)" : "invert(0)" }}>
                                         <div className="textSect">
                                             <span className="name">Box braids</span>
@@ -199,7 +218,7 @@ const Profile = () => {
                                     </motion.button>
                                     <motion.button
                                     className="service" onClick={ () => setServiceSelectState(4)}
-                                    {...serviceBtn}
+                                    {...genericBtn}
                                     animate={{ filter: serviceSelectState == 4 ? "invert(1)" : "invert(0)" }}>
                                         <div className="textSect">
                                             <span className="name">Two-strand twists</span>
@@ -237,39 +256,117 @@ const Profile = () => {
                                                 <div className="dow">Sat</div>
                                             </div>
                                             <div className="dayBtns">
-                                                <button className="dayBtn">
-                                                    8
-                                                </button>
-                                                <button className="dayBtn">
-                                                    9
-                                                </button>
-                                                <button className="dayBtn">
-                                                    10
-                                                </button>
-                                                <button className="dayBtn">
-                                                    11
-                                                </button>
-                                                <button className="dayBtn">
-                                                    12
-                                                </button>
-                                                <button className="dayBtn">
-                                                    13
-                                                </button>
-                                                <button className="dayBtn">
-                                                    14
-                                                </button>
+                                                <div className="dayFrame">
+                                                    <motion.button className="dayBtn" onClick={ () => setDateSelectState(1)}
+                                                    {...dateBtn}
+                                                    animate={{ filter: dateSelectState == 1 ? "invert(1)" : "invert(0)" }}>
+                                                        8
+                                                    </motion.button>
+                                                </div>
+                                                <div className="dayFrame">
+                                                    <motion.button className="dayBtn" onClick={ () => setDateSelectState(2)}
+                                                    {...dateBtn}
+                                                    animate={{ filter: dateSelectState == 2 ? "invert(1)" : "invert(0)" }}>
+                                                        9
+                                                    </motion.button>
+                                                </div>
+                                                <div className="dayFrame">
+                                                    <motion.button className="dayBtn" onClick={ () => setDateSelectState(3)}
+                                                    {...dateBtn}
+                                                    animate={{ filter: dateSelectState == 3 ? "invert(1)" : "invert(0)" }}>
+                                                        10
+                                                    </motion.button>
+                                                </div>
+                                                <div className="dayFrame">
+                                                    <motion.button className="dayBtn" onClick={ () => setDateSelectState(4)}
+                                                    {...dateBtn}
+                                                    animate={{ filter: dateSelectState == 4 ? "invert(1)" : "invert(0)" }}>
+                                                        11
+                                                    </motion.button>
+                                                </div>
+                                                <div className="dayFrame">
+                                                    <motion.button className="dayBtn" onClick={ () => setDateSelectState(5)}
+                                                    {...dateBtn}
+                                                    animate={{ filter: dateSelectState == 5 ? "invert(1)" : "invert(0)" }}>
+                                                        12
+                                                    </motion.button>
+                                                </div>
+                                                <div className="dayFrame">
+                                                    <motion.button className="dayBtn" onClick={ () => setDateSelectState(6)}
+                                                    {...dateBtn}
+                                                    animate={{ filter: dateSelectState == 6 ? "invert(1)" : "invert(0)" }}>
+                                                        13
+                                                    </motion.button>
+                                                </div>
+                                                <div className="dayFrame">
+                                                    <motion.button className="dayBtn" onClick={ () => setDateSelectState(7)}
+                                                    {...dateBtn}
+                                                    animate={{ filter: dateSelectState == 7 ? "invert(1)" : "invert(0)" }}>
+                                                        14
+                                                    </motion.button>
+                                                </div>
                                             </div>
                                         </div>
                                         <motion.button className="rightSelect"><img src={arrowRIcon}/></motion.button>
                                     </div>
                                 </div>
+                                <div className="timeSelect">
+                                    <motion.button className="leftSelect"><img src={arrowLIcon}/></motion.button>
+                                    <div className="timeGrid">
+                                        <motion.button className="timeBtn" onClick={ () => setTimeSelectState(1) }
+                                        {...genericBtn}
+                                        animate={{ filter: timeSelectState == 1 ? "invert(1)" : "invert(0)" }}
+                                        >
+                                            5:30 PM
+                                        </motion.button>
+                                        <motion.button className="timeBtn" onClick={ () => setTimeSelectState(2) }
+                                        {...genericBtn}
+                                        animate={{ filter: timeSelectState == 2 ? "invert(1)" : "invert(0)" }}
+                                        >
+                                            6:00 PM
+                                        </motion.button>
+                                        <motion.button className="timeBtn" onClick={ () => setTimeSelectState(3) }
+                                        {...genericBtn}
+                                        animate={{ filter: timeSelectState == 3 ? "invert(1)" : "invert(0)" }}
+                                        >
+                                            6:30 PM
+                                        </motion.button>
+                                        <motion.button className="timeBtn" onClick={ () => setTimeSelectState(4) }
+                                        {...genericBtn}
+                                        animate={{ filter: timeSelectState == 4 ? "invert(1)" : "invert(0)" }}
+                                        >
+                                            7:00 PM
+                                        </motion.button>
+                                        <motion.button className="timeBtn" onClick={ () => setTimeSelectState(5) }
+                                        {...genericBtn}
+                                        animate={{ filter: timeSelectState == 5 ? "invert(1)" : "invert(0)" }}
+                                        >
+                                            7:30 PM
+                                        </motion.button>
+                                        <motion.button className="timeBtn" onClick={ () => setTimeSelectState(6) }
+                                        {...genericBtn}
+                                        animate={{ filter: timeSelectState == 6 ? "invert(1)" : "invert(0)" }}
+                                        >
+                                            8:00 PM
+                                        </motion.button>
+                                        <motion.button className="timeBtn" onClick={ () => setTimeSelectState(7) }
+                                        {...genericBtn}
+                                        animate={{ filter: timeSelectState == 7 ? "invert(1)" : "invert(0)" }}
+                                        >
+                                            8:30 PM
+                                        </motion.button>    
+                                    </div>
+                                    <motion.button className="rightSelect"><img src={arrowRIcon}/></motion.button>
+                                </div>
                             </div>
                         </motion.div>
                     )}
                     {pageState == "reviews" && (
+                        <div className="weekChart">
                         <motion.div className="reviewsPage">
                             <div></div>
                         </motion.div>
+                        </div>
                     )}
                 </div>
 

@@ -635,3 +635,47 @@
     width: 20px;
     height: 20px;
 }
+
+.reviewPage {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 900px;
+    height: auto;
+    background-color: black;
+}
+
+.reviewList {
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+    height: auto;
+}
+
+.review {
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+    height: 150px;
+}
+
+.profilePic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    border-color: transparent;
+}
+
+.reviewInfo {
+    display: flex;
+    flex-direction: row;
+    width: 900px;
+    height: auto;
+}
+
+.reviewSection {
+    display: flex;
+    flex-direction: row;
+    width: 900px;
+    height: auto;
+}

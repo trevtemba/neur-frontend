@@ -80,6 +80,8 @@ const Profile = () => {
         },
     };
 
+
+
     return (
         <div className="profilePage">
             <div className="profileContainer">
@@ -357,7 +359,31 @@ const Profile = () => {
                                         </motion.button>    
                                     </div>
                                     <motion.button className="rightSelect"><img src={arrowRIcon}/></motion.button>
-                                </div>
+                            </div>
+                            <div className="bookSect">
+                                <motion.button className="selectedBooking"
+                                {...genericBtn}
+                                whileTap={{
+                                    filter: "invert(1)",
+                                }}
+                                >
+                                        <span>Month</span>
+                                        <span>Day</span>
+                                        <span>Time</span>
+                                        
+                                </motion.button>   
+
+                                <motion.button className="bookBtn2"
+                                {...genericBtn}
+                                whileTap={{
+                                    filter: "invert(1)",
+                                }}
+                                >
+                                        <span>BOOK</span>
+                                        <img src={arrowRIcon}/>
+                                </motion.button>    
+                            </div>
+
                             </div>
                         </motion.div>
                     )}

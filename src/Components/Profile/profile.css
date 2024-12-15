@@ -585,5 +585,51 @@
     font-size: 14px;
     border-color: transparent;
     border-radius: 5px;
+}
 
+.bookSect {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 900px;
+    height: auto;
+}
+
+.bookBtn2 { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    width: 150px;
+    height: 75px;
+    margin-left: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-color: transparent;
+}
+
+.selectedBooking {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    width: 150px;
+    height: 75px;
+    margin-right: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-color: transparent;
+}
+
+.bookBtn2 span{ 
+    padding-left: 30px;
+    color: hsl(0, 0%, 95%);
+    margin-top: 2px;
+    padding-left: 25px;
+}
+
+.bookBtn2 img{ 
+    padding-right: 15px;
+    width: 20px;
+    height: 20px;
 }

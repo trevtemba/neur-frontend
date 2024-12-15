@@ -613,12 +613,14 @@
     justify-content: space-between;
     align-items: center;
     font-size: 24px;
-    width: 150px;
+    width: 400px;
     height: 75px;
+    background-color: transparent;
     margin-right: auto;
     margin-bottom: 10px;
     border-radius: 5px;
     border-color: transparent;
+    color: hsl(0, 0%, 100%);
 }
 
 .bookBtn2 span{ 

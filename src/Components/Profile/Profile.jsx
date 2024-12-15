@@ -28,6 +28,13 @@ const Profile = () => {
     const [dateSelectState, setDateSelectState] = useState()
     const [timeSelectState, setTimeSelectState] = useState()
 
+    const selectedDate = {
+        month: "",
+        year: "",
+        day: "",
+        time: "",
+    }
+
     const changePage = (buttonId) => {
         setPageState(buttonId);
     }
@@ -38,6 +45,7 @@ const Profile = () => {
 
     const changeTimeSelection = (buttonId) => {
         setTimeSelectState(buttonId);
+        selectedDate.month = buttonId;
     }
 
     const profileNavBtn = {
@@ -367,9 +375,10 @@ const Profile = () => {
                                     filter: "invert(1)",
                                 }}
                                 >
-                                        <span>Month</span>
-                                        <span>Day</span>
-                                        <span>Time</span>
+                                        <span>December</span>
+                                        <span>15,</span>
+                                        <span>2024</span>
+                                        <span>@ 9:32 AM</span>
                                         
                                 </motion.button>   
 
@@ -388,10 +397,22 @@ const Profile = () => {
                         </motion.div>
                     )}
                     {pageState == "reviews" && (
-                        <div className="weekChart">
-                        <motion.div className="reviewsPage">
-                            <div></div>
-                        </motion.div>
+                        <div className="reviewPage">
+                            <div className="reviewsList">
+                                <div className="review">
+                                    <img src=""/>
+                                    <div className="reviewInfo">
+                                        <span className="reviewerName">tre_temba</span>
+                                        <span className="reviewerRole">Customer</span>
+                                        <span className="reviewDate">10/16/2024</span>
+                                    </div>
+                                    <div className="reviewSection">
+                                        <span className="reviewDesc">Loved this service!</span>
+                                        {/* <span className="reviewRating"></span> */}
+                                    </div>
+                                    <span className="reportBtn">Report content</span>
+                                </div>
+                            </div>
                         </div>
                     )}
                 </div>

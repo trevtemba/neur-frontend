@@ -657,6 +657,7 @@
     flex-direction: column;
     width: 900px;
     height: 150px;
+    color: white;
 
 }
 
@@ -679,6 +680,7 @@
 .reviewSection {
     display: flex;
     flex-direction: row;
+    
     width: 900px;
     height: auto;
 }

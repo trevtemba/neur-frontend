@@ -45,7 +45,18 @@ const Profile = () => {
 
     const changeTimeSelection = (buttonId) => {
         setTimeSelectState(buttonId);
-        selectedDate.month = buttonId;
+        if (buttonId == month) {
+            selectedDate.month = buttonId;
+        }
+        else if (buttonId == year) {
+            selectedDate.year = buttonId;
+        }
+        else if (buttonId == day) {
+            selectedDate.day = buttonId;
+        }
+        else if (buttonId == time) {
+            selectedDate.time = buttonId;
+        }
     }
 
     const profileNavBtn = {
@@ -375,10 +386,10 @@ const Profile = () => {
                                     filter: "invert(1)",
                                 }}
                                 >
-                                        <span>December</span>
-                                        <span>15,</span>
-                                        <span>2024</span>
-                                        <span>@ 9:32 AM</span>
+                                        <span>{selectedDate.month}</span>
+                                        <span>{selectedDate.year}</span>
+                                        <span>{selectedDate.day}</span>
+                                        <span>{selectedDate.time}</span>
                                         
                                 </motion.button>   
 
@@ -400,7 +411,7 @@ const Profile = () => {
                         <div className="reviewPage">
                             <div className="reviewsList">
                                 <div className="review">
-                                    <img src=""/>
+                                    <img className="profilePic" src=""/>
                                     <div className="reviewInfo">
                                         <span className="reviewerName">tre_temba</span>
                                         <span className="reviewerRole">Customer</span>

@@ -657,9 +657,11 @@
     flex-direction: column;
     width: 900px;
     height: 150px;
+
 }
 
 .profilePic {
+    margin-left: 20px;
     width: 100px;
     height: 100px;
     border-radius: 50px;
@@ -667,6 +669,7 @@
 }
 
 .reviewInfo {
+    margin-left: 20px;
     display: flex;
     flex-direction: row;
     width: 900px;
@@ -678,4 +681,14 @@
     flex-direction: row;
     width: 900px;
     height: auto;
+}
+
+.reportBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 10px;
+    font-size: 12px;
+    color: hsl(0, 80%, 40%);
 }

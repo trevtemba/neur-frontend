@@ -654,43 +654,71 @@
 
 .review {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 900px;
-    height: 150px;
+    height: 120px;
     color: white;
+    background-color: hsl(0, 0%, 5%);
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border-color: transparent;
 
 }
 
 .profilePic {
-    margin-left: 20px;
-    width: 100px;
-    height: 100px;
+    margin-left: 0px;
+    width: 80px;
+    height: 80px;
     border-radius: 50px;
-    border-color: transparent;
 }
 
 .reviewInfo {
     margin-left: 20px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: space-between;
     width: 900px;
     height: auto;
+}
+
+.reviewerInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    font-size: 16px;
+    gap: 20px;
+    width: 100%;
+    height: auto;
+}
+
+.reviewerName {
+    color: hsl(0, 0%, 60%);
+}
+
+.reviewerRole {
+    color: hsl(0, 0%, 40%);
+}
+
+.reviewDate {
+    color: hsl(0, 0%, 20%);
 }
 
 .reviewSection {
     display: flex;
     flex-direction: row;
-    
-    width: 900px;
+    justify-content: space-between;
+    font-size: 20px;
+    width: 100%;
     height: auto;
 }
 
 .reportBtn {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-    width: 20px;
+    width: 200px;
     height: 10px;
     font-size: 12px;
-    color: hsl(0, 80%, 40%);
+    color: hsl(354, 74%, 53%);
 }

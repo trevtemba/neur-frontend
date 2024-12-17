@@ -4,6 +4,8 @@ import { color, motion } from "motion/react";
 import "./profile.css"
 import profileSplash from "../Assets/profileAssets/mock_splash.jpg"
 import profileIcon from "../Assets/profileAssets/mock_icon.jpg"
+import reviewerIcon from "../Assets/profileAssets/mockreviewer_icon.jpg"
+
 import starIcon from "../Assets/profileAssets/star_icon.svg"
 import shareIcon from "../Assets/profileAssets/share_icon.svg"
 import editIcon from "../Assets/profileAssets/edit_icon.svg"
@@ -410,18 +412,23 @@ const Profile = () => {
                     {pageState == "reviews" && (
                         <div className="reviewPage">
                             <div className="reviewsList">
-                                <div className="review">
-                                    <img className="profilePic" src=""/>
+                                <div className="review">   
+                                    <img className="profilePic" src={reviewerIcon}/>                                
                                     <div className="reviewInfo">
-                                        <span className="reviewerName">tre_temba</span>
-                                        <span className="reviewerRole">Customer</span>
-                                        <span className="reviewDate">10/16/2024</span>
+                                        
+                                        <div className="reviewerInfo">
+                                            <span className="reviewerName">tre_temba</span>
+                                            <span className="reviewerRole">Customer</span>
+                                            <span className="reviewDate">10/16/2024</span>
+                                        </div>
+
+                                        <div className="reviewSection">
+                                            <span className="reviewDesc">Loved this service!</span>
+                                            <span className="reviewRating">5/5</span>
+                                        </div>
+
+                                        <span className="reportBtn">Report content</span>
                                     </div>
-                                    <div className="reviewSection">
-                                        <span className="reviewDesc">Loved this service!</span>
-                                        {/* <span className="reviewRating"></span> */}
-                                    </div>
-                                    <span className="reportBtn">Report content</span>
                                 </div>
                             </div>
                         </div>

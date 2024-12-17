@@ -697,11 +697,11 @@
 }
 
 .reviewerRole {
-    color: hsl(0, 0%, 40%);
+    color: hsl(0, 0%, 50%);
 }
 
 .reviewDate {
-    color: hsl(0, 0%, 20%);
+    color: hsl(0, 0%, 40%);
 }
 
 .reviewSection {

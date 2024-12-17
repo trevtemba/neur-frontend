@@ -22,7 +22,7 @@
 }
 
 .authEntry:hover {
-    background-color: rgb(13, 13, 13);
+    background-color: rgb(6, 6, 6);
 }
 
 .authEntry::placeholder {
@@ -48,7 +48,7 @@
 }
 
 input {
-    background-color:  rgb(9, 9, 9);
+    background-color:  hsl(0, 0%, 5%);
     color: white;
 }
 

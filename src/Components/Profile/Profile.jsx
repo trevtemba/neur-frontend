@@ -7,6 +7,8 @@ import profileIcon from "../Assets/profileAssets/mock_icon.jpg"
 import reviewerIcon from "../Assets/profileAssets/mockreviewer_icon.jpg"
 
 import starIcon from "../Assets/profileAssets/star_icon.svg"
+import emptyStarIcon from "../Assets/profileAssets/empty_star_icon.svg"
+
 import shareIcon from "../Assets/profileAssets/share_icon.svg"
 import editIcon from "../Assets/profileAssets/edit_icon.svg"
 import likeIcon from "../Assets/featuredGrid/like_icon.svg"
@@ -424,10 +426,40 @@ const Profile = () => {
 
                                         <div className="reviewSection">
                                             <span className="reviewDesc">Loved this service!</span>
-                                            <span className="reviewRating">5/5</span>
+                                            <div className="starRating">
+                                                <img className="starImg2" src={starIcon}/>
+                                                <img className="starImg2" src={starIcon}/>
+                                                <img className="starImg2" src={starIcon}/>
+                                                <img className="starImg2" src={starIcon}/>
+                                                <img className="starImg2" src={emptyStarIcon}/>
+                                            </div>
                                         </div>
 
-                                        <span className="reportBtn">Report content</span>
+                                        <span className="reportBtn">Report Content</span>
+                                    </div>
+                                </div>
+                                <div className="review">   
+                                    <img className="profilePic" src={reviewerIcon}/>                                
+                                    <div className="reviewInfo">
+                                        
+                                        <div className="reviewerInfo">
+                                            <span className="reviewerName">tre_temba</span>
+                                            <span className="reviewerRole">Customer</span>
+                                            <span className="reviewDate">10/16/2024</span>
+                                        </div>
+
+                                        <div className="reviewSection">
+                                            <span className="reviewDesc">Loved this service!</span>
+                                            <div className="starRating">
+                                                <img className="starImg2" src={starIcon}/>
+                                                <img className="starImg2" src={starIcon}/>
+                                                <img className="starImg2" src={starIcon}/>
+                                                <img className="starImg2" src={starIcon}/>
+                                                <img className="starImg2" src={emptyStarIcon}/>
+                                            </div>
+                                        </div>
+
+                                        <span className="reportBtn">Report Content</span>
                                     </div>
                                 </div>
                             </div>

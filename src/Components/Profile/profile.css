@@ -648,8 +648,10 @@
 .reviewList {
     display: flex;
     flex-direction: column;
+    gap: 20px;
     width: 900px;
     height: auto;
+
 }
 
 .review {
@@ -702,6 +704,7 @@
 
 .reviewDate {
     color: hsl(0, 0%, 40%);
+    
 }
 
 .reviewSection {
@@ -713,12 +716,27 @@
     height: auto;
 }
 
+.starRating {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 200px;
+    height: 25px;
+    z-index: 2;
+}
+
+.starImg2 {
+    height: 16px;
+    width: 16px;
+    z-index: 3;
+}
+
 .reportBtn {
     display: flex;
     justify-content: left;
     align-items: center;
     width: 200px;
     height: 10px;
-    font-size: 12px;
+    font-size: 16px;
     color: hsl(354, 74%, 53%);
 }

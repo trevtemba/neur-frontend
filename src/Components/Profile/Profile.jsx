@@ -413,7 +413,7 @@ const Profile = () => {
                     )}
                     {pageState == "reviews" && (
                         <div className="reviewPage">
-                            <div className="reviewsList">
+                            <div className="reviewList">
                                 <div className="review">   
                                     <img className="profilePic" src={reviewerIcon}/>                                
                                     <div className="reviewInfo">

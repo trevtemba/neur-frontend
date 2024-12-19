@@ -27,7 +27,7 @@ const Home = () => {
                 <motion.div
                 className="featuredContainer"
                 initial={{
-                    x: -25,
+                    x: -15,
                     opacity: 0,
                 }}
                 animate={{
@@ -35,7 +35,7 @@ const Home = () => {
                     opacity: 1,
                 }}
                 transition={{
-                    duration: 3,
+                    duration: 1,
                     ease: [0.25, 1, 0.5, 1]
                 }}
                 exit={{
@@ -79,7 +79,7 @@ const Home = () => {
                 </motion.div>
                 <motion.div className="htContainer"
                 initial={{
-                    x: 25,
+                    x: 15,
                     opacity: 0,
                 }}
                 animate={{
@@ -87,7 +87,7 @@ const Home = () => {
                     opacity: 1,
                 }}
                 transition={{
-                    duration: 3,
+                    duration: 1,
                     ease: [0.25, 1, 0.5, 1]
                 }}
                 exit={{
@@ -122,7 +122,7 @@ const Home = () => {
                     opacity: 1,
                 }}
                 transition={{
-                    duration: 3,
+                    duration: 1,
                     ease: [0.25, 1, 0.5, 1]
                 }}
                 exit={{

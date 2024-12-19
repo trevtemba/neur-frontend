@@ -108,7 +108,22 @@ const Profile = () => {
     return (
         <div className="profilePage">
             <div className="profileContainer">
-                <motion.div className="profileHeader">
+                <motion.div className="profileHeader"
+                initial={{
+                    x: -15,
+                    opacity: 0,
+                }}
+                animate={{
+                    x: 0,
+                    opacity: 1,
+                }}
+                transition={{
+                    duration: 1,
+                    ease: [0.25, 1, 0.5, 1]
+                }}
+                exit={{
+                    opacity: 0,
+                }}>
                     <div className="profileSplash">
                         <img className="splashImg" src={profileSplash}/>
                     </div>
@@ -133,7 +148,23 @@ const Profile = () => {
                         <span className="score">5.0</span><span className="reviewCount">/ 131</span>
                     </div>
                 </motion.div>
-                <motion.div className="profileNav">
+                <motion.div className="profileNav"
+                    initial={{
+                        x: 15,
+                        opacity: 0,
+                    }}
+                    animate={{
+                        x: 0,
+                        opacity: 1,
+                    }}
+                    transition={{
+                        duration: 1,
+                        ease: [0.25, 1, 0.5, 1]
+                    }}
+                    exit={{
+                        opacity: 0,
+                    }}
+                >
                     <motion.button className="profileNavBtn" onClick={ () => changePage("info")} 
                     {...profileNavBtn}
                     animate={{
@@ -164,7 +195,22 @@ const Profile = () => {
                 </motion.div>
                 <div className="tabContainer">
                     {pageState == "info" && (
-                        <motion.div className="infoPage">
+                        <motion.div className="infoPage"
+                        initial={{
+                            x: 15,
+                            opacity: 0,
+                        }}
+                        animate={{
+                            x: 0,
+                            opacity: 1,
+                        }}
+                        transition={{
+                            duration: 1,
+                            ease: [0.25, 1, 0.5, 1]
+                        }}
+                        exit={{
+                            opacity: 0,
+                        }}>
                             <div className="aboutSect">
                                 <div className="subHeader">About<button className="editBtn"><img src={editIcon}/></button></div>
                                 <div className="aboutText">
@@ -414,7 +460,7 @@ const Profile = () => {
                     {pageState == "reviews" && (
                         <div className="reviewPage">
                             <div className="reviewList">
-                                <div className="review">   
+                                <div className="review">
                                     <img className="profilePic" src={reviewerIcon}/>                                
                                     <div className="reviewInfo">
                                         

@@ -197,15 +197,13 @@ const Profile = () => {
                     {pageState == "info" && (
                         <motion.div className="infoPage"
                         initial={{
-                            x: 15,
                             opacity: 0,
                         }}
                         animate={{
-                            x: 0,
                             opacity: 1,
                         }}
                         transition={{
-                            duration: 1,
+                            duration: 0.5,
                             ease: [0.25, 1, 0.5, 1]
                         }}
                         exit={{
@@ -244,7 +242,20 @@ const Profile = () => {
                         </motion.div>
                     )}
                     {pageState == "services" && (
-                        <motion.div className="servicesPage">
+                        <motion.div className="servicesPage"
+                        initial={{
+                            opacity: 0,
+                        }}
+                        animate={{
+                            opacity: 1,
+                        }}
+                        transition={{
+                            duration: 0.5,
+                            ease: [0.25, 1, 0.5, 1]
+                        }}
+                        exit={{
+                            opacity: 0,
+                        }}>
                             <div className="serviceSect">
                                 <div className="subHeader">Services<button className="editBtn"><img src={editIcon}/></button></div>
                                 <div className="serviceList">
@@ -458,7 +469,20 @@ const Profile = () => {
                         </motion.div>
                     )}
                     {pageState == "reviews" && (
-                        <div className="reviewPage">
+                        <motion.div className="reviewPage"
+                                                initial={{
+                            opacity: 0,
+                        }}
+                        animate={{
+                            opacity: 1,
+                        }}
+                        transition={{
+                            duration: 0.5,
+                            ease: [0.25, 1, 0.5, 1]
+                        }}
+                        exit={{
+                            opacity: 0,
+                        }}>
                             <div className="reviewList">
                                 <div className="review">
                                     <img className="profilePic" src={reviewerIcon}/>                                
@@ -509,7 +533,7 @@ const Profile = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     )}
                 </div>
 

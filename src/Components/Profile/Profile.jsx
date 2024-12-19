@@ -134,13 +134,34 @@ const Profile = () => {
                             <span className="profileUsn">Camillee_01</span>
                             <span className="roleName">Hair stylist</span>
                     </div>
-                    <motion.button className="bookBtn">
+                    <motion.button className="bookBtn"
+                    initial={{
+                        backgroundColor: "#009f79",
+                    }}
+                    whileHover={{
+                        backgroundColor: "#00dfa9",
+                    }}>
                         BOOK
                     </motion.button>
-                    <motion.button className="favBtn">
+                    <motion.button className="favBtn"
+                        initial={{
+                            background: "transparent",
+                            color: "#ffffff"
+                        }}
+                        whileHover={{
+                            backgroundColor: "#ffffff",
+                            color: "#000000",
+                        }}>
                         FAVORITE
                     </motion.button>
-                    <motion.button className="shareBtn">
+                    <motion.button className="shareBtn"
+                    initial={{
+                        backgroundColor: "hsl(0, 0%, 5%)",
+                    }}
+                    whileHover={{
+                        scale: 1.05,
+                        backgroundColor: "hsl(0, 0%, 20%)",
+                    }}>
                         <img src={shareIcon} />
                     </motion.button>
                     <div className="reviewScore">

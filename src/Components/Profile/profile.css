@@ -96,6 +96,7 @@
     bottom: 20px;
     left: 20px;
     z-index: 3;
+    cursor: pointer;
 }
 
 .favBtn {
@@ -110,11 +111,11 @@
     bottom: 20px;
     left: 240px;
     z-index: 3;
+    cursor: pointer;
 }
 
 .shareBtn {
     position: absolute;
-    background-color: hsl(0, 0%, 5%);
     filter: invert(1);
     border-color: transparent;
     border-radius: 25px;
@@ -124,6 +125,7 @@
     bottom: 20px;
     right: 20px;
     z-index: 3;
+    cursor: pointer;
 }
 
 .reviewScore {
@@ -182,6 +184,7 @@
     height: 100%;
     background-color: transparent;
     border-color: transparent;
+    cursor: pointer;
 }
 
 .tabContainer {
@@ -230,6 +233,7 @@
     background-color: transparent;
     border-color: transparent;
     z-index: 4;
+    cursor: pointer;
 }
 
 .editBtn:hover {
@@ -738,4 +742,8 @@
     height: 10px;
     font-size: 16px;
     color: hsl(354, 74%, 53%);
+}
+
+.overlay {
+    cursor: pointer;
 }

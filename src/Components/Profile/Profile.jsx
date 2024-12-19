@@ -159,7 +159,7 @@ const Profile = () => {
                         backgroundColor: "hsl(0, 0%, 5%)",
                     }}
                     whileHover={{
-                        scale: 1.05,
+                        scale: 1.025,
                         backgroundColor: "hsl(0, 0%, 20%)",
                     }}>
                         <img src={shareIcon} />

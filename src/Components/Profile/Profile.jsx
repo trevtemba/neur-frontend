@@ -33,6 +33,8 @@ const Profile = () => {
     const [serviceSelectState, setServiceSelectState] = useState()
     const [dateSelectState, setDateSelectState] = useState()
     const [timeSelectState, setTimeSelectState] = useState()
+    const [editState, setEditState] = useState("")
+    
 
     const selectedDate = {
         month: "",
@@ -65,6 +67,14 @@ const Profile = () => {
         }
     }
 
+    const changeEditSect = (sectId) => {
+        if (editState == sectId) {
+            setEditState("");
+        }
+        else {
+            setEditState(sectId);
+        }
+    }
     const profileNavBtn = {
         initial: {
             color: "rgb(153, 153, 153)",
@@ -244,7 +254,7 @@ const Profile = () => {
                                 </div>
                             </div>
                             <div className="clientSect">
-                                <div className="subHeader">Clients<button className="editBtn"><img src={editIcon}/></button></div>
+                                <div className="subHeader">Clients<button className="editBtn" onClick={() => changeEditSect("client")}><img src={editIcon}/></button></div>
                                 <div className="clientGrid">
                                     <motion.div className="photo">
                                         <img src={fi6}/>
@@ -259,11 +269,13 @@ const Profile = () => {
                                             </motion.button>
                                         </motion.div>
                                     </motion.div>
-                                    <motion.div className="addPhoto">
-                                        <motion.button className="addBtn">
-                                            <img className="addIcon" src={addIcon}/>
-                                        </motion.button>
-                                    </motion.div>
+                                    {editState == "client" && (
+                                        <motion.div className="addPhoto">
+                                            <motion.button className="addBtn">
+                                                <img className="addIcon" src={addIcon}/>
+                                            </motion.button>
+                                        </motion.div>
+                                    )}
                                 </div>
                             </div>
                             

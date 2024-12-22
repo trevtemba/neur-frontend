@@ -12,7 +12,7 @@ import emptyStarIcon from "../Assets/profileAssets/empty_star_icon.svg"
 import shareIcon from "../Assets/profileAssets/share_icon.svg"
 import editIcon from "../Assets/profileAssets/edit_icon.svg"
 import likeIcon from "../Assets/featuredGrid/like_icon.svg"
-import addIcon from "../Assets/profileAssets/plus_icon.svg"
+import addIcon from "../Assets/profileAssets/add_icon.svg"
 
 import arrowLIcon from "../Assets/profileAssets/arrow_back.svg"
 import arrowRIcon from "../Assets/profileAssets/arrow_forward.svg"
@@ -67,7 +67,7 @@ const Profile = () => {
 
     const profileNavBtn = {
         initial: {
-            color: "hsl(0, 0%, 60%)",
+            color: "rgb(153, 153, 153)",
             borderBottomColor: "hsl(0, 0%, 0%)",
         },
         whileHover: {

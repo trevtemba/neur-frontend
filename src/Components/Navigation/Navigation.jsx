@@ -60,6 +60,9 @@ const Navigation = () => {
         else if (buttonId === "profile") {
             navigate("/profile")
         }
+        else if (buttonId === "explore") {
+            navigate("/explore")
+        }
         setActiveButton(buttonId)
 
     }
@@ -91,7 +94,10 @@ const Navigation = () => {
                 </motion.button>                    
                 <motion.button
                 className="navButton"
-                onClick={ () => setPage("explore") }
+                style={{
+                    filter: activeButton === "explore" ? "invert(1)" : "invert(0)",
+                }}
+                onClick={ () => goPage("explore") }
                 {...navButtonAnimation}>
                     <img src={explore_icon}/>
                 </motion.button>                    

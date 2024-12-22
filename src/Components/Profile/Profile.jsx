@@ -12,6 +12,8 @@ import emptyStarIcon from "../Assets/profileAssets/empty_star_icon.svg"
 import shareIcon from "../Assets/profileAssets/share_icon.svg"
 import editIcon from "../Assets/profileAssets/edit_icon.svg"
 import likeIcon from "../Assets/featuredGrid/like_icon.svg"
+import addIcon from "../Assets/profileAssets/plus_icon.svg"
+
 import arrowLIcon from "../Assets/profileAssets/arrow_back.svg"
 import arrowRIcon from "../Assets/profileAssets/arrow_forward.svg"
 
@@ -256,6 +258,11 @@ const Profile = () => {
                                                 <span>Get this</span>
                                             </motion.button>
                                         </motion.div>
+                                    </motion.div>
+                                    <motion.div className="addPhoto">
+                                        <motion.button className="addBtn">
+                                            <img className="addIcon" src={addIcon}/>
+                                        </motion.button>
                                     </motion.div>
                                 </div>
                             </div>

@@ -24,7 +24,7 @@ const Explore = () => {
                 exit={{
                     opacity: 0,
                 }}>
-                <form action="">
+                <form className="formy" action="">
                     <label className="exploreIcon"><img src={explore_icon}/></label>
                     <input className="exploreEntry" placeholder="Search..." />
                 </form>

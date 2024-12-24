@@ -15,7 +15,7 @@
     background-color: hsl(0, 0, 0);
 }
 
-form {
+.formy {
     display: flex;
     flex-direction: row;
     gap: 10px;

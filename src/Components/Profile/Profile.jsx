@@ -261,6 +261,7 @@ const Profile = () => {
                                         <motion.div className="overlay">
                                             <motion.button className="likeBtn" whileHover={{scale: 1.05,}}><img src={likeIcon}/></motion.button>
                                             <motion.button className="serviceLink"
+                                            onClick={() => changePage("services")}
                                             whileHover={{
                                                 scale: 1.025,
                                             }}

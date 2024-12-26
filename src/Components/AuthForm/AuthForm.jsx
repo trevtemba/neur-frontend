@@ -153,7 +153,7 @@ const AuthForm = () => {
             <motion.div 
                 className="auth"
                 initial={{
-                    y: 50,
+                    y: 0,
                     opacity: 0,
                 }}
                 animate={{
@@ -167,10 +167,26 @@ const AuthForm = () => {
                     opacity: 0,
                 }}
             >
-                <div className="title">
+                <motion.div className="title"
+                initial={{
+                    y: -15,
+                    opacity: 0,
+                }}
+                animate={{
+                    y: 0,
+                    opacity: 1,
+                }}
+                transition={{
+                    duration: 1,
+                    ease: [0.25, 1, 0.5, 1]
+                }}
+                exit={{
+                    opacity: 0,
+                }}
+                >
                     <h1>neur</h1>
                     <h2>empowering entrepreneurs</h2>
-                </div>
+                </motion.div>
                 <div className="authContainer">
                     {/* <AnimatePresence> */}
                         {formState == "Login" && (

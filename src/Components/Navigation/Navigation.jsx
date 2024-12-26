@@ -32,11 +32,11 @@ const navButtonAnimation = {
 };
 const buttonAnimation = {
     initial: { 
-        backgroundColor: "hsl(0, 0%, 5%)",
+        backgroundColor: "hsl(0, 0%, 95%)",
         borderRadius: "30px",
     },
     whileHover: {
-        backgroundColor: "hsl(0, 0%, 10%)",
+        backgroundColor: "hsl(0, 0%, 80%)",
     },
     whileTap: {
         scale: 0.95,
@@ -50,7 +50,7 @@ const buttonAnimation = {
 const Navigation = () => {
     const navigate = useNavigate();
     
-    const [pageState, setPage] = useState("Home");
+    const [pageState, setPage] = useState("home");
     const [activeButton, setActiveButton] = useState("");
 
     const goPage = (buttonId) => {
@@ -62,6 +62,9 @@ const Navigation = () => {
         }
         else if (buttonId === "explore") {
             navigate("/explore")
+        }
+        else if (buttonId === "login") {
+            navigate("/login")
         }
         setActiveButton(buttonId)
 
@@ -120,10 +123,10 @@ const Navigation = () => {
             <div
             className="rightContainer">
                 <motion.button
-                className="logoutButton"
-                onClick={ () => setPage("profile") }
+                className="loginButton"
+                onClick={ () => goPage("login") }
                 {...buttonAnimation}>
-                    Logout
+                    Login
                 </motion.button>   
             </div>
         </div>

@@ -51,6 +51,7 @@
     height: 50px;
     width: 50px;
     font-size: 18px;
+    cursor: pointer;
 }
 
 .loginButton {

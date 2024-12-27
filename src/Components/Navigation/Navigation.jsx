@@ -55,7 +55,9 @@ const Navigation = () => {
 
     return (
         <div className="topBar">
-            <motion.div className="logoContainer">neur</motion.div>
+            <motion.div className="logoContainer">
+                neur
+            </motion.div>
             <div className="navContainer">
                 <motion.button
                     className="navButton"

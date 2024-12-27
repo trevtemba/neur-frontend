@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "motion/react";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigation } from "../Navigation/navigationContext";
 
 import "./home.css"
 import featuredHero from "../Assets/featured_hero.jpg"
@@ -18,7 +20,9 @@ import linkIcon from "../Assets/featuredGrid/link_icon.svg"
 
 const Home = () => {
 
-
+    const { activeButton, goPage } = useNavigation();
+    const navigate = useNavigate();
+    
     return (
         <div className="homePage">
             <div
@@ -101,6 +105,7 @@ const Home = () => {
                     <div className="htRight">
                         <motion.button 
                         className="exploreBtn"
+                        onClick={() => goPage("explore", navigate)}
                         initial={{
                             backgroundColor: "#ffffff",
                         }}

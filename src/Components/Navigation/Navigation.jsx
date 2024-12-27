@@ -2,6 +2,7 @@ import { div, filter } from "motion/react-client";
 import { motion, MotionConfig } from "motion/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useNavigation } from "./navigationContext";
 
 import "./navigation.css"
 import React from "react";
@@ -13,25 +14,26 @@ import earnings_icon from "../Assets/earnings_icon.svg"
 import profile_icon from "../Assets/profile_icon.svg"
 
 const navButtonAnimation = {
-    initial: { 
+    initial: {
         backgroundColor: "hsl(0, 0%, 5%)",
         borderRadius: "25px",
     },
     whileHover: {
         scale: 1.1,
         backgroundColor: "hsl(0, 0%, 10%)",
-        borderRadius: "15px"
+        borderRadius: "15px",
     },
     whileTap: {
         scale: 0.95,
     },
     transition: {
         duration: 0.125,
-        ease: "easeInOut"
+        ease: "easeInOut",
     },
 };
+
 const buttonAnimation = {
-    initial: { 
+    initial: {
         backgroundColor: "hsl(0, 0%, 95%)",
         borderRadius: "30px",
     },
@@ -43,95 +45,80 @@ const buttonAnimation = {
     },
     transition: {
         duration: 0.125,
-        ease: "easeInOut"
+        ease: "easeInOut",
     },
 };
 
 const Navigation = () => {
+    const { activeButton, goPage } = useNavigation();
     const navigate = useNavigate();
-    
-    const [pageState, setPage] = useState("home");
-    const [activeButton, setActiveButton] = useState("");
-
-    const goPage = (buttonId) => {
-        if (buttonId === "home") {
-            navigate("/home")
-        }
-        else if (buttonId === "profile") {
-            navigate("/profile")
-        }
-        else if (buttonId === "explore") {
-            navigate("/explore")
-        }
-        else if (buttonId === "login") {
-            navigate("/login")
-        }
-        setActiveButton(buttonId)
-
-    }
 
     return (
-        <div
-        className="topBar">
-            
-            <motion.div 
-            className="logoContainer">
-                neur
-            </motion.div>
-            <div
-            className="navContainer">
+        <div className="topBar">
+            <motion.div className="logoContainer">neur</motion.div>
+            <div className="navContainer">
                 <motion.button
-                className="navButton"
-                style={{
-                    filter: activeButton === "home" ? "invert(1)" : "invert(0)",
-                }}
-                onClick={ () => goPage("home") }
-                {...navButtonAnimation}>
-                    <img src={home_icon}/>
+                    className="navButton"
+                    style={{
+                        filter: activeButton === "home" ? "invert(1)" : "invert(0)",
+                    }}
+                    onClick={() => goPage("home", navigate)}
+                    {...navButtonAnimation}
+                >
+                    <img src={home_icon} alt="Home" />
                 </motion.button>
                 <motion.button
-                className="navButton"
-                onClick={ () => setPage("appnt") }
-                {...navButtonAnimation}>
-                    <img src={appointments_icon}/>
-                </motion.button>                    
-                <motion.button
-                className="navButton"
-                style={{
-                    filter: activeButton === "explore" ? "invert(1)" : "invert(0)",
-                }}
-                onClick={ () => goPage("explore") }
-                {...navButtonAnimation}>
-                    <img src={explore_icon}/>
-                </motion.button>                    
-                <motion.button
-                className="navButton"
-                onClick={ () => setPage("earnings") }
-                {...navButtonAnimation}>
-                    <img src={earnings_icon}/>
+                    className="navButton"
+                    style={{
+                        filter: activeButton === "appnt" ? "invert(1)" : "invert(0)",
+                    }}
+                    onClick={() => goPage("appnt", navigate)}
+                    {...navButtonAnimation}
+                >
+                    <img src={appointments_icon} alt="Appointments" />
                 </motion.button>
                 <motion.button
-                className="navButton"
-                style={{
-                    filter: activeButton === "profile" ? "invert(1)" : "invert(0)",
-                }}
-                onClick={ () => goPage("profile") }
-                {...navButtonAnimation}>
-                    <img src={profile_icon}/>
+                    className="navButton"
+                    style={{
+                        filter: activeButton === "explore" ? "invert(1)" : "invert(0)",
+                    }}
+                    onClick={() => goPage("explore", navigate)}
+                    {...navButtonAnimation}
+                >
+                    <img src={explore_icon} alt="Explore" />
+                </motion.button>
+                <motion.button
+                    className="navButton"
+                    style={{
+                        filter: activeButton === "earnings" ? "invert(1)" : "invert(0)",
+                    }}
+                    onClick={() => goPage("earnings", navigate)}
+                    {...navButtonAnimation}
+                >
+                    <img src={earnings_icon} alt="Earnings" />
+                </motion.button>
+                <motion.button
+                    className="navButton"
+                    style={{
+                        filter: activeButton === "profile" ? "invert(1)" : "invert(0)",
+                    }}
+                    onClick={() => goPage("profile", navigate)}
+                    {...navButtonAnimation}
+                >
+                    <img src={profile_icon} alt="Profile" />
                 </motion.button>
             </div>
-            <div
-            className="rightContainer">
+            <div className="rightContainer">
                 <motion.button
-                className="loginButton"
-                onClick={ () => goPage("login") }
-                {...buttonAnimation}>
+                    className="loginButton"
+                    onClick={() => goPage("login", navigate)}
+                    {...buttonAnimation}
+                >
                     Login
-                </motion.button>   
+                </motion.button>
             </div>
         </div>
-
     );
-}
+};
 
 export default Navigation;

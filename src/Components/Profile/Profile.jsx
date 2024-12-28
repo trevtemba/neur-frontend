@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { color, motion } from "motion/react";
-
+import { useLogin } from "../Contexts/loginContext";
 import "./profile.css"
 import profileSplash from "../Assets/profileAssets/mock_splash.jpg"
 import profileIcon from "../Assets/profileAssets/mock_icon.jpg"
@@ -35,6 +35,7 @@ const Profile = () => {
     const [timeSelectState, setTimeSelectState] = useState()
     const [editState, setEditState] = useState("")
     
+    const { loginState } = useLogin();
 
     const selectedDate = {
         month: "",
@@ -119,7 +120,8 @@ const Profile = () => {
 
     return (
         <div className="profilePage">
-            <div className="profileContainer">
+            {loginState == true && (
+                <div className="profileContainer">
                 <motion.div className="profileHeader"
                 initial={{
                     x: -15,
@@ -576,9 +578,10 @@ const Profile = () => {
                             </div>
                         </motion.div>
                     )}
-                </div>
+                    </div>
 
-            </div>
+                </div>
+            )};
         </div>
     );
 }

@@ -1,8 +1,8 @@
 import { useContext, createContext, useState } from "react";
 
-const loginContext = createContext();
+const LoginContext = createContext();
 
-export const loginContextProvider = ({children}) => {
+export const LoginProvider = ({children}) => {
     const [loginState, setLoginState] = useState(true);
 
     const toggleLogin = () => {
@@ -10,10 +10,10 @@ export const loginContextProvider = ({children}) => {
     };
 
     return (
-        <loginContext.Provider value = {{loginState, toggleLogin}}>
+        <LoginContext.Provider value = {{ loginState, toggleLogin }}>
             {children}
-        </loginContext.Provider>
+        </LoginContext.Provider>
     );
 };
 
-export const useLoginState = () => useContext();
+export const useLogin = () => useContext(LoginContext);

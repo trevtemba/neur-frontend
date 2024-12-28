@@ -130,7 +130,22 @@ const Profile = () => {
             <div className="profileContainer">
                 {loginState == false && (
                     <>
-                        <motion.div className="promptBox">
+                        <motion.div className="promptBox"
+                        initial = {{
+                            y: -15,
+                            opacity: 0,
+                        }}
+                        animate = {{
+                            y: 0,
+                            opacity: 1,
+                        }}
+                        transition={{
+                            duration: 1,
+                            ease: [0.25, 1, 0.5, 1],
+                        }}
+                        exit={{
+                            opacity: 0,
+                        }}>
                             <img className="promptIcon"src={unavailable_icon}/>
                             <span className="promptText">Login to view your profile!</span>
                             <motion.button 

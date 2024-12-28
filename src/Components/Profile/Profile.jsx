@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { color, motion } from "motion/react";
 import { useLogin } from "../Contexts/loginContext";
+import { useNavigation } from "../Contexts/navigationContext";
+import { useNavigate } from "react-router-dom";
 import "./profile.css"
 import profileSplash from "../Assets/profileAssets/mock_splash.jpg"
 import profileIcon from "../Assets/profileAssets/mock_icon.jpg"
@@ -38,6 +40,9 @@ const Profile = () => {
     const [editState, setEditState] = useState("")
     
     const { loginState } = useLogin();
+
+    const { activeButton, goPage } = useNavigation();
+    const navigate = useNavigate();
 
     const selectedDate = {
         month: "",
@@ -127,8 +132,15 @@ const Profile = () => {
                     <>
                         <motion.div className="promptBox">
                             <img className="promptIcon"src={unavailable_icon}/>
-                            <span className="promptText">You're not logged in!</span>
-                            <button className="loginRedirect">Login</button>
+                            <span className="promptText">Login to view your profile!</span>
+                            <motion.button 
+                            className="loginRedirect"
+                            onClick={() => goPage("login", navigate)}
+                            whileHover={{
+                                backgroundColor: "hsl(0, 0%, 10%)",
+                            }}>
+                                Login
+                            </motion.button>
                         </motion.div>
                     </>
                 )}

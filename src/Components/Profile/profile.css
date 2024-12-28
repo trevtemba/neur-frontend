@@ -14,6 +14,42 @@
     height: 100%;
     background-color: hsl(0, 0, 0);
 }
+
+.promptBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10%;
+    gap: 20px;
+    width: 900px;
+    height: 300px;
+    background-color: hsl(0, 0%, 5%);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.promptIcon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.promptText {
+    color: hsl(0, 0%, 90%);
+    font-size: 16px
+}
+
+.loginRedirect {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    width: 100px;
+    height: 50px;
+    color: hsl(0, 0%, 90%);
+    background-color: hsl(0, 0%, 5%);
+    border-radius: 25px;
+}
+
 .profileHeader {
     position: relative;
     display: flex;

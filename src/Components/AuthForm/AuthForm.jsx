@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useLogin } from "../Contexts/loginContext";
 import FormInput from "./FormInputs/FormInput";
 import "./authForm.css"
 import React from "react";
@@ -14,6 +15,8 @@ const AuthForm = () => {
 
     const [formState, setForm] = useState("Login"); // Register, Login, Verification, Forgot Password, Success
     const [selectState, setState] = useState("Have an account?");
+
+    const { toggleLogin } = useLogin();
 
     const handleHover = (thingy) => {
         setState(thingy === 0 ? "Login" : "Have an account?"); 
@@ -308,8 +311,17 @@ const AuthForm = () => {
                                 </div>
                             </motion.form>
                         )};
+
                     {/* </AnimatePresence> */}
                 </div>
+                <motion.button className="devLogin"
+                whileHover={{
+                    backgroundColor: "hsl(0, 0%, 70%)",
+                }}
+                onClick={() => toggleLogin()}
+                >
+                    toggleLogin
+                </motion.button>
             </motion.div>
         </AnimatePresence>
     );

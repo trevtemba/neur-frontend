@@ -2,7 +2,7 @@ import { div, filter } from "motion/react-client";
 import { motion, MotionConfig } from "motion/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useNavigation } from "./navigationContext";
+import { useNavigation } from "../Contexts/navigationContext";
 
 import "./navigation.css"
 import React from "react";

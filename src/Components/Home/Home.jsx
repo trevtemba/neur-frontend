@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { useNavigation } from "../Navigation/navigationContext";
+import { useNavigation } from "../Contexts/navigationContext";
 
 import "./home.css"
 import featuredHero from "../Assets/featured_hero.jpg"

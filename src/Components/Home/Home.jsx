@@ -64,6 +64,9 @@ const Home = () => {
                         }}
                         whileHover={{
                             backgroundColor: "#00dfa9",
+                        }}
+                        whileTap={{
+                            scale: 0.95,
                         }}>
                             BOOK
                         </motion.button>
@@ -76,6 +79,9 @@ const Home = () => {
                         whileHover={{
                             backgroundColor: "#ffffff",
                             color: "#000000",
+                        }}
+                        whileTap={{
+                            scale: 0.95,
                         }}>
                             FAVORITE
                         </motion.button>

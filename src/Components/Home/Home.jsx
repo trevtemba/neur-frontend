@@ -112,6 +112,9 @@ const Home = () => {
                         whileHover={{
                             backgroundColor: "#d1d1d1",
                         }}
+                        whileTap={{
+                            scale: 0.95,
+                        }}
                         >
                             EXPLORE MORE
                         </motion.button>

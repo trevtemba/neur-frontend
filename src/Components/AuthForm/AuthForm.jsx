@@ -318,6 +318,9 @@ const AuthForm = () => {
                 whileHover={{
                     backgroundColor: "hsl(0, 0%, 70%)",
                 }}
+                whileTap={{
+                    scale: 0.95,
+                }}
                 onClick={() => toggleLogin()}
                 >
                     toggleLogin

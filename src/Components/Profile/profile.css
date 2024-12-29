@@ -29,8 +29,8 @@
 }
 
 .promptIcon {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     object-fit: contain;
 }
 
@@ -41,7 +41,8 @@
     color: hsl(0, 0%, 90%);
     width: 200px;
     height: 50px;
-    font-size: 16px
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .loginRedirect {
@@ -50,6 +51,7 @@
     align-items: center;
     padding: 15px 20px;
     font-size: 16px;
+    font-weight: 500;
     width: 150px;
     height: auto;
     color: hsl(0, 0%, 90%);

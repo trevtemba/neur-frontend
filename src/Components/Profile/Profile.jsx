@@ -147,12 +147,15 @@ const Profile = () => {
                             opacity: 0,
                         }}>
                             <img className="promptIcon"src={unavailable_icon}/>
-                            <span className="promptText">Login to view your profile!</span>
+                            <span className="promptText">Login to view your profile</span>
                             <motion.button 
                             className="loginRedirect"
                             onClick={() => goPage("login", navigate)}
                             whileHover={{
                                 backgroundColor: "hsl(0, 0%, 10%)",
+                            }}
+                            whileTap={{
+                                scale: 0.95,
                             }}>
                                 Login
                             </motion.button>

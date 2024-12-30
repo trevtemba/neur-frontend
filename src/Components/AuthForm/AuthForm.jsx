@@ -10,6 +10,7 @@ import email_icon from "../Assets/email_icon.svg"
 import password_icon from "../Assets/password_icon.svg"
 import passConfirm_icon from "../Assets/passConfirm_icon.svg"
 import verification_icon from "../Assets/verification_icon.svg"
+import api from "../Config/axios";
 
 const AuthForm = () => {
 
@@ -80,7 +81,7 @@ const AuthForm = () => {
             type:"text",
             placeholder:"Verification code",
             errorMsg: "Incorrect code",
-            pattern: values.password,
+            pattern: "^[0-9]{6}$",
             label:<img src={verification_icon}/>,
             required: true,
         },
@@ -141,6 +142,29 @@ const AuthForm = () => {
                 //Storing token
                 localStorage.setItem("accessToken", result.accessToken);
                 setForm("Verification");
+            } else {
+                console.log("Error: ", response.statusText);
+                alert("Form submission failed!");
+            }
+        } catch (error) {
+            console.error("Error: ", error);
+            alert("Form submission failed!");
+        }
+    };
+    
+    const submitVerification = async (e) => {
+        e.preventDefault();
+
+        const { username, password, email, confirmPassword, ...dataToSend} = values;
+        console.log("Data being sent:", dataToSend);
+        try {
+            const response = await api.post("/users/verify", dataToSend);
+
+            console.log("got response");
+            if (response.status == 200) {
+                toggleLogin();
+                const result = await response.data.message;
+                console.log("Success: ", result);
             } else {
                 console.log("Error: ", response.statusText);
                 alert("Form submission failed!");
@@ -292,7 +316,7 @@ const AuthForm = () => {
                                     opacity: 0,
                                     x: 25,
                                 }}
-                                onSubmit={handleLogin}
+                                onSubmit={submitVerification}
                             >
                                 {inputs
                                     .filter((item) => item.id === 5)
@@ -304,9 +328,9 @@ const AuthForm = () => {
                                         onChange={onChange}/>
                                 ))}
                                 <div className="formButtons">
-                                    <button type="submit">Resend Code</button>
-                                    <button onClick={ () => toggleForm("Register") }>
-                                        Create new account
+                                    <button type="submit">Submit</button>
+                                    <button>
+                                        Resend code
                                     </button>
                                 </div>
                             </motion.form>

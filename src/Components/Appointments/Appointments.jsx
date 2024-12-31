@@ -2,11 +2,14 @@ import React from "react";
 import { motion } from "motion/react";
 import "./appointments.css"
 import { useLogin } from "../Contexts/loginContext";
-
+import { useNavigation } from "../Contexts/navigationContext";
+import { useNavigate } from "react-router-dom";
 const Appointments = () => {
 
     const { loginState } = useLogin();
-
+    const { goPage } = useNavigation();
+    const navigate = useNavigate();
+    
     return (
         <div className="appointmentsPage">
             <div className="appointmentsContainer">

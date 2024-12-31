@@ -1,12 +1,15 @@
 import React from "react";
 import { motion } from "motion/react";
+import { useNavigation } from "../Contexts/navigationContext";
 import "./earnings.css"
 import { useLogin } from "../Contexts/loginContext";
-
+import { useNavigate } from "react-router-dom";
 const Earnings = () => {
 
     const { loginState } = useLogin();
-
+    const { goPage } = useNavigation();
+    const navigate = useNavigate();
+    
     return (
         <div className="earningsPage">
             <div className="earningsContainer">

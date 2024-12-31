@@ -17,6 +17,7 @@ import shareIcon from "../Assets/profileAssets/share_icon.svg"
 import editIcon from "../Assets/profileAssets/edit_icon.svg"
 import likeIcon from "../Assets/featuredGrid/like_icon.svg"
 import addIcon from "../Assets/profileAssets/add_icon.svg"
+import profile_icon from "../Assets/profile_icon.svg"
 
 import arrowLIcon from "../Assets/profileAssets/arrow_back.svg"
 import arrowRIcon from "../Assets/profileAssets/arrow_forward.svg"
@@ -148,7 +149,6 @@ const Profile = () => {
                         exit={{
                             opacity: 0,
                         }}>
-                            <img className="promptIcon"src={unavailable_icon}/>
                             <span className="promptText">Login to view your profile</span>
                             <motion.button 
                             className="loginRedirect"

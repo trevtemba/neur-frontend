@@ -28,11 +28,6 @@
     border-radius: 20px;
 }
 
-.promptIcon {
-    width: 300px;
-    height: 300px;
-    object-fit: contain;
-}
 
 .promptText {
     display: flex;

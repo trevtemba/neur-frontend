@@ -75,9 +75,9 @@ const Navigation = () => {
                 <motion.button
                     className="navButton"
                     style={{
-                        filter: activeButton === "appnt" ? "invert(1)" : "invert(0)",
+                        filter: activeButton === "appointments" ? "invert(1)" : "invert(0)",
                     }}
-                    onClick={() => goPage("appnt", navigate)}
+                    onClick={() => goPage("appointments", navigate)}
                     {...navButtonAnimation}
                 >
                     <img src={appointments_icon} alt="Appointments" />

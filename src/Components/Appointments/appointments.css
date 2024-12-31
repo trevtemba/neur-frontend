@@ -1,0 +1,56 @@
+.appointmentsPage {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color:hsl(0, 0, 0);
+}
+
+.appointmentsContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: hsl(0, 0, 0);
+}
+
+.promptBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    gap: 10px;
+    width: 500px;
+    height: 400px;
+    background-color: transparent;
+    border-radius: 20px;
+}
+
+
+.promptText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: hsl(0, 0%, 90%);
+    width: 300px;
+    height: 50px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.loginRedirect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    width: 150px;
+    height: auto;
+    color: hsl(0, 0%, 90%);
+    background-color: hsl(0, 0%, 5%);
+    border-color: transparent;
+    border-radius: 25px;
+}

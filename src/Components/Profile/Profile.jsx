@@ -4,6 +4,8 @@ import { useLogin } from "../Contexts/loginContext";
 import { useNavigation } from "../Contexts/navigationContext";
 import { useNavigate } from "react-router-dom";
 import "./profile.css"
+import api from "../Config/axios";
+
 import profileSplash from "../Assets/profileAssets/mock_splash.jpg"
 import profileIcon from "../Assets/profileAssets/mock_icon.jpg"
 import reviewerIcon from "../Assets/profileAssets/mockreviewer_icon.jpg"
@@ -39,7 +41,7 @@ const Profile = () => {
     const [timeSelectState, setTimeSelectState] = useState()
     const [editState, setEditState] = useState("")
     
-    const { loginState } = useLogin();
+    const { loginState, userInfo } = useLogin();
 
     const { activeButton, goPage } = useNavigation();
     const navigate = useNavigate();
@@ -188,7 +190,7 @@ const Profile = () => {
                                 <img className="iconImg" src={profileIcon}/>
                             </div>
                             <div className="infoBox">
-                                    <span className="profileUsn">Camillee_01</span>
+                                    <span className="profileUsn">{userInfo.username}</span>
                                     <span className="roleName">Hair stylist</span>
                             </div>
                             <motion.button className="bookBtn"

@@ -6,8 +6,39 @@ import Home from "./Components/Home/Home"
 import Appointments from "./Components/Appointments/Appointments"
 import Earnings from "./Components/Earnings/Earnings"
 import Explore from "./Components/Explore/Explore"
+import { useLogin } from "./Components/Contexts/loginContext";
+import { useEffect } from "react";
+import api from "./Components/Config/axios";
 
 const App = () => {
+
+  const { loginState, handleLoginState, setUser } = useLogin();
+
+  const validateToken = async (e) => {
+ 
+    try {
+        const response = await api.get("/auth/getUser");
+
+        console.log("got response");
+        if (response.status == 200) {
+            handleLoginState("login");
+            const result = await response.data;
+            setUser(result);
+            console.log("Success: ", result);
+        } else {
+            console.log("JWT non-existent or expired");
+        }
+    } catch (error) {
+        console.error("Error: ", error);
+    }
+  }
+
+  useEffect(() => {
+    if (localStorage.getItem("accessToken") != null) {
+      validateToken();
+    }
+  }, []);
+
   return (
     <>
       <nav>

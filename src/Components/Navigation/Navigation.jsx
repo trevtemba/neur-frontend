@@ -116,7 +116,7 @@ const Navigation = () => {
             <div className="rightContainer">
                 <motion.button
                     className="loginButton"
-                    onClick={() => goPage("login", navigate)}
+                    onClick={() => goPage(loginState == true ? "logout" : "login", navigate)}
                     style={{
                         backgroundColor: loginState == true ? "hsl(0, 0%, 5%)" : "hsl(0, 0%, 95%)",
                         color: loginState == true ? "hsl(0, 0%, 95%)" : "hsl(0, 0%, 5%)",

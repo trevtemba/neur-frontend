@@ -17,7 +17,7 @@ const AuthForm = () => {
     const [formState, setForm] = useState("Login"); // Register, Login, Verification, Forgot Password, Success
     const [selectState, setState] = useState("Have an account?");
 
-    const { toggleLogin } = useLogin();
+    const { handleLoginState, setUser } = useLogin();
 
     const handleHover = (thingy) => {
         setState(thingy === 0 ? "Login" : "Have an account?"); 
@@ -162,9 +162,10 @@ const AuthForm = () => {
 
             console.log("got response");
             if (response.status == 200) {
-                toggleLogin();
-                const result = await response.data.message;
-                console.log("Success: ", result);
+                const result = await response.data;
+                handleLoginState("login");
+                setUser(result)
+                console.log("Success: ", result.message);
             } else {
                 console.log("Error: ", response.statusText);
                 alert("Form submission failed!");
@@ -345,9 +346,9 @@ const AuthForm = () => {
                 whileTap={{
                     scale: 0.95,
                 }}
-                onClick={() => toggleLogin()}
+                onClick={() => handleLoginState("login")}
                 >
-                    toggleLogin
+                    mock-login
                 </motion.button>
             </motion.div>
         </AnimatePresence>

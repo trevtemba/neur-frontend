@@ -29,7 +29,8 @@ const App = () => {
             console.log("JWT non-existent or expired");
         }
     } catch (error) {
-        console.error("Error: ", error);
+        console.log("Error: ", error);
+        localStorage.removeItem
     }
   }
 

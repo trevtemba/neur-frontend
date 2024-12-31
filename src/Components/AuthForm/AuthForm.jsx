@@ -165,7 +165,7 @@ const AuthForm = () => {
                 const result = await response.data;
                 handleLoginState("login");
                 setUser(result)
-                console.log("Success: ", result.message);
+                console.log("Successful login!");
             } else {
                 console.log("Error: ", response.statusText);
                 alert("Form submission failed!");

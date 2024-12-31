@@ -3,6 +3,7 @@ import { motion, MotionConfig } from "motion/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useNavigation } from "../Contexts/navigationContext";
+import { useLogin } from "../Contexts/loginContext";
 
 import "./navigation.css"
 import React from "react";
@@ -51,6 +52,8 @@ const buttonAnimation = {
 
 const Navigation = () => {
     const { activeButton, goPage } = useNavigation();
+    const { loginState } = useLogin();
+
     const navigate = useNavigate();
 
     return (
@@ -114,9 +117,28 @@ const Navigation = () => {
                 <motion.button
                     className="loginButton"
                     onClick={() => goPage("login", navigate)}
-                    {...buttonAnimation}
+                    style={{
+                        backgroundColor: loginState == true ? "hsl(0, 0%, 5%)" : "hsl(0, 0%, 95%)",
+                        color: loginState == true ? "hsl(0, 0%, 95%)" : "hsl(0, 0%, 5%)",
+                    }}
+                    initial= {{
+                        backgroundColor: loginState == true ? "hsl(0, 0%, 5%)" : "hsl(0, 0%, 95%)",
+                        borderRadius: "30px",
+                    }}
+                    animate= {{
+                        backgroundColor: loginState == true ? "hsl(0, 0%, 5%)" : "hsl(0, 0%, 95%)",
+                    }}
+                    whileHover = {{
+                        backgroundColor: loginState == true ? "hsl(0, 0%, 2.5%)" : "hsl(0, 0%, 80%)",
+                    }}
+                    whileTap = {{
+                        scale: 0.95,
+                    }}
+                    transition = {{
+                        duration: 0.1,
+                    }}
                 >
-                    Login
+                    {loginState == true ? "Logout" : "Login"}
                 </motion.button>
             </div>
         </div>

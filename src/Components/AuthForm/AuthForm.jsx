@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useLogin } from "../Contexts/loginContext";
+import { useNavigation } from "../Contexts/navigationContext";
 import FormInput from "./FormInputs/FormInput";
 import "./authForm.css"
 import React from "react";
@@ -11,6 +12,7 @@ import password_icon from "../Assets/password_icon.svg"
 import passConfirm_icon from "../Assets/passConfirm_icon.svg"
 import verification_icon from "../Assets/verification_icon.svg"
 import api from "../Config/axios";
+import { useNavigate } from "react-router-dom";
 
 const AuthForm = () => {
 
@@ -18,6 +20,8 @@ const AuthForm = () => {
     const [selectState, setState] = useState("Have an account?");
 
     const { handleLoginState, setUser } = useLogin();
+    const { goPage } = useNavigation();
+    const navigate = useNavigate();
 
     const handleHover = (thingy) => {
         setState(thingy === 0 ? "Login" : "Have an account?"); 
@@ -165,6 +169,7 @@ const AuthForm = () => {
                 const result = await response.data;
                 handleLoginState("login");
                 setUser(result)
+                goPage("profile", navigate);
                 console.log("Successful login!");
             } else {
                 console.log("Error: ", response.statusText);

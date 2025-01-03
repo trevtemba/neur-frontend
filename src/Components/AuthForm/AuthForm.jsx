@@ -253,8 +253,14 @@ const AuthForm = () => {
                                         onChange={onChange}/>
                                 ))}
                                 <div className="formButtons">
-                                    <button type="submit">Login</button>
-                                    <button onClick={ () => toggleForm("Register") }>
+                                    <button 
+                                    type="submit"
+                                    className="formBtn">
+                                        Login
+                                    </button>
+                                    <button 
+                                    className="formBtn"
+                                    onClick={() => toggleForm("Register")}>
                                         Create new account
                                     </button>
                                 </div>
@@ -290,12 +296,17 @@ const AuthForm = () => {
                                     <FormInput key={input.id} {...input} value={values[input.name]} onChange={onChange}/>
                                 ))}
                                 <div className="formButtons">
-                                    <button type="submit">Sign up</button>
                                     <button 
-                                        onClick={ () => toggleForm("Login")  }
-                                        onMouseEnter={() => handleHover(0)} 
-                                        onMouseLeave={() => handleHover(1)}>
-                                            {selectState}
+                                    type="submit"
+                                    className="formBtn">
+                                        Sign up
+                                    </button>
+                                    <button 
+                                    className="formBtn"
+                                    onClick={ () => toggleForm("Login")  }
+                                    onMouseEnter={() => handleHover(0)} 
+                                    onMouseLeave={() => handleHover(1)}>
+                                        {selectState}
                                     </button>
                                 </div>
                             </motion.form>
@@ -334,8 +345,13 @@ const AuthForm = () => {
                                         onChange={onChange}/>
                                 ))}
                                 <div className="formButtons">
-                                    <button type="submit">Submit</button>
-                                    <button>
+                                    <button 
+                                    type="submit"
+                                    className="formBtn">
+                                        Submit
+                                    </button>
+                                    <button
+                                    className="formBtn">
                                         Resend code
                                     </button>
                                 </div>

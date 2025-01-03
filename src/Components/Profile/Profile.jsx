@@ -40,7 +40,11 @@ const Profile = () => {
 
     const { loginState, userInfo, setUserBio } = useLogin();
     const [pageState, setPageState] = useState("info")
-    const [editServiceState, setEditServiceState] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState();
+
+    const [serviceEdit, setServiceEdit] = useState(false);
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
 
     const [isEditingAbout, toggleIsEditingAbout] = useState(false);
 
@@ -99,6 +103,10 @@ const Profile = () => {
         toggleIsEditingAbout(!isEditingAbout);
         setTempText(userInfo.bio);
         setTextCnt(userInfo.bio.length)
+    }
+
+    const toggleServiceEdit = () => {
+        setServiceEdit(!serviceEdit);
     }
 
     const handleAboutCancel = () => {
@@ -189,10 +197,28 @@ const Profile = () => {
         },
         whileTap: {
             scale: 0.95,
-            backgroundColor: "hsl(0, 0%, 7.5%)",
+            backgroundColor: "hsl(0, 0%, 10%)",
         },
         transition: {
-            duration: 0.25,
+            duration: 0.2,
+        },
+    }
+
+    const addContentBtn = {
+        initial: {
+            scale: 1,
+            backgroundColor: "hsl(0, 0%, 2.5%)",
+            filter: "invert(0)",
+        },
+        whileHover: {
+            backgroundColor: "hsl(0, 0%, 4%)",
+        },
+        whileTap: {
+            scale: 0.95,
+            backgroundColor: "hsl(0, 0%, 10%)",
+        },
+        transition: {
+            duration: 0.2,
         },
     }
 
@@ -200,7 +226,15 @@ const Profile = () => {
 
     return (
         <div className="profilePage">
-            {<CreateService/>}
+            {isModalOpen && (
+                <CreateService
+                    isOpen={isModalOpen}
+                    btnAnims={formBtn}
+                    onClose={closeModal}
+
+                />
+            )}
+            
             <div className="profileContainer">
                 {loginState == false && (
                     <>
@@ -446,7 +480,12 @@ const Profile = () => {
                                     opacity: 0,
                                 }}>
                                     <div className="serviceSect">
-                                        <div className="subHeader">Services<button className="editBtn"><img src={editIcon}/></button></div>
+                                        <div className="subHeader">
+                                            Services
+                                            <button className="editBtn" onClick={() => toggleServiceEdit()}>
+                                                <img src={editIcon}/>
+                                            </button>
+                                        </div>
                                         <div className="serviceList">
                                             <motion.button 
                                             className="service" onClick={ () => setServiceSelectState(1)}
@@ -500,11 +539,14 @@ const Profile = () => {
                                                     <span className="symbol">$</span><span className="price">60</span>
                                                 </div>
                                             </motion.button>
-                                            <motion.button
-                                            className="service" onClick={ () => addServiceForm()}
-                                            >
-                                                <img src={addIcon}/>
-                                            </motion.button>
+                                            {serviceEdit === true && (
+                                                <motion.button
+                                                className="addService" onClick={() => openModal()}
+                                                {...addContentBtn}
+                                                >
+                                                    <img className="addIcon2" src={addIcon}/>
+                                                </motion.button>
+                                            )}
                                         </div>
                                     </div>
                                     <div className="scheduleSect">

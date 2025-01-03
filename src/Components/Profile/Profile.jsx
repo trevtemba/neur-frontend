@@ -33,15 +33,24 @@ import fi6 from "../Assets/featuredGrid/fi6.jpg"
 import fi7 from "../Assets/featuredGrid/fi7.jpg"
 import fi8 from "../Assets/featuredGrid/fi8.jpg"
 import fi9 from "../Assets/featuredGrid/fi8.jpg"
-import { div, style } from "motion/react-client";
+import { div, filter, style, textarea } from "motion/react-client";
 const Profile = () => {
 
     const [pageState, setPageState] = useState("info")
-    const [serviceSelectState, setServiceSelectState] = useState()
-    const [dateSelectState, setDateSelectState] = useState()
-    const [timeSelectState, setTimeSelectState] = useState()
-    const [editState, setEditState] = useState("")
-    
+    const [editServiceState, setEditServiceState] = useState(false);
+
+
+    const [aboutText, setAboutTest] = useState("");
+    const [isEditingAbout, toggleIsEditingAbout] = useState(false);
+    const [tempText, setTempText] = useState("")
+    const [textCnt, setTextCnt] = useState(0);
+
+    const [serviceSelectState, setServiceSelectState] = useState();
+    const [dateSelectState, setDateSelectState] = useState();
+    const [timeSelectState, setTimeSelectState] = useState();
+    const [editState, setEditState] = useState("");
+
+
     const { loginState, userInfo } = useLogin();
 
     const { activeButton, goPage } = useNavigation();
@@ -86,6 +95,26 @@ const Profile = () => {
             setEditState(sectId);
         }
     }
+
+    const toggleAboutTextEdit = () => {
+        toggleIsEditingAbout(!isEditingAbout);
+        setTempText(aboutText);
+        setTextCnt(aboutText.length)
+    }
+
+    const handleAboutCancel = () => {
+        toggleAboutTextEdit();
+    }
+    const handleAboutSave = () => {
+        setAboutTest(tempText);
+        toggleAboutTextEdit();
+    }
+
+    const handleTextEdit = (e) => {
+        setTempText(e.target.value);
+        setTextCnt(e.target.value.length)
+    } 
+
     const profileNavBtn = {
         initial: {
             color: "rgb(153, 153, 153)",
@@ -125,6 +154,24 @@ const Profile = () => {
             filter: { duration: 0.1},
         },
     };
+
+    const formBtn = {
+        initial: {
+            scale: 1,
+            backgroundColor: "hsl(0, 0%, 2.5%)",
+            filter: "invert(0)",
+        },
+        whileHover: {
+            backgroundColor: "hsl(0, 0%, 5%)",
+        },
+        whileTap: {
+            scale: 0.95,
+            backgroundColor: "hsl(0, 0%, 7.5%)",
+        },
+        transition: {
+            duration: 0.25,
+        },
+    }
 
 
 
@@ -296,14 +343,38 @@ const Profile = () => {
                                     opacity: 0,
                                 }}>
                                     <div className="aboutSect">
-                                        <div className="subHeader">About<button className="editBtn"><img src={editIcon}/></button></div>
+                                        <div className="subHeader">About<button className="editBtn" onClick={() => toggleAboutTextEdit()}><img src={editIcon}/></button></div>
                                         <div className="aboutText">
-                                            <p>
-                                                My name is Camille, and I've been doing hair for 3 years now!<br />
-                                                If you like my previous work, be sure to book an appointment with me!<br />
-                                                <br />
-                                                Follow me on IG: @camille_marie
-                                            </p>
+                                            {isEditingAbout == false && (
+                                                <div className="aboutText2">
+                                                    <p>{aboutText}</p>
+                                                </div>
+                                            )}
+                                            {isEditingAbout == true && (
+                                                <div className="editAboutText">
+                                                    <textarea
+                                                        className="editField"
+                                                        value={tempText}
+                                                        onChange={(e) => handleTextEdit(e)}
+                                                    />
+                                                    <div className="inputInfo">
+                                                        <span>Don't share private information</span><span>{textCnt}/500</span>
+                                                    </div>
+                                                    <div className="editActions">
+                                                        <motion.button className="cancelBtn" 
+                                                        onClick={handleAboutCancel}
+                                                        {...formBtn}>
+                                                            Cancel
+                                                        </motion.button>
+                                                        <motion.button className="saveBtn" 
+                                                        onClick={handleAboutSave}
+                                                        {...formBtn}>
+                                                            Save
+                                                        </motion.button>
+                                                    </div>
+                                                </div>
+                                            )}
+
                                         </div>
                                     </div>
                                     <div className="clientSect">
@@ -404,6 +475,11 @@ const Profile = () => {
                                                 <div className="priceSect">
                                                     <span className="symbol">$</span><span className="price">60</span>
                                                 </div>
+                                            </motion.button>
+                                            <motion.button
+                                            className="service" onClick={ () => addServiceForm()}
+                                            >
+                                                <img src={addIcon}/>
                                             </motion.button>
                                         </div>
                                     </div>

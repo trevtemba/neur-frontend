@@ -108,6 +108,7 @@ const Profile = () => {
     const handleAboutSave = () => {
         setAboutTest(tempText);
         toggleAboutTextEdit();
+        patchAboutInfo(aboutText);
     }
 
     const handleTextEdit = (e) => {
@@ -115,6 +116,29 @@ const Profile = () => {
         setTextCnt(e.target.value.length)
     } 
 
+    const patchAboutInfo = async(aboutText) => {
+        e.preventDefault();
+
+        const { verificationCode, confirmPassword, ...dataToSend} = values;
+        console.log("Data being sent:", dataToSend);
+        try {
+            const response = api.post("/users/{id}/about")
+            });
+
+            console.log("got response");
+            if (response.ok) {
+                const result = await response.json();
+                console.log("Success", result);
+                setForm("Login");
+            } else {
+                console.log("Error: ", response.statusText);
+                alert("Form submission failed!");
+            }
+        } catch (error) {
+            console.error("Error: ", error);
+            alert("Form submission failed!");
+        }
+    }
     const profileNavBtn = {
         initial: {
             color: "rgb(153, 153, 153)",

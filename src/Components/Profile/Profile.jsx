@@ -36,22 +36,19 @@ import fi9 from "../Assets/featuredGrid/fi8.jpg"
 import { div, filter, style, textarea } from "motion/react-client";
 const Profile = () => {
 
+    const { loginState, userInfo, setUserBio } = useLogin();
     const [pageState, setPageState] = useState("info")
     const [editServiceState, setEditServiceState] = useState(false);
 
-
-    const [aboutText, setAboutTest] = useState("");
     const [isEditingAbout, toggleIsEditingAbout] = useState(false);
-    const [tempText, setTempText] = useState("")
+
+    const [tempText, setTempText] = useState(userInfo.bio)
     const [textCnt, setTextCnt] = useState(0);
 
     const [serviceSelectState, setServiceSelectState] = useState();
     const [dateSelectState, setDateSelectState] = useState();
     const [timeSelectState, setTimeSelectState] = useState();
     const [editState, setEditState] = useState("");
-
-
-    const { loginState, userInfo } = useLogin();
 
     const { activeButton, goPage } = useNavigation();
     const navigate = useNavigate();
@@ -98,17 +95,17 @@ const Profile = () => {
 
     const toggleAboutTextEdit = () => {
         toggleIsEditingAbout(!isEditingAbout);
-        setTempText(aboutText);
-        setTextCnt(aboutText.length)
+        setTempText(userInfo.bio);
+        setTextCnt(userInfo.bio.length)
     }
 
     const handleAboutCancel = () => {
         toggleAboutTextEdit();
     }
     const handleAboutSave = () => {
-        setAboutTest(tempText);
+        setUserBio(tempText);
         toggleAboutTextEdit();
-        patchAboutInfo(aboutText);
+        patchAboutInfo();
     }
 
     const handleTextEdit = (e) => {
@@ -116,20 +113,20 @@ const Profile = () => {
         setTextCnt(e.target.value.length)
     } 
 
-    const patchAboutInfo = async(aboutText) => {
-        e.preventDefault();
+    const patchAboutInfo = async() => {
+        
+        console.log(tempText);
+        console.log(userInfo.id);
+        const data = { "bio": tempText };
 
-        const { verificationCode, confirmPassword, ...dataToSend} = values;
-        console.log("Data being sent:", dataToSend);
+        console.log("Data being sent:", data);
         try {
-            const response = api.post("/users/{id}/about")
-            });
+            const response = await api.patch(`/users/${userInfo.id}/about`, data);
 
             console.log("got response");
-            if (response.ok) {
-                const result = await response.json();
+            if (response.status == 200) {
+                const result = await response.data;
                 console.log("Success", result);
-                setForm("Login");
             } else {
                 console.log("Error: ", response.statusText);
                 alert("Form submission failed!");
@@ -371,7 +368,7 @@ const Profile = () => {
                                         <div className="aboutText">
                                             {isEditingAbout == false && (
                                                 <div className="aboutText2">
-                                                    <p>{aboutText}</p>
+                                                    <p>{userInfo.bio}</p>
                                                 </div>
                                             )}
                                             {isEditingAbout == true && (
@@ -386,12 +383,12 @@ const Profile = () => {
                                                     </div>
                                                     <div className="editActions">
                                                         <motion.button className="cancelBtn" 
-                                                        onClick={handleAboutCancel}
+                                                        onClick={() => handleAboutCancel()}
                                                         {...formBtn}>
                                                             Cancel
                                                         </motion.button>
                                                         <motion.button className="saveBtn" 
-                                                        onClick={handleAboutSave}
+                                                        onClick={() => handleAboutSave()}
                                                         {...formBtn}>
                                                             Save
                                                         </motion.button>

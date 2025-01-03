@@ -10,6 +10,7 @@ export const LoginProvider = ({children}) => {
         username: "",
         email: "",
         role: "",
+        bio: "",
     });
     
     const setUser = (data) => {
@@ -18,7 +19,15 @@ export const LoginProvider = ({children}) => {
             username: data.username,
             email: data.email,
             role: data.role,
+            bio: data.bio,
         });
+    };
+    
+    const setUserBio = (text) => {
+        setUserInfo((userInfo) => ({
+            ...userInfo,
+            bio: text,
+        }))
     };
 
     const handleLoginState = (type) => {
@@ -31,7 +40,7 @@ export const LoginProvider = ({children}) => {
     };
 
     return (
-        <LoginContext.Provider value = {{ loginState, userInfo, handleLoginState, setUser }}>
+        <LoginContext.Provider value = {{ loginState, userInfo, handleLoginState, setUser, setUserBio }}>
             {children}
         </LoginContext.Provider>
     );

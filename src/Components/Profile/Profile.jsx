@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import CreateService from "./ServicesTab/AddService";
+
 import { color, motion } from "motion/react";
 import { useLogin } from "../Contexts/loginContext";
 import { useNavigation } from "../Contexts/navigationContext";
@@ -198,6 +200,7 @@ const Profile = () => {
 
     return (
         <div className="profilePage">
+            {<CreateService/>}
             <div className="profileContainer">
                 {loginState == false && (
                     <>

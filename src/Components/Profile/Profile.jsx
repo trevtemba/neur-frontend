@@ -38,6 +38,13 @@ import fi9 from "../Assets/featuredGrid/fi8.jpg"
 import { div, filter, style, textarea } from "motion/react-client";
 const Profile = () => {
 
+    const [tempService, setTempService] = useState({
+        name: "",
+        duration: "",
+        price: "",
+        description: "",
+    })
+
     const { loginState, userInfo, setUserBio } = useLogin();
     const [pageState, setPageState] = useState("info")
     const [isModalOpen, setIsModalOpen] = useState();
@@ -122,6 +129,30 @@ const Profile = () => {
         setTempText(e.target.value);
         setTextCnt(e.target.value.length)
     } 
+    
+    const postServiceInfo = async(e) => {
+        e.preventDefault();
+        
+        const data = tempService;
+        console.log(tempService)
+
+        console.log("Data being sent:", data);
+        try {
+            const response = await api.post(`/users/${userInfo.id}/services`, data);
+
+            console.log("got response");
+            if (response.status == 200) {
+                const result = await response.data;
+                console.log("Success", result);
+            } else {
+                console.log("Error: ", response.statusText);
+                alert("Form submission failed!");
+            }
+        } catch (error) {
+            console.error("Error: ", error);
+            alert("Form submission failed!");
+        }
+    }
 
     const patchAboutInfo = async() => {
         
@@ -231,7 +262,9 @@ const Profile = () => {
                     isOpen={isModalOpen}
                     btnAnims={formBtn}
                     onClose={closeModal}
-
+                    tempService={tempService}
+                    setTempService={setTempService}
+                    postServiceInfo={postServiceInfo}
                 />
             )}
             

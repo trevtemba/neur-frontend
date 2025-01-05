@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import "./profile.css"
 import api from "../Config/axios";
 
+import VendorService from "./ServicesTab/VendorService";
+
 import profileSplash from "../Assets/profileAssets/mock_splash.jpg"
 import profileIcon from "../Assets/profileAssets/mock_icon.jpg"
 import reviewerIcon from "../Assets/profileAssets/mockreviewer_icon.jpg"
@@ -45,7 +47,7 @@ const Profile = () => {
         description: "",
     })
 
-    const { loginState, userInfo, setUserBio } = useLogin();
+    const { loginState, userInfo, userServices, setUserBio, addService } = useLogin();
     const [pageState, setPageState] = useState("info")
     const [isModalOpen, setIsModalOpen] = useState();
 
@@ -143,6 +145,7 @@ const Profile = () => {
             console.log("got response");
             if (response.status == 200) {
                 const result = await response.data;
+                addService(result);
                 console.log("Success:", result);
             } else {
                 console.log("Error: ", response.statusText);
@@ -520,7 +523,16 @@ const Profile = () => {
                                             </button>
                                         </div>
                                         <div className="serviceList">
-                                            <motion.button 
+                                            {userServices.map((service) => (
+                                                <VendorService 
+                                                key={service.id}
+                                                btnStyling={genericBtn}
+                                                selectState={serviceSelectState}
+                                                setSelect={setServiceSelectState}
+                                                {...service}
+                                                />
+                                            ))}
+                                            {/* <motion.button 
                                             className="service" onClick={ () => setServiceSelectState(1)}
                                             {...genericBtn}
                                             animate={{ filter: serviceSelectState == 1 ? "invert(1)" : "invert(0)" }}>
@@ -571,7 +583,7 @@ const Profile = () => {
                                                 <div className="priceSect">
                                                     <span className="symbol">$</span><span className="price">60</span>
                                                 </div>
-                                            </motion.button>
+                                            </motion.button> */}
                                             {serviceEdit === true && (
                                                 <motion.button
                                                 className="addService" onClick={() => openModal()}

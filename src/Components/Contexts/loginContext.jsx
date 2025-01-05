@@ -46,6 +46,17 @@ export const LoginProvider = ({children}) => {
         setUserServices(transformedServices);
     };
     
+    const addService = (data) => {
+        const newService = {
+            id: Number(data.id),
+            name: data.name,
+            duration: Number(data.duration),
+            price: Number(data.price),
+            description: data.description,
+            listPos: 0,
+        }
+        setUserServices((prevState) => [...prevState, newService]);
+    }
     const setUserBio = (text) => {
         setUserInfo((userInfo) => ({
             ...userInfo,
@@ -63,7 +74,7 @@ export const LoginProvider = ({children}) => {
     };
 
     return (
-        <LoginContext.Provider value = {{ loginState, userInfo, userServices, handleLoginState, setUser, setUserBio, setServices }}>
+        <LoginContext.Provider value = {{ loginState, userInfo, userServices, handleLoginState, setUser, setUserBio, setServices, addService }}>
             {children}
         </LoginContext.Provider>
     );

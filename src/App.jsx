@@ -12,7 +12,26 @@ import api from "./Components/Config/axios";
 
 const App = () => {
 
-  const { loginState, handleLoginState, setUser, userInfo } = useLogin();
+  const { loginState, handleLoginState, setUser, userInfo, setServices, userServices } = useLogin();
+
+  const fetchServices = async (e, id) => {
+    try {
+
+      const response = await api.get(`/users/${id}/services`);
+
+      console.log("got response");
+      if (response.status == 200) {
+          const result = await response.data;
+          setServices(result);
+          console.log("Success: ", result);
+
+      } else {
+          console.log("No services for user: " + userInfo.id);
+      }
+    } catch (error) {
+        console.log("Error: ", error);
+    }
+  }
 
   const validateToken = async (e) => {
  
@@ -23,8 +42,10 @@ const App = () => {
         if (response.status == 200) {
             handleLoginState("login");
             const result = await response.data;
+            const id = await response.data.id;
+            console.log(result);
             setUser(result);
-            fetchServices(userInfo)
+            fetchServices(e, id)
             console.log("Success: ", result);
         } else {
             console.log("JWT non-existent or expired");
@@ -34,23 +55,7 @@ const App = () => {
         localStorage.removeItem
     }
   }
-
-  const fetchServices = async (e, userInfo) => {
-    try {
-      const response = await api.get(`/users/${userInfo.id}/services`);
-
-      console.log("got response");
-      if (response.status == 200) {
-          const result = await response.data;
-          console.log("Success: ", result);
-      } else {
-          console.log("No services for user: " + userInfo.id);
-      }
-    } catch (error) {
-        console.log("Error: ", error);
-    }
-  }
-
+  
   useEffect(() => {
     if (localStorage.getItem("accessToken") != null) {
       validateToken();

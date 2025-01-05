@@ -6,21 +6,44 @@ export const LoginProvider = ({children}) => {
     const [loginState, setLoginState] = useState(false);
 
     const [userInfo, setUserInfo] = useState({
-        id: "",
+        id: null,
         username: "",
         email: "",
         role: "",
         bio: "",
     });
+
+    const [userServices, setUserServices] = useState([
+        {
+            id: "",
+            name: "",
+            duration: "",
+            price: "",
+            description: "",
+            listPos: 0,
+        },
+    ]);
     
     const setUser = (data) => {
         setUserInfo ({
-            id: data.id,
+            id: Number(data.id),
             username: data.username,
             email: data.email,
             role: data.role,
             bio: data.bio,
         });
+    };
+
+    const setServices = (data) => {
+        const transformedServices = data.map((service) => ({
+            id: Number(service.id),
+            name: service.name,
+            duration: Number(service.duration),
+            price: Number(service.price),
+            description: service.description,
+            listPos: 0,
+        }));
+        setUserServices(transformedServices);
     };
     
     const setUserBio = (text) => {
@@ -40,7 +63,7 @@ export const LoginProvider = ({children}) => {
     };
 
     return (
-        <LoginContext.Provider value = {{ loginState, userInfo, handleLoginState, setUser, userInfo, setUserBio }}>
+        <LoginContext.Provider value = {{ loginState, userInfo, userServices, handleLoginState, setUser, setUserBio, setServices }}>
             {children}
         </LoginContext.Provider>
     );

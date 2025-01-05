@@ -138,7 +138,7 @@ const Profile = () => {
 
         console.log("Data being sent:", data);
         try {
-            const response = await api.post(`/users/${userInfo.id}/services`, data);
+            const response = await api.post(`/users/${userInfo.id}/services/create`, data);
 
             console.log("got response");
             if (response.status == 200) {

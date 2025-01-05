@@ -40,7 +40,7 @@ export const LoginProvider = ({children}) => {
     };
 
     return (
-        <LoginContext.Provider value = {{ loginState, userInfo, handleLoginState, setUser, setUserBio }}>
+        <LoginContext.Provider value = {{ loginState, userInfo, handleLoginState, setUser, userInfo, setUserBio }}>
             {children}
         </LoginContext.Provider>
     );

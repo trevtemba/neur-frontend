@@ -143,7 +143,7 @@ const Profile = () => {
             console.log("got response");
             if (response.status == 200) {
                 const result = await response.data;
-                console.log("Success", result);
+                console.log("Success:", result);
             } else {
                 console.log("Error: ", response.statusText);
                 alert("Form submission failed!");

@@ -12,7 +12,7 @@ import api from "./Components/Config/axios";
 
 const App = () => {
 
-  const { loginState, handleLoginState, setUser } = useLogin();
+  const { loginState, handleLoginState, setUser, userInfo } = useLogin();
 
   const validateToken = async (e) => {
  
@@ -24,6 +24,7 @@ const App = () => {
             handleLoginState("login");
             const result = await response.data;
             setUser(result);
+            fetchServices(userInfo)
             console.log("Success: ", result);
         } else {
             console.log("JWT non-existent or expired");
@@ -31,6 +32,22 @@ const App = () => {
     } catch (error) {
         console.log("Error: ", error);
         localStorage.removeItem
+    }
+  }
+
+  const fetchServices = async (e, userInfo) => {
+    try {
+      const response = await api.get(`/users/${userInfo.id}/services`);
+
+      console.log("got response");
+      if (response.status == 200) {
+          const result = await response.data;
+          console.log("Success: ", result);
+      } else {
+          console.log("No services for user: " + userInfo.id);
+      }
+    } catch (error) {
+        console.log("Error: ", error);
     }
   }
 

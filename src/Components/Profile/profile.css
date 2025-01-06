@@ -476,6 +476,7 @@ input:focus, textarea:focus {
     border-color: transparent;
     border-width: 0px;
     padding: 0px;
+    overflow: hidden;
 }
 
 .addIcon2 {

@@ -5,13 +5,21 @@ import optionEditIcon from "../../Assets/profileAssets/optionEdit_icon.svg";
 
 import "./vendorService.css";
 import { useState } from "react";
+import { animate } from "motion";
 
 const VendorService = (props) => {
     const {id, btnStyling, selectState, setSelect, serviceEdit, optionsActive, setOptionsActive, openModal, ...serviceProps} = props;
 
     const editBtnStyle = {
         initial: {
+            width: "0px",
             backgroundColor: "hsl(0, 0%, 2.5%)",
+        },
+        exit: {
+            width: "0px",
+        },
+        animate: {
+            width: "60px",
         },
         whileHover: {
             backgroundColor: "hsl(0, 0%, 3%)",
@@ -20,10 +28,30 @@ const VendorService = (props) => {
             backgroundColor: "hsl(0, 0%, 6%)",
         },
         transition: {
-            duration: 0,
+            duration: 0.2,
+            ease: [0.25, 1, 0.5, 1],
         }
     }
     
+    const optionBtns = {
+        initial: {
+            width: "0px",
+            opacity: 0,
+        },
+        exit: {
+            width: "0px",
+            opacity: 0,
+        },
+        animate: {
+            width: "100px",
+            opacity: 1,
+        },
+        transition: {
+            duration: 0.3,
+            ease: [0.25, 1, 0.5, 1],
+        },
+    }
+
     const optionBtnStyle = {
         initial: {
             backgroundColor: "hsl(0, 0%, 4%)",
@@ -59,39 +87,26 @@ const VendorService = (props) => {
                     <span className="symbol">$</span><span className="price">{serviceProps.price}</span>
                 </div>
             </motion.button>
-            {serviceEdit == true && (
-                <motion.div 
-                className="moreIcon"
-                {...editBtnStyle}
-                onClick={(e) => {
-                    e.stopPropagation();
-                    setOptionsActive(optionsActive == id ? -1 : id);
-                }}
-                >
-                    <img src={moreIcon}/>
-                </motion.div>
-            )}
             <AnimatePresence>
-                {optionsActive == id && (
+                {serviceEdit == true && (
+                    <motion.div 
+                    className="moreIcon"
+                    {...editBtnStyle}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setOptionsActive(optionsActive == id ? -1 : id);
+                    }}
+                    >
+                        <img src={moreIcon}/>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+            <AnimatePresence>
+                {(optionsActive == id && serviceEdit == true) && (
                     <motion.div 
                     className="editOptions"
                     key="editOptions"
-                    initial={{
-                        width: "0px",
-                        opacity: 0,
-                    }}
-                    exit={{
-                        width: "0px",
-                        opacity: 0,
-                    }}
-                    animate={{
-                        width: "100px",
-                        opacity: 1,
-                    }}
-                    transition={{
-                        duration: 0.3,
-                        ease: [0.25, 1, 0.5, 1],
-                    }}
+                    {...optionBtns}
                     >
                         <motion.button
                         className="editBtn3"

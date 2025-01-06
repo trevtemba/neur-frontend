@@ -38,6 +38,7 @@ import fi7 from "../Assets/featuredGrid/fi7.jpg"
 import fi8 from "../Assets/featuredGrid/fi8.jpg"
 import fi9 from "../Assets/featuredGrid/fi8.jpg"
 import { div, filter, style, textarea } from "motion/react-client";
+import { animate } from "motion";
 const Profile = () => {
 
     const [tempService, setTempService] = useState({
@@ -54,7 +55,10 @@ const Profile = () => {
     const [serviceEdit, setServiceEdit] = useState(false);
     const [optionsActive, setOptionsActive] = useState();
     const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
     const [isEditingAbout, toggleIsEditingAbout] = useState(false);
 
@@ -76,6 +80,29 @@ const Profile = () => {
         time: "",
     }
 
+    const addServiceBtn = {
+        initial: {
+            height: "0px",
+            backgroundColor: "hsl(0, 0%, 2.5%)",
+            filter: "invert(0)",
+        },
+        exit: {
+            height: "0px",
+        },
+        animate: {
+            height: "100px",
+        },
+        whileHover: {
+            backgroundColor: "hsl(0, 0%, 4%)",
+        },
+        whileTap: {
+            scale: 0.95,
+            backgroundColor: "hsl(0, 0%, 10%)",
+        },
+        transition: {
+            duration: 0.1,
+        },     
+    }
     const changePage = (buttonId) => {
         setPageState(buttonId);
     }
@@ -116,6 +143,7 @@ const Profile = () => {
     }
 
     const toggleServiceEdit = () => {
+        setOptionsActive(-1);
         setServiceEdit(!serviceEdit);
     }
 
@@ -241,9 +269,12 @@ const Profile = () => {
 
     const addContentBtn = {
         initial: {
-            scale: 1,
+            height: 0,
             backgroundColor: "hsl(0, 0%, 2.5%)",
             filter: "invert(0)",
+        },
+        animate: {
+            height: 1,
         },
         whileHover: {
             backgroundColor: "hsl(0, 0%, 4%)",
@@ -544,14 +575,18 @@ const Profile = () => {
                                                     />
                                                 ))
                                             )}
-                                            {serviceEdit === true && (
-                                                <motion.button
-                                                className="addService" onClick={() => openModal()}
-                                                {...addContentBtn}
-                                                >
-                                                    <img className="addIcon2" src={addIcon}/>
-                                                </motion.button>
-                                            )}
+                                            <AnimatePresence>
+                                                {serviceEdit === true && (
+                                                    <motion.button
+                                                    key="addService"
+                                                    className="addService" 
+                                                    onClick={() => openModal()}
+                                                    {...addServiceBtn}
+                                                    >
+                                                        <img className="addIcon2" src={addIcon}/>
+                                                    </motion.button>
+                                                )}
+                                            </AnimatePresence>
                                         </div>
                                     </div>
                                     <div className="scheduleSect">

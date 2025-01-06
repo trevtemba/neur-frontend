@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CreateService from "./ServicesTab/AddService";
 
-import { color, motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { useLogin } from "../Contexts/loginContext";
 import { useNavigation } from "../Contexts/navigationContext";
 import { useNavigate } from "react-router-dom";
@@ -52,6 +52,7 @@ const Profile = () => {
     const [isModalOpen, setIsModalOpen] = useState();
 
     const [serviceEdit, setServiceEdit] = useState(false);
+    const [optionsActive, setOptionsActive] = useState();
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
@@ -260,16 +261,19 @@ const Profile = () => {
 
     return (
         <div className="profilePage">
-            {isModalOpen && (
-                <CreateService
-                    isOpen={isModalOpen}
-                    btnAnims={formBtn}
-                    onClose={closeModal}
-                    tempService={tempService}
-                    setTempService={setTempService}
-                    postServiceInfo={postServiceInfo}
-                />
-            )}
+            <AnimatePresence>
+                {isModalOpen && (
+                    <CreateService
+                        isOpen={isModalOpen}
+                        btnAnims={formBtn}
+                        onClose={closeModal}
+                        tempService={tempService}
+                        setTempService={setTempService}
+                        postServiceInfo={postServiceInfo}
+                    />
+                )}
+            </AnimatePresence>
+
             
             <div className="profileContainer">
                 {loginState == false && (
@@ -515,7 +519,9 @@ const Profile = () => {
                                 exit={{
                                     opacity: 0,
                                 }}>
-                                    <div className="serviceSect">
+                                    <div className="serviceSect" 
+                                    style={{ gap: serviceEdit == true || userServices[0].id !== "" ? "10px" : "0px"}}
+                                    >
                                         <div className="subHeader">
                                             Services
                                             <button className="editBtn" onClick={() => toggleServiceEdit()}>
@@ -523,67 +529,21 @@ const Profile = () => {
                                             </button>
                                         </div>
                                         <div className="serviceList">
-                                            {userServices.map((service) => (
-                                                <VendorService 
-                                                key={service.id}
-                                                btnStyling={genericBtn}
-                                                selectState={serviceSelectState}
-                                                setSelect={setServiceSelectState}
-                                                {...service}
-                                                />
-                                            ))}
-                                            {/* <motion.button 
-                                            className="service" onClick={ () => setServiceSelectState(1)}
-                                            {...genericBtn}
-                                            animate={{ filter: serviceSelectState == 1 ? "invert(1)" : "invert(0)" }}>
-                                                <div className="textSect">
-                                                    <span className="name">Starter Locs</span>
-                                                    <span className="duration">3+ hours</span>
-                                                    <span className="desc">Two-strand starter locs (full head of hair)</span>
-                                                </div>
-                                                <div className="priceSect">
-                                                    <span className="symbol">$</span><span className="price">160</span>
-                                                </div>
-                                            </motion.button>
-                                            <motion.button
-                                            className="service" onClick={ () => setServiceSelectState(2)}
-                                            {...genericBtn}
-                                            animate={{ filter: serviceSelectState == 2 ? "invert(1)" : "invert(0)" }}>
-                                                <div className="textSect">
-                                                    <span className="name">Retwist</span>
-                                                    <span className="duration">3+ hours</span>
-                                                    <span className="desc">Two-strand retwist (wash and maintenance included)</span>
-                                                </div>
-                                                <div className="priceSect">
-                                                    <span className="symbol">$</span><span className="price">100</span>
-                                                </div>
-                                            </motion.button>
-                                            <motion.button
-                                            className="service" onClick={ () => setServiceSelectState(3)}
-                                            {...genericBtn}
-                                            animate={{ filter: serviceSelectState == 3 ? "invert(1)" : "invert(0)" }}>
-                                                <div className="textSect">
-                                                    <span className="name">Box braids</span>
-                                                    <span className="duration">3+ hours</span>
-                                                    <span className="desc">Full head of box braids (blow dry included)</span>
-                                                </div>
-                                                <div className="priceSect">
-                                                    <span className="symbol">$</span><span className="price">60</span>
-                                                </div>
-                                            </motion.button>
-                                            <motion.button
-                                            className="service" onClick={ () => setServiceSelectState(4)}
-                                            {...genericBtn}
-                                            animate={{ filter: serviceSelectState == 4 ? "invert(1)" : "invert(0)" }}>
-                                                <div className="textSect">
-                                                    <span className="name">Two-strand twists</span>
-                                                    <span className="duration">3+ hours</span>
-                                                    <span className="desc">Full head of two-strand twists (blow-dry included)</span>
-                                                </div>
-                                                <div className="priceSect">
-                                                    <span className="symbol">$</span><span className="price">60</span>
-                                                </div>
-                                            </motion.button> */}
+                                            {userServices[0].id !== "" && (
+                                                userServices.map((service) => (
+                                                    <VendorService 
+                                                    key={service.id}
+                                                    btnStyling={genericBtn}
+                                                    selectState={serviceSelectState}
+                                                    setSelect={setServiceSelectState}
+                                                    serviceEdit={serviceEdit}
+                                                    optionsActive={optionsActive}
+                                                    setOptionsActive={setOptionsActive}
+                                                    openModal={openModal}
+                                                    {...service}
+                                                    />
+                                                ))
+                                            )}
                                             {serviceEdit === true && (
                                                 <motion.button
                                                 className="addService" onClick={() => openModal()}

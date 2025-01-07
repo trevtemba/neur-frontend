@@ -183,6 +183,7 @@ const Profile = () => {
             if (response.status == 200) {
                 const result = await response.data;
                 addService(result);
+                closeModal();
                 console.log("Success:", result);
             } else {
                 console.log("Error: ", response.statusText);
@@ -623,8 +624,9 @@ const Profile = () => {
                                                         {...service}
                                                         />
                                                     ))
-                                                )}
+                                                )}                                
                                             </AnimatePresence>
+
                                             <AnimatePresence>
                                                 {serviceEdit === true && (
                                                     <motion.button

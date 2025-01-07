@@ -10,6 +10,24 @@ import { animate } from "motion";
 const VendorService = (props) => {
     const {id, btnStyling, selectState, setSelect, serviceEdit, optionsActive, setOptionsActive, openModal, openDeleteModal, ...serviceProps} = props;
 
+    const serviceStyling = {
+        initial: {
+            height: "0px",
+            opacity: 0,
+        },
+        exit: {
+            height: "0px",
+            opacity: 0,
+        },
+        animate: {
+            height: "100px",
+            opacity: 1,
+        },
+        transition: {
+            duration: 0.3,
+            ease: [0.25, 1, 0.5, 1],
+        },
+    }
     const editBtnStyle = {
         initial: {
             width: "0px",
@@ -68,7 +86,9 @@ const VendorService = (props) => {
     }
 
     return (
-        <motion.div className="serviceDiv">
+        <motion.div 
+        className="serviceDiv"
+        {...serviceStyling}>
             <motion.button
             className="service" onClick={ () => setSelect(id)}
             {...btnStyling}

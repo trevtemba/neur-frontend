@@ -155,6 +155,15 @@ const Profile = () => {
         setServiceEdit(!serviceEdit);
     }
 
+    const clearTempService = () => {
+        setTempService({
+            name: "",
+            duration: "",
+            price: "",
+            description: "",
+        })
+    }
+
     const handleAboutCancel = () => {
         toggleAboutTextEdit();
     }
@@ -184,6 +193,7 @@ const Profile = () => {
                 const result = await response.data;
                 addService(result);
                 closeModal();
+                clearTempService();
                 console.log("Success:", result);
             } else {
                 console.log("Error: ", response.statusText);
@@ -338,6 +348,7 @@ const Profile = () => {
                         onClose={closeModal}
                         tempService={tempService}
                         setTempService={setTempService}
+                        clearTempService={clearTempService}
                         postServiceInfo={postServiceInfo}
                     />
                 )}

@@ -5,18 +5,10 @@ import React from "react";
 
 import "./addService.css"
 
-const CreateService = ({ isOpen, onClose, btnAnims, tempService, setTempService, postServiceInfo }) => {
+const CreateService = ({ isOpen, onClose, btnAnims, tempService, setTempService, clearTempService, postServiceInfo }) => {
 
+    const [descCharCount, setDescCharCount] = useState(tempService.description.length)
     if (!isOpen) return null;
-
-    const clearTempService = () => {
-        setTempService({
-            name: "",
-            duration: "",
-            price: "",
-            description: "",
-        })
-    }
 
     const backgroundAnimator = {
         initial: {
@@ -65,6 +57,7 @@ const CreateService = ({ isOpen, onClose, btnAnims, tempService, setTempService,
             })
         }
         else if (fieldName == "desc") {
+            setDescCharCount(e.target.value.length)
             setTempService({
                 ...tempService, description: e.target.value
             })
@@ -136,7 +129,7 @@ const CreateService = ({ isOpen, onClose, btnAnims, tempService, setTempService,
                                 value={tempService.description}
                             />
                             <div className="descInfo">
-                                <span>Brief description of service</span><span>0/500</span>
+                                <span>Brief description of service</span><span>{descCharCount}/50</span>
                             </div>
                             
                         </div>

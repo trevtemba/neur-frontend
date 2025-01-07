@@ -19,7 +19,7 @@ const AuthForm = () => {
     const [formState, setForm] = useState("Login"); // Register, Login, Verification, Forgot Password, Success
     const [selectState, setState] = useState("Have an account?");
 
-    const { handleLoginState, setUser } = useLogin();
+    const { handleLoginState, setUser, setServices } = useLogin();
     const { goPage } = useNavigation();
     const navigate = useNavigate();
 
@@ -169,7 +169,7 @@ const AuthForm = () => {
                 const result = await response.data;
                 handleLoginState("login");
                 setUser(result)
-                goPage("profile", navigate);
+                fetchServices(e, result.id)
                 console.log("Successful login!");
             } else {
                 console.log("Error: ", response.statusText);
@@ -178,6 +178,28 @@ const AuthForm = () => {
         } catch (error) {
             console.error("Error: ", error);
             alert("Form submission failed!");
+        }
+    };
+
+    const fetchServices = async (e, id) => {
+        try {
+
+        const response = await api.get(`/users/${id}/services`);
+
+        console.log("got response");
+        if (response.status == 200) {
+            const result = await response.data;
+            if (result.length != 0) {
+                setServices(result);
+            }
+            goPage("profile", navigate);
+            console.log("Success: ", result);
+
+        } else {
+            console.log("No services for user: " + userInfo.id);
+        }
+        } catch (error) {
+            console.log("Error: ", error);
         }
     };
 

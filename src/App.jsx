@@ -22,7 +22,9 @@ const App = () => {
       console.log("got response");
       if (response.status == 200) {
           const result = await response.data;
-          setServices(result);
+          if (result.length != 0) {
+            setServices(result);
+          }
           console.log("Success: ", result);
 
       } else {

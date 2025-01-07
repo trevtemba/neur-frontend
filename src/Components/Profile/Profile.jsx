@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import CreateService from "./ServicesTab/AddService";
 
 import { AnimatePresence, motion } from "motion/react";
 import { useLogin } from "../Contexts/loginContext";
@@ -9,6 +8,8 @@ import "./profile.css"
 import api from "../Config/axios";
 
 import VendorService from "./ServicesTab/VendorService";
+import CreateService from "./ServicesTab/AddService";
+import DeleteService from "./ServicesTab/DeleteService";
 
 import profileSplash from "../Assets/profileAssets/mock_splash.jpg"
 import profileIcon from "../Assets/profileAssets/mock_icon.jpg"
@@ -39,6 +40,7 @@ import fi8 from "../Assets/featuredGrid/fi8.jpg"
 import fi9 from "../Assets/featuredGrid/fi8.jpg"
 import { div, filter, style, textarea } from "motion/react-client";
 import { animate } from "motion";
+
 const Profile = () => {
 
     const [tempService, setTempService] = useState({
@@ -48,16 +50,22 @@ const Profile = () => {
         description: "",
     })
 
-    const { loginState, userInfo, userServices, setUserBio, addService } = useLogin();
+    const { loginState, userInfo, userServices, setUserBio, addService, removeService } = useLogin();
     const [pageState, setPageState] = useState("info")
-    const [isModalOpen, setIsModalOpen] = useState();
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(-1);
 
     const [serviceEdit, setServiceEdit] = useState(false);
     const [optionsActive, setOptionsActive] = useState();
     const openModal = () => setIsModalOpen(true);
+    const openDeleteModal = (serviceId) => setIsDeleteModalOpen(serviceId);
 
     const closeModal = () => {
         setIsModalOpen(false);
+    };
+
+    const closeDeleteModal = () => {
+        setIsDeleteModalOpen(-1);
     };
 
     const [isEditingAbout, toggleIsEditingAbout] = useState(false);
@@ -186,6 +194,35 @@ const Profile = () => {
         }
     }
 
+    const deleteService = async(e, serviceId) => {
+        e.preventDefault();
+
+        const data = {
+            serviceId: serviceId,
+        };
+        console.log("Data being sent:", data);
+
+        try {
+            const response = await api.delete(`/users/${userInfo.id}/services/delete`, {
+                data: data,
+            });
+
+            console.log("got response");
+            if (response.status == 200) {
+                const result = await response.data;
+                removeService(serviceId);
+                closeDeleteModal();
+                console.log("Success:", result);
+            } else {
+                console.log("Error: ", response.statusText);
+                alert("Form submission failed!");
+            }
+        } catch (error) {
+            console.error("Error: ", error);
+            alert("Form submission failed!");
+        }
+    }
+
     const patchAboutInfo = async() => {
         
         console.log(tempText);
@@ -301,6 +338,16 @@ const Profile = () => {
                         tempService={tempService}
                         setTempService={setTempService}
                         postServiceInfo={postServiceInfo}
+                    />
+                )}
+            </AnimatePresence>
+            <AnimatePresence>
+                {isDeleteModalOpen != -1 && (
+                    <DeleteService
+                        deletingServiceId={isDeleteModalOpen}
+                        onClose={closeDeleteModal}
+                        deleteService={deleteService}
+                        btnAnims={formBtn}
                     />
                 )}
             </AnimatePresence>
@@ -551,7 +598,7 @@ const Profile = () => {
                                     opacity: 0,
                                 }}>
                                     <div className="serviceSect" 
-                                    style={{ gap: serviceEdit == true || userServices[0].id !== "" ? "10px" : "0px"}}
+                                    style={{ gap: serviceEdit == true || userServices.length > 0 ? "10px" : "0px"}}
                                     >
                                         <div className="subHeader">
                                             Services
@@ -560,21 +607,24 @@ const Profile = () => {
                                             </button>
                                         </div>
                                         <div className="serviceList">
-                                            {userServices[0].id !== "" && (
-                                                userServices.map((service) => (
-                                                    <VendorService 
-                                                    key={service.id}
-                                                    btnStyling={genericBtn}
-                                                    selectState={serviceSelectState}
-                                                    setSelect={setServiceSelectState}
-                                                    serviceEdit={serviceEdit}
-                                                    optionsActive={optionsActive}
-                                                    setOptionsActive={setOptionsActive}
-                                                    openModal={openModal}
-                                                    {...service}
-                                                    />
-                                                ))
-                                            )}
+                                            <AnimatePresence>
+                                                {userServices.length > 0 && (
+                                                    userServices.map((service) => (
+                                                        <VendorService 
+                                                        key={service.id}
+                                                        btnStyling={genericBtn}
+                                                        selectState={serviceSelectState}
+                                                        setSelect={setServiceSelectState}
+                                                        serviceEdit={serviceEdit}
+                                                        optionsActive={optionsActive}
+                                                        setOptionsActive={setOptionsActive}
+                                                        openModal={openModal}
+                                                        openDeleteModal={openDeleteModal}
+                                                        {...service}
+                                                        />
+                                                    ))
+                                                )}
+                                            </AnimatePresence>
                                             <AnimatePresence>
                                                 {serviceEdit === true && (
                                                     <motion.button

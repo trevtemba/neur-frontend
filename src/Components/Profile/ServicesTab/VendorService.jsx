@@ -8,7 +8,7 @@ import { useState } from "react";
 import { animate } from "motion";
 
 const VendorService = (props) => {
-    const {id, btnStyling, selectState, setSelect, serviceEdit, optionsActive, setOptionsActive, openModal, ...serviceProps} = props;
+    const {id, btnStyling, selectState, setSelect, serviceEdit, optionsActive, setOptionsActive, openModal, openDeleteModal, ...serviceProps} = props;
 
     const editBtnStyle = {
         initial: {
@@ -68,7 +68,7 @@ const VendorService = (props) => {
     }
 
     return (
-        <div className="serviceDiv">
+        <motion.div className="serviceDiv">
             <motion.button
             className="service" onClick={ () => setSelect(id)}
             {...btnStyling}
@@ -91,6 +91,7 @@ const VendorService = (props) => {
                 {serviceEdit == true && (
                     <motion.div 
                     className="moreIcon"
+                    key="moreIcon"
                     {...editBtnStyle}
                     onClick={(e) => {
                         e.stopPropagation();
@@ -118,13 +119,14 @@ const VendorService = (props) => {
                         <motion.button
                         className="deleteBtn3"
                         {...optionBtnStyle}
+                        onClick={(e) => openDeleteModal(id)}
                         >
                             <img src={deleteIcon}/>
                         </motion.button>
                     </motion.div>
                 )}
             </AnimatePresence>
-        </div>
+        </motion.div>
 
     );
 }

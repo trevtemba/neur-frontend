@@ -13,16 +13,7 @@ export const LoginProvider = ({children}) => {
         bio: "",
     });
 
-    const [userServices, setUserServices] = useState([
-        {
-            id: "",
-            name: "",
-            duration: "",
-            price: "",
-            description: "",
-            listPos: 0,
-        },
-    ]);
+    const [userServices, setUserServices] = useState([]);
     
     const setUser = (data) => {
         setUserInfo ({
@@ -57,6 +48,12 @@ export const LoginProvider = ({children}) => {
         }
         setUserServices((prevState) => [...prevState, newService]);
     }
+
+    const removeService = (serviceId) => {
+        const newServices = userServices.filter((service) => service.id !== serviceId)
+        setUserServices(newServices);
+    }
+
     const setUserBio = (text) => {
         setUserInfo((userInfo) => ({
             ...userInfo,
@@ -74,7 +71,7 @@ export const LoginProvider = ({children}) => {
     };
 
     return (
-        <LoginContext.Provider value = {{ loginState, userInfo, userServices, handleLoginState, setUser, setUserBio, setServices, addService }}>
+        <LoginContext.Provider value = {{ loginState, userInfo, userServices, handleLoginState, setUser, setUserBio, setServices, addService, removeService }}>
             {children}
         </LoginContext.Provider>
     );

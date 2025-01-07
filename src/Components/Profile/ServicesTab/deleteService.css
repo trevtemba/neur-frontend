@@ -1,0 +1,54 @@
+.deleteModalContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 8; 
+}
+
+.deleteServiceModal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 40%;
+    z-index: 10;
+    width: 300px;
+    height: auto;
+    gap: 15px;
+    padding: 15px;
+    background-color: hsl(0, 0%, 7.5%);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.deleteModalLabel {
+    color:hsl(0, 0%, 60%);
+    font-size: 18px;
+}
+.modalBtnsRow {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    gap: 15px;
+}
+.modalBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 40px;
+    border-color: transparent;
+    border-radius: 5px;
+    background-color: hsl(0, 0%, 2.5%);
+    color: hsl(0, 0%, 100%);
+    font-size: 16px;
+    padding: 20px;
+}

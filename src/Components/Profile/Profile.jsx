@@ -10,6 +10,7 @@ import api from "../Config/axios";
 import VendorService from "./ServicesTab/VendorService";
 import CreateService from "./ServicesTab/AddService";
 import DeleteService from "./ServicesTab/DeleteService";
+import UpdateService from "./ServicesTab/UpdateService";
 
 import profileSplash from "../Assets/profileAssets/mock_splash.jpg"
 import profileIcon from "../Assets/profileAssets/mock_icon.jpg"
@@ -50,18 +51,34 @@ const Profile = () => {
         description: "",
     })
 
-    const { loginState, userInfo, userServices, setUserBio, addService, removeService } = useLogin();
+    const { loginState, userInfo, userServices, setUserBio, addService, removeService, updateService } = useLogin();
     const [pageState, setPageState] = useState("info")
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(-1);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(-1);
 
     const [serviceEdit, setServiceEdit] = useState(false);
     const [optionsActive, setOptionsActive] = useState();
+
     const openModal = () => setIsModalOpen(true);
+
     const openDeleteModal = (serviceId) => setIsDeleteModalOpen(serviceId);
+
+    const openUpdateModal = (serviceId) => {
+        const serviceToEdit = userServices.find((service) => service.id === serviceId);
+        if (serviceToEdit) {
+            setTempService(serviceToEdit);
+        }
+        setIsUpdateModalOpen(serviceId);
+    }
 
     const closeModal = () => {
         setIsModalOpen(false);
+    };
+
+    const closeUpdateModal = () => {
+        clearTempService();
+        setIsUpdateModalOpen(-1);
     };
 
     const closeDeleteModal = () => {
@@ -204,6 +221,33 @@ const Profile = () => {
             alert("Form submission failed!");
         }
     }
+    const patchServiceInfo = async(e) => {
+        e.preventDefault();
+        
+        const data = tempService;
+        console.log(tempService)
+
+        console.log("Data being sent:", data);
+        try {
+            const response = await api.patch(`/users/${userInfo.id}/services/update`, data);
+
+            console.log("got response");
+            if (response.status == 200) {
+                const result = await response.data;
+                updateService(result);
+                closeUpdateModal();
+                clearTempService();
+                console.log("Update service success: ", result);
+            } else {
+                console.log("Error: ", response.statusText);
+                alert("Form submission failed!");
+            }
+        } catch (error) {
+            console.error("Error: ", error);
+            alert("Form submission failed!");
+        }
+    }
+
 
     const deleteService = async(e, serviceId) => {
         e.preventDefault();
@@ -352,6 +396,19 @@ const Profile = () => {
                         postServiceInfo={postServiceInfo}
                     />
                 )}
+            <AnimatePresence>
+                {isUpdateModalOpen != -1 && (
+                    <UpdateService
+                        isOpen={isUpdateModalOpen}
+                        btnAnims={formBtn}
+                        onClose={closeUpdateModal}
+                        tempService={tempService}
+                        setTempService={setTempService}
+                        clearTempService={clearTempService}
+                        patchServiceInfo={patchServiceInfo}
+                    />
+                )}
+            </AnimatePresence>
             </AnimatePresence>
             <AnimatePresence>
                 {isDeleteModalOpen != -1 && (
@@ -363,6 +420,7 @@ const Profile = () => {
                     />
                 )}
             </AnimatePresence>
+
 
             
             <div className="profileContainer">
@@ -630,7 +688,7 @@ const Profile = () => {
                                                         serviceEdit={serviceEdit}
                                                         optionsActive={optionsActive}
                                                         setOptionsActive={setOptionsActive}
-                                                        openModal={openModal}
+                                                        openModal={openUpdateModal}
                                                         openDeleteModal={openDeleteModal}
                                                         {...service}
                                                         />

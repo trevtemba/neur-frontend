@@ -1,4 +1,5 @@
 import { useContext, createContext, useState } from "react";
+import UpdateService from "../Profile/ServicesTab/UpdateService";
 
 const LoginContext = createContext();
 
@@ -49,6 +50,14 @@ export const LoginProvider = ({children}) => {
         setUserServices((prevState) => [...prevState, newService]);
     }
 
+    const updateService = (data) => {
+        setUserServices((prevState) => 
+            prevState.map((service) => (
+                service.id === data.id ? data : service
+            ))
+        )
+    }
+
     const removeService = (serviceId) => {
         const newServices = userServices.filter((service) => service.id !== serviceId)
         setUserServices(newServices);
@@ -71,7 +80,7 @@ export const LoginProvider = ({children}) => {
     };
 
     return (
-        <LoginContext.Provider value = {{ loginState, userInfo, userServices, handleLoginState, setUser, setUserBio, setServices, addService, removeService }}>
+        <LoginContext.Provider value = {{ loginState, userInfo, userServices, handleLoginState, setUser, setUserBio, setServices, addService, removeService, updateService }}>
             {children}
         </LoginContext.Provider>
     );

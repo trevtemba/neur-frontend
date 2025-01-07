@@ -132,7 +132,7 @@ const VendorService = (props) => {
                         <motion.button
                         className="editBtn3"
                         {...optionBtnStyle}
-                        onClick={(e) => openModal()}
+                        onClick={(e) => openModal(id)}
                         >
                             <img src={optionEditIcon}/>
                         </motion.button>

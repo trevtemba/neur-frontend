@@ -163,8 +163,12 @@ const Profile = () => {
 
     const toggleAboutTextEdit = () => {
         toggleIsEditingAbout(!isEditingAbout);
-        setTempText(userInfo.bio);
-        setTextCnt(userInfo.bio.length)
+        
+        if (userInfo.bio) {
+            setTempText(userInfo.bio);
+            setTextCnt(userInfo.bio.length)
+        }
+        
     }
 
     const toggleServiceEdit = () => {

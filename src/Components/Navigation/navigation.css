@@ -1,10 +1,14 @@
 .topBar {
+    position: fixed;
+    top: 0px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    background-color: hsl(0, 0%, 0%, 0.4);
     width: 100%;
     height: 100px;
+    z-index: 100;
 }
 
 .logoContainer {
@@ -19,6 +23,7 @@
     color: white;
     font-size: 35px;
     letter-spacing: -2px;
+    z-index: 100;
 }
 .navContainer {
     display: flex;
@@ -27,7 +32,8 @@
     justify-content: center;
     width: 500px;
     height: 100%;
-    gap: 50px
+    gap: 50px;
+    z-index: 100;
 }
 
 .rightContainer {
@@ -39,6 +45,7 @@
     padding-right: 40px;
     width: 100px;
     height: 100%;
+    z-index: 100;
 }
 .navButton {
     display: flex;
@@ -52,6 +59,7 @@
     width: 50px;
     font-size: 18px;
     cursor: pointer;
+    z-index: 100;
 }
 
 .loginButton {
@@ -65,4 +73,17 @@
     color: hsl(0, 0%, 5%);
     right: 50px;
     cursor: pointer;
+    z-index: 100;
+}
+
+.fadeOverlay2 {
+    position: fixed;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+    border-color: transparent;
+    width: 100%;
+    height: 50px;
+    pointer-events: none;
+    top: 100px;
+    left: 0;
+    z-index: 99;
 }

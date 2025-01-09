@@ -141,6 +141,9 @@ const Navigation = () => {
                     {loginState == true ? "Logout" : "Login"}
                 </motion.button>
             </div>
+            <div className="fadeOverlay2">
+
+            </div>
         </div>
     );
 };

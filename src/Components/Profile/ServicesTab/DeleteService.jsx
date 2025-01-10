@@ -68,8 +68,9 @@ const DeleteService = ({ deletingServiceId, onClose, btnAnims, deleteService }) 
                     <motion.button
                     className="modalBtn"
                     onClick={(e) => {
+                        onClose
                         e.stopPropagation();
-                        onClose;
+                        ;
                     }}
                     {...btnAnims}
                     >

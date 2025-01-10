@@ -68,7 +68,7 @@ const CreateService = ({ isOpen, onClose, btnAnims, tempService, setTempService,
     return (
             <motion.div 
             className="modalContainer"
-            key="modalContainer"
+            key="createModalContainer"
             onClick={onClose}
             initial={{
                 opacity: 0,

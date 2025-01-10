@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const prodURL="https://neur-backend-production.up.railway.app"
+const prodURL="https://neur-rest-api-production.up.railway.app/"
 const localURL="http://localhost:8080"
 
 const api = axios.create({

@@ -101,7 +101,7 @@ const AuthForm = () => {
         const { verificationCode, confirmPassword, ...dataToSend} = values;
         console.log("Data being sent:", dataToSend);
         try {
-            const response = await fetch("http://localhost:8080/users/register", {
+            const response = await fetch("https://neur-rest-api-production.up.railway.app/users/register", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",
@@ -130,7 +130,7 @@ const AuthForm = () => {
         const { verificationCode, email, confirmPassword, ...dataToSend} = values;
         console.log("Data being sent:", dataToSend);
         try {
-            const response = await fetch("http://localhost:8080/users/login", {
+            const response = await fetch("https://neur-rest-api-production.up.railway.app/users/login", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",

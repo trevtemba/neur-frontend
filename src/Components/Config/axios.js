@@ -1,7 +1,10 @@
 import axios from "axios";
 
+const prodURL="https://neur-backend-production.up.railway.app"
+const localURL="http://localhost:8080"
+
 const api = axios.create({
-    baseURL: "http://localhost:8080",
+    baseURL: prodURL,
 });
 
 api.interceptors.request.use(

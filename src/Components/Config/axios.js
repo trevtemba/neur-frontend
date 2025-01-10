@@ -4,7 +4,7 @@ const prodURL="https://neur-rest-api-production.up.railway.app/"
 const localURL="http://localhost:8080"
 
 const api = axios.create({
-    baseURL: localURL,
+    baseURL: prodURL,
 });
 
 api.interceptors.request.use(

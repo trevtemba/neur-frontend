@@ -207,7 +207,7 @@ const Profile = () => {
 
         console.log("Data being sent:", data);
         try {
-            const response = await api.post(`/users/${userInfo.id}/services/create`, data);
+            const response = await api.post(`/users/${userInfo.id}/services`, data);
 
             console.log("got response");
             if (response.status == 200) {
@@ -233,7 +233,7 @@ const Profile = () => {
 
         console.log("Data being sent:", data);
         try {
-            const response = await api.patch(`/users/${userInfo.id}/services/update`, data);
+            const response = await api.patch(`/users/${userInfo.id}/services`, data);
 
             console.log("got response");
             if (response.status == 200) {
@@ -262,7 +262,7 @@ const Profile = () => {
         console.log("Data being sent:", data);
 
         try {
-            const response = await api.delete(`/users/${userInfo.id}/services/delete`, {
+            const response = await api.delete(`/users/${userInfo.id}/services`, {
                 data: data,
             });
 

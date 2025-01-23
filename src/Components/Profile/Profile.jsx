@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useLogin } from "../Contexts/loginContext";
 import { useNavigation } from "../Contexts/navigationContext";
 import { useNavigate } from "react-router-dom";
+import ReactCrop, { makeAspectCrop } from 'react-image-crop'
 import "./profile.css"
 import api from "../Config/axios";
 
@@ -11,6 +12,7 @@ import VendorService from "./ServicesTab/VendorService";
 import CreateService from "./ServicesTab/AddService";
 import DeleteService from "./ServicesTab/DeleteService";
 import UpdateService from "./ServicesTab/UpdateService";
+import UploadVendorImage from "./MediaModals/UploadVendorImage";
 
 import profileSplash from "../Assets/profileAssets/mock_splash.jpg"
 import profileIcon from "../Assets/profileAssets/mock_icon.jpg"
@@ -44,6 +46,9 @@ import { animate } from "motion";
 
 const Profile = () => {
 
+    const ASPECT_RATIO = 1;
+    const MIN_DIMENSION = 150;
+
     const [tempService, setTempService] = useState({
         name: "",
         duration: "",
@@ -54,15 +59,43 @@ const Profile = () => {
     const { loginState, userInfo, userServices, setUserBio, addService, removeService, updateService } = useLogin();
     const [pageState, setPageState] = useState("info")
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
     const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(-1);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(-1);
 
     const [serviceEdit, setServiceEdit] = useState(false);
     const [optionsActive, setOptionsActive] = useState();
+    const [imgSrc, setImgSrc] = useState("")
+    const [crop, setCrop] = useState();
 
     const openModal = () => setIsModalOpen(true);
 
     const openDeleteModal = (serviceId) => setIsDeleteModalOpen(serviceId);
+
+    const openUploadModal = (file) => {
+        const reader = new FileReader();
+
+        reader.addEventListener("load", () => {
+            const imageUrl = reader.result?.toString() || "";
+            setImgSrc(imageUrl);
+        });
+        reader.readAsDataURL(file);
+
+        setIsUploadModalOpen(true);
+    }
+
+    const onImageLoad = (e) => {
+        const { width, height } = e.currentTarget;
+        const crop = makeAspectCrop({
+            unit: "%",
+            width: MIN_DIMENSION,
+        },
+        ASPECT_RATIO,
+        width,
+        height
+        );
+        setCrop(crop);
+    }
 
     const openUpdateModal = (serviceId) => {
         const serviceToEdit = userServices.find((service) => service.id === serviceId);
@@ -83,6 +116,10 @@ const Profile = () => {
 
     const closeDeleteModal = () => {
         setIsDeleteModalOpen(-1);
+    };
+
+    const closeUploadModal = () => {
+        setIsUploadModalOpen(false);
     };
 
     const [isEditingAbout, toggleIsEditingAbout] = useState(false);
@@ -194,6 +231,17 @@ const Profile = () => {
         patchAboutInfo();
     }
 
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+
+        if (!file.type.startsWith('image/')) {
+            alert ("Please select a valid imge file.");
+            return;
+        }
+
+        openUploadModal(file)
+    }
+
     const handleTextEdit = (e) => {
         setTempText(e.target.value);
         setTextCnt(e.target.value.length)
@@ -225,6 +273,7 @@ const Profile = () => {
             alert("Form submission failed!");
         }
     }
+
     const patchServiceInfo = async(e) => {
         e.preventDefault();
         
@@ -305,6 +354,35 @@ const Profile = () => {
             alert("Form submission failed!");
         }
     }
+
+    // NEEDS TO BE CHANGED
+    const postImage = async(e) => {
+        e.preventDefault();
+        
+        const data = tempService;
+        console.log(tempService)
+
+        console.log("Data being sent:", data);
+        try {
+            const response = await api.post(`/users/${userInfo.id}/client-images`, data);
+
+            console.log("got response");
+            if (response.status == 200) {
+                const result = await response.data;
+                addService(result);
+                closeModal();
+                clearTempService();
+                console.log("Success:", result);
+            } else {
+                console.log("Error: ", response.statusText);
+                alert("Form submission failed!");
+            }
+        } catch (error) {
+            console.error("Error: ", error);
+            alert("Form submission failed!");
+        }
+    }
+    
     const profileNavBtn = {
         initial: {
             color: "rgb(153, 153, 153)",
@@ -425,8 +503,21 @@ const Profile = () => {
                 )}
             </AnimatePresence>
 
+            <AnimatePresence>
+                {isUploadModalOpen && (
+                    <UploadVendorImage
+                        isOpen={isUploadModalOpen}
+                        onClose={closeUploadModal}
+                        btnAnims={formBtn}
+                        imgSrc={imgSrc}
+                        crop={crop}
+                        setCrop={setCrop}
+                        onImageLoad={onImageLoad}
+                        uploadImage={postImage}
+                    />
+                )}
+            </AnimatePresence>
 
-            
             <div className="profileContainer">
                 {loginState == false && (
                     <>
@@ -646,9 +737,16 @@ const Profile = () => {
                                             </motion.div>
                                             {editState == "client" && (
                                                 <motion.div className="addPhoto">
-                                                    <motion.button className="addBtn">
+                                                    <motion.button className="addBtn" onClick={() => document.getElementById('fileInput').click()}>
                                                         <img className="addIcon" src={addIcon}/>
                                                     </motion.button>
+                                                    <input
+                                                        id="fileInput"
+                                                        type="file"
+                                                        accept="image/*"
+                                                        style={{display: "none"}}
+                                                        onChange={(e) => handleFileChange(e)}
+                                                    />
                                                 </motion.div>
                                             )}
                                         </div>

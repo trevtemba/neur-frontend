@@ -1,0 +1,71 @@
+.modalContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 8; 
+}
+
+.uploadServiceModal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 30%;
+    z-index: 10;
+    width: 500px;
+    height: auto;
+    padding: 20px;
+    background-color: hsl(0, 0%, 7.5%);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.uploadImageForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+    background-color: transparent;
+    box-sizing: border-box;
+}
+
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.cropPreview {
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+}
+
+.actionBtnRow {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    gap: 10px;
+}
+.actionBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    border-color: transparent;
+    border-radius: 5px;
+    background-color: hsl(0, 0%, 2.5%);
+    color: hsl(0, 0%, 100%);
+    font-size: 16px;
+    padding: 20px;
+}
